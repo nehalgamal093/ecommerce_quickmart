@@ -27,6 +27,7 @@ dependencies:
 
 
   cupertino_icons: ^1.0.8
+  flutter_native_splash: ^2.4.4
 
 dev_dependencies:
   flutter_test:
@@ -52,8 +53,6 @@ flutter:
     - assets/icons/2.0x/
     - assets/icons/3.0x/
     - assets/images/
-    - assets/images/2.0x/
-    - assets/images/3.0x/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
