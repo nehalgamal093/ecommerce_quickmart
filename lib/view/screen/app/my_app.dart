@@ -1,20 +1,27 @@
 import 'package:ecommerce_shop/view/screen/on_boarding/on_boarding.dart';
+import 'package:ecommerce_shop/view/theme/light_theme.dart';
 import 'package:flutter/material.dart';
+import '../../theme/base_theme.dart';
+import '../home/home.dart';
+import '../login/login.dart';
+import '../sign_up/signup.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-
   @override
   Widget build(BuildContext context) {
+    BaseTheme lightTheme = LightTheme();
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const OnBoardingScreen(),
+      theme: lightTheme.myThemeData,
+      initialRoute: OnBoardingScreen.routeName,
+      routes: {
+        OnBoardingScreen.routeName: (context) => OnBoardingScreen(),
+        LoginScreen.routeName: (context) => LoginScreen(),
+        Signup.routeName: (context) => Signup(),
+        HomeScreen.routeName: (context) => HomeScreen(),
+      },
     );
   }
 }
