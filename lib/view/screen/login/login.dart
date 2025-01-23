@@ -6,6 +6,7 @@ import 'package:ecommerce_shop/view/resources/strings_manager.dart';
 import 'package:ecommerce_shop/view/screen/home/home.dart';
 import 'package:ecommerce_shop/view/screen/login/sections/login_field_section.dart';
 import 'package:ecommerce_shop/view/screen/login/sections/privacy_policy_section.dart';
+import 'package:ecommerce_shop/view/screen/main/main_screen.dart';
 import 'package:ecommerce_shop/view/screen/on_boarding/widgets/custom_button.dart';
 import 'package:ecommerce_shop/view/screen/login/label_text.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class LoginScreen extends StatelessWidget {
             ),
             CustomButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+                  Navigator.pushReplacementNamed(context, MainScreen.routeName);
                 },
                 title: StringsManager.login,
                 color: ColorsManager.blackColor),

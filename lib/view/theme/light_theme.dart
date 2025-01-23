@@ -9,10 +9,10 @@ class LightTheme extends BaseTheme {
   Color get background => ColorsManager.whiteColor;
 
   @override
-  Color get primaryColor => Colors.cyan;
+  Color get primaryColor => ColorsManager.cyanColor;
 
   @override
-  Color get textColor => Colors.black;
+  Color get textColor => ColorsManager.blackColor;
 
   @override
   ThemeData get myThemeData => ThemeData(
@@ -31,6 +31,16 @@ class LightTheme extends BaseTheme {
             color: ColorsManager.greyColor,
             fontWeight: FontWeight.w400,
           ),
+
+          displaySmall: GoogleFonts.plusJakartaSans(
+            fontSize: 10,
+            color: ColorsManager.whiteColor,
+            fontWeight: FontWeight.w500,
+          ),
         ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: background,
+
+    )
       );
 }

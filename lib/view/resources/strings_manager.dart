@@ -28,4 +28,23 @@ class StringsManager {
   static const String alreadyHaveAccount ='Already have an account?';
   static const String createAccount = 'Create Account';
   static const String signupGoogle = 'Signup with Google';
+
+  static const String home = 'Home';
+  static const String categories = 'Categories';
+  static const String myCart = 'My Cart';
+  static const String wishlist = 'Wishlist';
+  static const String profile = 'Profile';
+  static const String seeAll = 'SEE ALL';
+
+  static const String electronics = 'Electronics';
+  static const String furniture = 'Furniture';
+  static const String fashion = 'Fashion';
+  static const String industrial = 'Industrial';
+
+  static const String homeDecor = 'Home Decor';
+  static const String health = 'Health';
+  static const String fabricService = 'Fabrication Service';
+  static const String  electricalEquipment = 'Electrical Equipment';
+  static const String constructionRealstate = 'Construction & Real State';
+  static const String latestProducts = 'Latest Products';
 }

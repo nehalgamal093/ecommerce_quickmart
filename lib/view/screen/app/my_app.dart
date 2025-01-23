@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../theme/base_theme.dart';
 import '../home/home.dart';
 import '../login/login.dart';
+import '../main/main_screen.dart';
 import '../sign_up/signup.dart';
 
 class MyApp extends StatelessWidget {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         OnBoardingScreen.routeName: (context) => OnBoardingScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
         Signup.routeName: (context) => Signup(),
-        HomeScreen.routeName: (context) => HomeScreen(),
+        MainScreen.routeName: (context) => MainScreen(),
       },
     );
   }
