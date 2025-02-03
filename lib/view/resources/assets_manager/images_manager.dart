@@ -30,4 +30,13 @@ class ImagesManager{
   static const String product2 = 'assets/images/product2.png';
   static const String product3 = 'assets/images/product3.png';
   static const String product4 = 'assets/images/product4.png';
+
+  static const String product5 = 'assets/images/product5.png';
+  static const String product6 = 'assets/images/product6.png';
+  static const String product7 = 'assets/images/product7.png';
+  static const String product8= 'assets/images/product8.png';
+  static const String product9 = 'assets/images/product9.png';
+  static const String product10 = 'assets/images/product10.png';
+  static const String product11 = 'assets/images/product11.png';
+  static const String product12 = 'assets/images/product12.png';
 }

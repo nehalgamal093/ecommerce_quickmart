@@ -47,4 +47,13 @@ class StringsManager {
   static const String  electricalEquipment = 'Electrical Equipment';
   static const String constructionRealstate = 'Construction & Real State';
   static const String latestProducts = 'Latest Products';
+
+  static const String labTops = 'Laptops';
+  static const String  mobilePhone = 'Mobile phones';
+  static const String headphones = 'Headphones';
+  static const String smartWatches = 'Smart watches';
+  static const String  monitors = 'Monitors';
+  static const String  mobileCases = 'Mobile Cases';
+  static const String chargers = 'Chargers';
+  static const String earPhones = 'Earphones';
 }

@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/models/product_model.dart';
 import 'package:ecommerce_shop/view/common_widgets/product_item.dart';
 import 'package:flutter/material.dart';
 
@@ -7,14 +8,14 @@ class ProductsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
-      delegate:
-      SliverChildBuilderDelegate(childCount: 5, (context, index) {
-        return ProductItem();
+      delegate: SliverChildBuilderDelegate(childCount: ProductModel.length,
+          (context, index) {
+        return ProductItem(
+          productModel: ProductModel.products[index],
+        );
       }),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisSpacing: 10,
-          crossAxisCount: 2,
-          childAspectRatio: 200 / 270),
+          crossAxisSpacing: 10, crossAxisCount: 2, childAspectRatio: 200 / 270),
     );
   }
 }

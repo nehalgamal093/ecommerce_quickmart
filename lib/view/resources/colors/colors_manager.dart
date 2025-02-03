@@ -10,4 +10,6 @@ class ColorsManager{
   static const Color lightGreyColor =Color(0xffC0C0C0);
 
   static const Color blueColor =Color(0xff1F8BDA);
+  static const Color subBlue = Color(0xff1F8BDA);
+  static const Color subGreen = Color(0xff08E488);
 }

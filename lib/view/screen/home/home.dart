@@ -5,7 +5,6 @@ import 'package:ecommerce_shop/view/screen/home/sections/header_section.dart';
 import 'package:ecommerce_shop/view/screen/home/sections/products_section.dart';
 import 'package:ecommerce_shop/view/screen/home/widgets/label_section.dart';
 import 'package:flutter/material.dart';
-import '../../common_widgets/product_item.dart';
 import '../../resources/assets_manager/images_manager.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -61,13 +60,13 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-                child: LabelSection(label: StringsManager.latestProducts)),
+              child: LabelSection(label: StringsManager.latestProducts),
+            ),
             SliverToBoxAdapter(
               child: SizedBox(
                 height: 24,
               ),
             ),
-
             ProductsSection()
           ],
         ),

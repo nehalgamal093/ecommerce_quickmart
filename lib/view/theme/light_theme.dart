@@ -16,31 +16,31 @@ class LightTheme extends BaseTheme {
 
   @override
   ThemeData get myThemeData => ThemeData(
-        scaffoldBackgroundColor: background,
-        appBarTheme: AppBarTheme(
-          backgroundColor: background
+      scaffoldBackgroundColor: background,
+      appBarTheme: AppBarTheme(backgroundColor: background),
+      textTheme: TextTheme(
+        titleLarge: GoogleFonts.plusJakartaSans(
+          fontSize: 24,
+          color: textColor,
+          fontWeight: FontWeight.w700,
         ),
-        textTheme: TextTheme(
-          titleLarge: GoogleFonts.plusJakartaSans(
-            fontSize: 24,
-            color: textColor,
-            fontWeight: FontWeight.w700,
-          ),
-          bodySmall: GoogleFonts.plusJakartaSans(
-            fontSize: 14,
-            color: ColorsManager.greyColor,
-            fontWeight: FontWeight.w400,
-          ),
-
-          displaySmall: GoogleFonts.plusJakartaSans(
-            fontSize: 10,
-            color: ColorsManager.whiteColor,
-            fontWeight: FontWeight.w500,
-          ),
+        bodySmall: GoogleFonts.plusJakartaSans(
+          fontSize: 14,
+          color: ColorsManager.greyColor,
+          fontWeight: FontWeight.w400,
         ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: background,
-
-    )
-      );
+        bodyMedium: GoogleFonts.plusJakartaSans(
+          fontSize: 12,
+          color: ColorsManager.blackColor,
+          fontWeight: FontWeight.w700,
+        ),
+        displaySmall: GoogleFonts.plusJakartaSans(
+          fontSize: 10,
+          color: ColorsManager.whiteColor,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: background,
+      ));
 }
