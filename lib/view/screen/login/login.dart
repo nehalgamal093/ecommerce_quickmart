@@ -8,7 +8,7 @@ import 'package:ecommerce_shop/view/screen/login/sections/login_field_section.da
 import 'package:ecommerce_shop/view/screen/login/sections/privacy_policy_section.dart';
 import 'package:ecommerce_shop/view/screen/main/main_screen.dart';
 import 'package:ecommerce_shop/view/screen/on_boarding/widgets/custom_button.dart';
-import 'package:ecommerce_shop/view/screen/login/label_text.dart';
+import 'package:ecommerce_shop/core/widgets/label_text.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {

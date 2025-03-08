@@ -3,7 +3,7 @@ import '../../../common_widgets/custom_text_field.dart';
 import '../../../resources/assets_manager/images_manager.dart';
 import '../../../resources/colors/colors_manager.dart';
 import '../../../resources/strings_manager.dart';
-import '../label_text.dart';
+import '../../../../core/widgets/label_text.dart';
 
 class LoginFieldSection extends StatelessWidget {
   const LoginFieldSection({super.key});

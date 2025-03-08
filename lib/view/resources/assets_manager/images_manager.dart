@@ -10,6 +10,13 @@ class ImagesManager{
   static const String homeIcon = 'assets/icons/home.png';
   static const String categoryIcon = 'assets/icons/category.png';
   static const String cartIcon = 'assets/icons/shopping-cart.png';
+  static const String trash = 'assets/icons/trash.png';
+  static const String box = 'assets/icons/box.png';
+  static const String cardTick = 'assets/icons/card-tick.png';
+  static const String clipboardTick = 'assets/icons/clipboard-tick.png';
+  static const String activeBox = 'assets/icons/active_box.png';
+  static const String activeCardTick = 'assets/icons/active_card_tick.png';
+
   static const String heartIcon = 'assets/icons/heart.png';
   static const String profileIcon = 'assets/icons/profile.png';
   static const String header = 'assets/images/header.png';

@@ -12,7 +12,7 @@ class LabelText extends StatelessWidget {
         Text(
           label,
           style: Theme.of(context).textTheme.bodySmall!.copyWith(
-              color: ColorsManager.blackColor, fontWeight: FontWeight.w500),
+              color: ColorsManager.blackColor, fontWeight: FontWeight.w700),
         ),
         Text(
           ' *',

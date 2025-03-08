@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/view/screen/check_out/check_out.dart';
 import 'package:ecommerce_shop/view/screen/on_boarding/on_boarding.dart';
 import 'package:ecommerce_shop/view/screen/products_screen/products_screen.dart';
 import 'package:ecommerce_shop/view/theme/light_theme.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         MainScreen.routeName: (context) => MainScreen(),
         SubCategoriesScreen.routeName: (context) => SubCategoriesScreen(),
         ProductsScreen.routeName: (context) => ProductsScreen(),
-        ProductDetails.routeName: (context) => ProductDetails()
+        ProductDetails.routeName: (context) => ProductDetails(),
+        Checkout.routeName:(context)=>Checkout()
       },
     );
   }

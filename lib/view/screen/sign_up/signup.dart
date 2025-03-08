@@ -1,7 +1,7 @@
 import 'package:ecommerce_shop/view/common_widgets/custom_text_field.dart';
 import 'package:ecommerce_shop/view/common_widgets/header_text.dart';
 import 'package:ecommerce_shop/view/resources/strings_manager.dart';
-import 'package:ecommerce_shop/view/screen/login/label_text.dart';
+import 'package:ecommerce_shop/core/widgets/label_text.dart';
 import 'package:ecommerce_shop/view/screen/on_boarding/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
