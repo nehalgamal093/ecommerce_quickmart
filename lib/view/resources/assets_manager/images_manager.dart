@@ -17,8 +17,18 @@ class ImagesManager{
   static const String activeBox = 'assets/icons/active_box.png';
   static const String activeCardTick = 'assets/icons/active_card_tick.png';
 
+  static const String changePassword = 'assets/icons/change_password.png';
+  static const String darkTheme = 'assets/icons/dark_theme.png';
+  static const String document = 'assets/icons/document.png';
+  static const String faq = 'assets/icons/faq.png';
+  static const String logout = 'assets/icons/logout.png';
+  static const String privacyPolicy = 'assets/icons/privacy_policy.png';
   static const String heartIcon = 'assets/icons/heart.png';
   static const String profileIcon = 'assets/icons/profile.png';
+
+
+
+
   static const String header = 'assets/images/header.png';
   static const String fabric = 'assets/images/fabric.png';
   static const String gift = 'assets/images/gift.png';
@@ -30,7 +40,9 @@ class ImagesManager{
   static const String mobile = 'assets/images/mobile.png';
   static const String sofa = 'assets/images/sofa.png';
   static const String tv = 'assets/images/tv.png';
-
+  static const String googlePay = 'assets/images/google_pay.png';
+  static const String payPal = 'assets/images/pay_pal.png';
+  static const String onlineShopping = 'assets/images/online_shopping.png';
 
   static const String avatar = 'assets/images/avatar.png';
   static const String product1 = 'assets/images/product1.png';

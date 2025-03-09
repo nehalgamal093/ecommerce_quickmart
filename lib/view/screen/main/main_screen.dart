@@ -5,6 +5,7 @@ import 'package:ecommerce_shop/view/resources/strings_manager.dart';
 import 'package:ecommerce_shop/view/screen/categories/categories_screen.dart';
 import 'package:ecommerce_shop/view/screen/home/home.dart';
 import 'package:ecommerce_shop/view/screen/my_cart/my_cart.dart';
+import 'package:ecommerce_shop/view/screen/profile/profile.dart';
 import 'package:ecommerce_shop/view/screen/wishlist/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -63,8 +64,6 @@ class MainScreen extends StatelessWidget {
     CategoriesScreen(),
     MyCart(),
     Wishlist(),
-    Center(
-      child: Text('Profiles'),
-    ),
+    Profile()
   ];
 }

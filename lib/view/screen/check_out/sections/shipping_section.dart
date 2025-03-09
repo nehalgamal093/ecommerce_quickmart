@@ -3,7 +3,9 @@ import 'package:ecommerce_shop/core/widgets/custom_textfield_widget.dart';
 import 'package:ecommerce_shop/core/widgets/label_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../provider/order_tracking_state.dart';
 import '../../../resources/colors/colors_manager.dart';
 
 class ShippingSection extends StatelessWidget {
@@ -11,6 +13,7 @@ class ShippingSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<OrderTrackingState>(context);
     Size size = MediaQuery.of(context).size;
     return Column(
       children: [
@@ -95,7 +98,9 @@ class ShippingSection extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        CustomBtnWidget(title: 'Save', onPressed: () {})
+        CustomBtnWidget(title: 'Save', onPressed: () {
+          provider.changeTrackingState(1);
+        })
       ],
     );
   }

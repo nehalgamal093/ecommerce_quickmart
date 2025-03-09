@@ -1,4 +1,6 @@
 import 'package:ecommerce_shop/provider/main_provider.dart';
+import 'package:ecommerce_shop/provider/old_new_screen.dart';
+import 'package:ecommerce_shop/provider/order_tracking_state.dart';
 import 'package:ecommerce_shop/view/screen/app/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +11,12 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => MainProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => OrderTrackingState(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => OldNewScreen(),
         )
       ],
       child: const MyApp(),
