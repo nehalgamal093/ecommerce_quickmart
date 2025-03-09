@@ -5,9 +5,14 @@ import 'package:ecommerce_shop/view/screen/app/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'core/di/di.dart';
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
   runApp(
-    MultiProvider(
+
+      MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (_) => MainProvider(),
