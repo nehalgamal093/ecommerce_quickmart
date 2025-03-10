@@ -1,6 +1,6 @@
+import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
+import 'package:ecommerce_shop/view/resources/strings_manager.dart';
 import 'package:flutter/material.dart';
-import '../../../resources/colors/colors_manager.dart';
-import '../../../resources/strings_manager.dart';
 
 class PrivacyPolicySection extends StatelessWidget {
   const PrivacyPolicySection({super.key});

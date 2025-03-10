@@ -21,7 +21,7 @@ class StringsManager {
   static const String enterPassword = 'Enter your password';
   static const String forgetPassword = 'Forgot password?';
   static const String loginGoogle = 'Login with Google';
-  static const String agreePrivacy = 'By login , you agree to our';
+  static const String agreePrivacy = 'By auth , you agree to our';
   static const String privacyPolicy = ' Privacy Policy';
   static const String termsAndConditions = 'Terms & Conditions.';
   static const String and = ' and ';

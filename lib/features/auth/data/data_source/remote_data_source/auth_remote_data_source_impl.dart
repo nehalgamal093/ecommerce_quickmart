@@ -1,6 +1,7 @@
 import 'package:ecommerce_shop/core/network/api_manager/api_manager.dart';
 import 'package:ecommerce_shop/core/resources/endpoints.dart';
-import 'package:ecommerce_shop/features/login/data/models/auth_model.dart';
+import 'package:ecommerce_shop/features/auth/data/models/auth_model.dart';
+import 'package:ecommerce_shop/features/auth/data/models/register_request_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'auth_remote_data_source.dart';
@@ -20,6 +21,25 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         String errorMessage = "Login failed";
         if (response.data is Map<String, dynamic>) {
           errorMessage = response.data['error'][0] ?? errorMessage;
+        }
+        throw ServerException(errorMessage);
+      }
+    } on DioException catch (e) {
+      throw ServerException(e.message ?? "Network error");
+    }
+  }
+
+  @override
+  Future<AuthModel> register({RegisterRequestModel? request}) async{
+    var response = await apiManager
+        .postRequest(EndPoints.register,request!.toJson() );
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return AuthModel.fromJson(response.data);
+      } else {
+        String errorMessage = "Register failed";
+        if (response.data is Map<String, dynamic>) {
+          errorMessage = response.data['error'] ?? errorMessage;
         }
         throw ServerException(errorMessage);
       }

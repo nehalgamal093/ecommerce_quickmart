@@ -1,6 +1,6 @@
+import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
+import 'package:ecommerce_shop/features/auth/presentation/screen/sign_up/signup.dart';
 import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
-import 'package:ecommerce_shop/view/screen/login/login.dart';
-import 'package:ecommerce_shop/view/screen/sign_up/signup.dart';
 import 'package:flutter/material.dart';
 import '../../../resources/colors/colors_manager.dart';
 import 'custom_button.dart';

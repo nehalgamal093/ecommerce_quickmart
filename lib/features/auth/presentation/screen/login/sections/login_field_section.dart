@@ -1,12 +1,15 @@
+import 'package:ecommerce_shop/core/widgets/label_text.dart';
+import 'package:ecommerce_shop/view/common_widgets/custom_text_field.dart';
+import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
+import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
+import 'package:ecommerce_shop/view/resources/strings_manager.dart';
 import 'package:flutter/material.dart';
-import '../../../common_widgets/custom_text_field.dart';
-import '../../../resources/assets_manager/images_manager.dart';
-import '../../../resources/colors/colors_manager.dart';
-import '../../../resources/strings_manager.dart';
-import '../../../../core/widgets/label_text.dart';
+
 
 class LoginFieldSection extends StatelessWidget {
-  const LoginFieldSection({super.key});
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  const LoginFieldSection({super.key,required this.emailController,required this.passwordController});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +20,7 @@ class LoginFieldSection extends StatelessWidget {
           height: 5,
         ),
         CustomTextField(
+          controller: emailController,
           hintText: StringsManager.enterEmail,
         ),
         SizedBox(
@@ -27,6 +31,7 @@ class LoginFieldSection extends StatelessWidget {
           height: 5,
         ),
         CustomTextField(
+          controller: passwordController,
           hintText: StringsManager.enterPassword,
           icon: ImageIcon(
             AssetImage(
