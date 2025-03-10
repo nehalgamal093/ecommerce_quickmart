@@ -33,6 +33,12 @@ class CustomTextField extends StatelessWidget {
             ),
             borderSide: BorderSide(color: ColorsManager.cyanColor)),
       ),
+      validator: (val){
+        if(val!.isEmpty){
+          return 'Field is required';
+        }
+        return null;
+      },
     );
   }
 }

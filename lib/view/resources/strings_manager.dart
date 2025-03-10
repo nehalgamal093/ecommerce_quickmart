@@ -25,7 +25,7 @@ class StringsManager {
   static const String privacyPolicy = ' Privacy Policy';
   static const String termsAndConditions = 'Terms & Conditions.';
   static const String and = ' and ';
-  static const String alreadyHaveAccount ='Already have an account?';
+  static const String alreadyHaveAccount ='Already have an account? ';
   static const String createAccount = 'Create Account';
   static const String signupGoogle = 'Signup with Google';
 

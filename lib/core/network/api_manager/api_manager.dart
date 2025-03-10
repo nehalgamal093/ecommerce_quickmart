@@ -10,8 +10,10 @@ class APIManager {
   APIManager() {
     _dio = Dio(
       BaseOptions(
-          baseUrl: AppConstants.baseUrl,
-          headers: {'Content-Type': 'application/json'}),
+        baseUrl: AppConstants.baseUrl,
+        headers: {'Content-Type': 'application/json'},
+        validateStatus: (status) => true,
+      ),
     );
     _dio.interceptors.add(
       PrettyDioLogger(

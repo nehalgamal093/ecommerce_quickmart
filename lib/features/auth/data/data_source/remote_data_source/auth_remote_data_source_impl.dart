@@ -20,7 +20,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       } else {
         String errorMessage = "Login failed";
         if (response.data is Map<String, dynamic>) {
-          errorMessage = response.data['error'][0] ?? errorMessage;
+          errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
         }
         throw ServerException(errorMessage);
       }
@@ -39,7 +39,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       } else {
         String errorMessage = "Register failed";
         if (response.data is Map<String, dynamic>) {
-          errorMessage = response.data['error'] ?? errorMessage;
+          errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
         }
         throw ServerException(errorMessage);
       }

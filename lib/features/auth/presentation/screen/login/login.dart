@@ -4,6 +4,7 @@ import 'package:ecommerce_shop/core/widgets/response_dialog.dart';
 import 'package:ecommerce_shop/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/sections/login_field_section.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/sections/privacy_policy_section.dart';
+import 'package:ecommerce_shop/features/auth/presentation/screen/sign_up/signup.dart';
 import 'package:ecommerce_shop/view/common_widgets/header_text.dart';
 import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
@@ -24,7 +25,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
+  final GlobalKey<FormState> formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,72 +38,82 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocProvider(
         create: (context) => getIt<AuthBloc>(),
         child: BlocConsumer<AuthBloc, AuthState>(builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 16,
-                  ),
-                  HeaderText(
-                    title: StringsManager.login,
-                    text: StringsManager.dontHaveAccount,
-                    span: StringsManager.signup,
-                  ),
-                  SizedBox(
-                    height: 32,
-                  ),
-                  LoginFieldSection(
-                    emailController: emailController,
-                    passwordController: passwordController,
-                  ),
-                  SizedBox(
-                    height: 24,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Text(
-                      StringsManager.forgetPassword,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall!
-                          .copyWith(color: ColorsManager.cyanColor),
+          return Form(
+            key: formKey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 16,
                     ),
-                  ),
-                  SizedBox(
-                    height: 24,
-                  ),
-                  CustomButton(
-                      onPressed: () {
-                        BlocProvider.of<AuthBloc>(context).add(OnLoginEvent(
-                            emailController.text, passwordController.text));
+                    InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context, Signup.routeName);
                       },
-                      title: StringsManager.login,
-                      color: ColorsManager.blackColor),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  CustomButton(
-                    onPressed: () {},
-                    textColor: Colors.black,
-                    title: StringsManager.loginGoogle,
-                    color: ColorsManager.whiteColor,
-                    borderColor: ColorsManager.veryLightGreyColor,
-                    icon: ImageIcon(
-                      AssetImage(ImagesManager.googleIcon),
-                      color: ColorsManager.cyanColor,
+                      child: HeaderText(
+                        title: StringsManager.login,
+                        text: StringsManager.dontHaveAccount,
+                        span: StringsManager.signup,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 150,
-                  ),
-                  PrivacyPolicySection(),
-                  SizedBox(
-                    height: 32,
-                  ),
-                ],
+                    SizedBox(
+                      height: 32,
+                    ),
+                    LoginFieldSection(
+                      emailController: emailController,
+                      passwordController: passwordController,
+                    ),
+                    SizedBox(
+                      height: 24,
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Text(
+                        StringsManager.forgetPassword,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall!
+                            .copyWith(color: ColorsManager.cyanColor),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 24,
+                    ),
+                    CustomButton(
+                        onPressed: () {
+                          if(formKey.currentState!.validate()){
+                            BlocProvider.of<AuthBloc>(context).add(OnLoginEvent(
+                                emailController.text, passwordController.text));
+                          }
+                        },
+                        title: StringsManager.login,
+                        color: ColorsManager.blackColor),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    CustomButton(
+                      onPressed: () {},
+                      textColor: Colors.black,
+                      title: StringsManager.loginGoogle,
+                      color: ColorsManager.whiteColor,
+                      borderColor: ColorsManager.veryLightGreyColor,
+                      icon: ImageIcon(
+                        AssetImage(ImagesManager.googleIcon),
+                        color: ColorsManager.cyanColor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 150,
+                    ),
+                    PrivacyPolicySection(),
+                    SizedBox(
+                      height: 32,
+                    ),
+                  ],
+                ),
               ),
             ),
           );
@@ -111,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
             loadingDialog(context);
           } else if (state.loginRequestState == RequestState.error) {
             Navigator.pop(context);
-            responseDialog(context, 'Login', state.failures!.message ?? "");
+            responseDialog(context, 'Login', state.failures!.message ?? "",false);
           } else if (state.loginRequestState == RequestState.success) {
             Navigator.pop(context);
             Navigator.pushNamed(context, MainScreen.routeName);

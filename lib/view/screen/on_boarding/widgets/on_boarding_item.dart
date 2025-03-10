@@ -17,6 +17,7 @@ class OnBoardingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -29,7 +30,10 @@ class OnBoardingItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(32),
             ),
             child: Column(
-              children: [ItemHeader(), Image.asset(item.image)],
+              children: [
+                ItemHeader(),
+                Image.asset(item.image, height: size.height * .4)
+              ],
             ),
           ),
           SizedBox(

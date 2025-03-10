@@ -5,6 +5,7 @@ import 'package:ecommerce_shop/view/faq/faq.dart';
 import 'package:ecommerce_shop/view/screen/check_out/check_out.dart';
 import 'package:ecommerce_shop/view/screen/check_out/sections/Items.dart';
 import 'package:ecommerce_shop/view/screen/on_boarding/on_boarding.dart';
+import 'package:ecommerce_shop/view/screen/order_history/order_history.dart';
 import 'package:ecommerce_shop/view/screen/order_success/order_success.dart';
 import 'package:ecommerce_shop/view/screen/payment_method/payment_method.dart';
 import 'package:ecommerce_shop/view/screen/products_screen/products_screen.dart';
@@ -40,7 +41,8 @@ class MyApp extends StatelessWidget {
         ShippingAddress.routeName:(context)=>ShippingAddress(),
         PaymentMethod.routeName:(context)=>PaymentMethod(),
         ChangePassword.routeName:(context)=>ChangePassword(),
-        FAQ.routeName:(context)=>FAQ()
+        FAQ.routeName:(context)=>FAQ(),
+        OrderHistory.routeName:(context)=>OrderHistory()
       },
     );
   }

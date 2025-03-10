@@ -1,5 +1,6 @@
 import 'package:ecommerce_shop/view/change_password/change_password.dart';
 import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
+import 'package:ecommerce_shop/view/screen/order_history/order_history.dart';
 import 'package:ecommerce_shop/view/screen/payment_method/payment_method.dart';
 import 'package:ecommerce_shop/view/screen/profile/sections/header_section.dart';
 import 'package:ecommerce_shop/view/screen/profile/widgets/title_icon_widget.dart';
@@ -72,7 +73,9 @@ class Profile extends StatelessWidget {
                 TitleIconWidget(
                   icon: ImagesManager.clipboardTick,
                   title: 'Order History',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, OrderHistory.routeName);
+                  },
                 ),
                 SizedBox(
                   height: 30,

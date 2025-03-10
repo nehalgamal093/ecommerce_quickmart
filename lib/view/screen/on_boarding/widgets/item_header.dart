@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
 import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
 import 'package:flutter/material.dart';
 import '../../../resources/colors/colors_manager.dart';
@@ -15,12 +16,17 @@ class ItemHeader extends StatelessWidget {
           ImagesManager.logo,
           width: 100,
         ),
-        Text(
-          'Skip for now',
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall!
-              .copyWith(color: ColorsManager.cyanColor),
+        InkWell(
+          onTap: (){
+            Navigator.pushNamed(context, LoginScreen.routeName);
+          },
+          child: Text(
+            'Skip for now',
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall!
+                .copyWith(color: ColorsManager.cyanColor),
+          ),
         )
       ],
     );

@@ -28,7 +28,7 @@ class ImagesManager{
 
 
 
-
+  static const String orderHistory = 'assets/images/order_history.png';
   static const String header = 'assets/images/header.png';
   static const String fabric = 'assets/images/fabric.png';
   static const String gift = 'assets/images/gift.png';
@@ -43,7 +43,8 @@ class ImagesManager{
   static const String googlePay = 'assets/images/google_pay.png';
   static const String payPal = 'assets/images/pay_pal.png';
   static const String onlineShopping = 'assets/images/online_shopping.png';
-
+  static const String error = 'assets/images/error.png';
+  static const String success = 'assets/images/success.png';
   static const String avatar = 'assets/images/avatar.png';
   static const String product1 = 'assets/images/product1.png';
   static const String product2 = 'assets/images/product2.png';
