@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_shop/features/sub_categories/domain/usecases/sub_categories_use_case.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../core/failures/failures.dart';
 import '../../../categories/data/models/categories.dart';

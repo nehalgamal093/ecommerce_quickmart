@@ -40,7 +40,7 @@ class ShippingSection extends StatelessWidget {
           ),
           initialCountryCode: 'EG',
           onChanged: (phone) {
-            print(phone.completeNumber);
+
           },
         ),
         SizedBox(

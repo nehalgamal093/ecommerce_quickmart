@@ -1,8 +1,5 @@
 part of 'categories_bloc.dart';
 
-@immutable
-sealed class CategoriesEvent {}
+abstract class CategoriesEvent {}
 
-class GetCategoriesEvent extends CategoriesEvent{
-
-}
+class GetCategoriesEvent extends CategoriesEvent {}

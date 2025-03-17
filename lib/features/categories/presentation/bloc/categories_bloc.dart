@@ -3,7 +3,6 @@ import 'package:ecommerce_shop/core/failures/failures.dart';
 import 'package:ecommerce_shop/features/categories/data/models/categories.dart';
 import 'package:ecommerce_shop/features/categories/domain/usecases/categories_usecase.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'categories_event.dart';
 part 'categories_state.dart';

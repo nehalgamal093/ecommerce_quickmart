@@ -1,5 +1,4 @@
 import 'package:ecommerce_shop/models/product_model.dart';
-import 'package:ecommerce_shop/view/common_widgets/label_container.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:ecommerce_shop/view/screen/product_details/sections/label_sections.dart';
 import 'package:ecommerce_shop/view/screen/product_details/sections/product_price_title.dart';

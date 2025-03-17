@@ -1,0 +1,34 @@
+import 'package:dio/dio.dart';
+import 'package:ecommerce_shop/features/products/data/data_source/remote_data_source/products_remote_data_source.dart';
+import 'package:ecommerce_shop/features/products/data/models/products.dart';
+import 'package:injectable/injectable.dart';
+
+import '../../../../../core/network/api_manager/api_manager.dart';
+import '../../../../../core/resources/endpoints.dart';
+import '../../../../auth/data/data_source/remote_data_source/auth_remote_data_source_impl.dart';
+
+
+@Injectable(as: ProductsRemoteDataSource)
+class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
+  APIManager apiManager;
+  ProductsRemoteDataSourceImpl(this.apiManager);
+
+  @override
+  Future<Products> getProducts(String subCategoryId) async {
+    var response =
+        await apiManager.getRequest(EndPoints.products(subCategoryId));
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return Products.fromJson(response.data);
+      } else {
+        String errorMessage = "Products failed";
+        if (response.data is Map<String, dynamic>) {
+          errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
+        }
+        throw ServerException(errorMessage);
+      }
+    } on DioException catch (e) {
+      throw ServerException(e.message ?? "Network error");
+    }
+  }
+}

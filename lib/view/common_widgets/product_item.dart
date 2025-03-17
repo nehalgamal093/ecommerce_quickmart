@@ -1,15 +1,16 @@
-import 'package:ecommerce_shop/models/product_model.dart';
+import 'package:ecommerce_shop/features/products/data/models/products.dart';
 import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:ecommerce_shop/view/screen/product_details/product_details.dart';
 import 'package:flutter/material.dart';
 
 class ProductItem extends StatelessWidget {
-  final ProductModel productModel;
+  final Result productModel;
   const ProductItem({super.key,required this.productModel});
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return InkWell(
       onTap: (){
         Navigator.pushNamed(context, ProductDetails.routeName,arguments: productModel);
@@ -20,7 +21,7 @@ class ProductItem extends StatelessWidget {
           Stack(
             alignment: Alignment.topRight,
             children: [
-              Image.asset(productModel.image),
+              Image.network(productModel.images![0].attachmentFile!,width: size.width*.40,height: size.height*.20,),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
@@ -40,17 +41,17 @@ class ProductItem extends StatelessWidget {
             height: 5,
           ),
           Text(
-            productModel.name,
+            productModel.title!,
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 color: ColorsManager.blackColor, fontWeight: FontWeight.w700),
           ),
           Text(
-            productModel.price,
+            productModel.price.toString(),
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 color: ColorsManager.blackColor, fontWeight: FontWeight.w700),
           ),
           Text(
-            productModel.priceAfterDiscount,
+            productModel.priceAfterDiscount.toString(),
             style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 color: ColorsManager.lightGreyColor,
                 fontWeight: FontWeight.w700,

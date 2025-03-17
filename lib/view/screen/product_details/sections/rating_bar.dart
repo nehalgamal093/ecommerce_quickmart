@@ -19,17 +19,15 @@ class ProductRatingBar extends StatelessWidget {
           unratedColor: ColorsManager.veryLightGreyColor,
           itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
           itemBuilder: (context, _) => Icon(
-
             Icons.star,
             color: Colors.amber,
           ),
-          onRatingUpdate: (rating) {
-            print(rating);
-          },
+          onRatingUpdate: (rating) {},
         ),
-        SizedBox(width: 10,),
+        SizedBox(
+          width: 10,
+        ),
         Text('4.5 (2,495 reviews) '),
-
       ],
     );
   }
