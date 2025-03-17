@@ -12,10 +12,10 @@ import 'package:ecommerce_shop/view/screen/products_screen/products_screen.dart'
 import 'package:ecommerce_shop/view/shipping_address/shipping_address.dart';
 import 'package:ecommerce_shop/view/theme/light_theme.dart';
 import 'package:flutter/material.dart';
+import '../../../features/sub_categories/presentation/screens/sub_categories/sub_categories_screen.dart';
 import '../../theme/base_theme.dart';
 import '../main/main_screen.dart';
 import '../product_details/product_details.dart';
-import '../sub_categories/sub_categories_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

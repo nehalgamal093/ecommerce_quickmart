@@ -2,7 +2,8 @@ import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
 
 class LoadingGrid extends StatelessWidget {
-  const LoadingGrid({super.key});
+  final double height;
+  const LoadingGrid({super.key,required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class LoadingGrid extends StatelessWidget {
                     crossAxisCount: 2,
                     mainAxisSpacing: 20,
                     crossAxisSpacing: 10,
-                    childAspectRatio: 160 / 100),
+                    childAspectRatio: 160 / height),
                 itemBuilder: (context, index) {
                   return loadingItem();
                 }),

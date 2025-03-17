@@ -10,6 +10,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Categories'),
@@ -19,7 +20,7 @@ class CategoriesScreen extends StatelessWidget {
         child: BlocBuilder<CategoriesBloc, CategoriesState>(
             builder: (context, state) {
           if (state.categoriesRequestState == CategoriesRequestState.loading) {
-            return LoadingGrid();
+            return LoadingGrid(height: 100,);
           } else if (state.categoriesRequestState ==
               CategoriesRequestState.error) {
             return Text('Error');

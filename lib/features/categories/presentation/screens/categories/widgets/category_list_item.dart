@@ -1,7 +1,8 @@
 import 'package:ecommerce_shop/features/categories/data/models/categories.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
-import 'package:ecommerce_shop/view/screen/sub_categories/sub_categories_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../sub_categories/presentation/screens/sub_categories/sub_categories_screen.dart';
 
 class CategoryListItem extends StatelessWidget {
   final Result categoryModel;
@@ -11,7 +12,7 @@ class CategoryListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, SubCategoriesScreen.routeName);
+        Navigator.pushNamed(context, SubCategoriesScreen.routeName,arguments: categoryModel.id);
       },
       child: Container(
         decoration: BoxDecoration(

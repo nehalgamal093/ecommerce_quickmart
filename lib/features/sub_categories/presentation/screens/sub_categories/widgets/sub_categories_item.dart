@@ -1,33 +1,38 @@
-import 'package:ecommerce_shop/models/category_model.dart';
+import 'package:ecommerce_shop/features/categories/data/models/categories.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:ecommerce_shop/view/screen/products_screen/products_screen.dart';
 import 'package:flutter/material.dart';
 
 class SubCategoriesItem extends StatelessWidget {
-  final CategoryModel categoryModel;
+  final Result categoryModel;
   const SubCategoriesItem({super.key, required this.categoryModel});
 
   @override
   Widget build(BuildContext context) {
+Size size = MediaQuery.of(context).size;
     return InkWell(
       onTap: (){
         Navigator.pushNamed(context, ProductsScreen.routeName);
       },
-      child: SizedBox(
-        width: 200,
-        height: 150,
+      child: Container(
+
+     decoration: BoxDecoration(
+       borderRadius: BorderRadius.circular(12)
+     ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              categoryModel.image,
-              fit: BoxFit.fill,
+            Image.network(
+              categoryModel.image!,
+              fit: BoxFit.cover,
+width: size.width*.40,
+              height: size.height*.20,
             ),
             SizedBox(
               height: 10,
             ),
             Text(
-              categoryModel.title,
+              categoryModel.name!,
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   fontWeight: FontWeight.w700, color: ColorsManager.blackColor),
             )
