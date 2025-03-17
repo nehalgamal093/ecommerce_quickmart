@@ -1,9 +1,9 @@
-import 'package:ecommerce_shop/models/category_model.dart';
+import 'package:ecommerce_shop/features/categories/data/models/categories.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
-  final CategoryModel categoryModel;
+  final Result categoryModel;
   const CategoryItem({super.key, required this.categoryModel});
 
   @override
@@ -19,15 +19,15 @@ class CategoryItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            categoryModel.image,
+          Image.network(
+            categoryModel.image!,
             width: 25,
           ),
           SizedBox(
             height: 5,
           ),
           Text(
-            categoryModel.title,
+            categoryModel.name!,
             style: Theme.of(context).textTheme.displaySmall!.copyWith(
                 color: ColorsManager.blackColor,
                 overflow: TextOverflow.ellipsis),

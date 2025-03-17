@@ -1,4 +1,5 @@
 class EndPoints{
-  static const String login= "/api/v1/auth/signin";
-  static const String register= "/api/v1/auth/signup";
+  static const String login= "/auth/signin";
+  static const String register= "/auth/signup";
+  static const String categories = "/categories";
 }
