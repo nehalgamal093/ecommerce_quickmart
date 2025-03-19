@@ -71,6 +71,7 @@ class _SignupState extends State<Signup> {
                       height: 5,
                     ),
                     CustomTextField(
+                        onChanged: (val){},
                         controller: fullNameController,
                         hintText: StringsManager.enterFullName),
                     SizedBox(
@@ -81,6 +82,7 @@ class _SignupState extends State<Signup> {
                       height: 5,
                     ),
                     CustomTextField(
+                        onChanged: (val){},
                         controller: emailController,
                         hintText: StringsManager.enterEmail),
                     SizedBox(
@@ -91,6 +93,7 @@ class _SignupState extends State<Signup> {
                       height: 5,
                     ),
                     CustomTextField(
+                        onChanged: (val){},
                         controller: passwordController,
                         hintText: StringsManager.enterPassword),
                     SizedBox(
@@ -101,6 +104,7 @@ class _SignupState extends State<Signup> {
                       height: 5,
                     ),
                     CustomTextField(
+                        onChanged: (val){},
                         controller: phoneController,
                         hintText: 'Enter your phone'),
                     SizedBox(

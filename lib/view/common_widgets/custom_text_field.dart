@@ -4,16 +4,19 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final Widget icon;
+  final String errorText;
+  final Function(String)? onChanged;
   final TextEditingController controller;
   const CustomTextField(
-      {super.key, required this.hintText, this.icon = const SizedBox(),required this.controller});
+      {super.key, required this.hintText, this.icon = const SizedBox(),required this.controller,required this.onChanged,this.errorText=""});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      onChanged: onChanged,
       decoration: InputDecoration(
-
+        errorText:errorText.isEmpty?null:errorText,
         hintText: hintText,
         hintStyle: Theme.of(context).textTheme.bodySmall,
         suffixIcon: icon,

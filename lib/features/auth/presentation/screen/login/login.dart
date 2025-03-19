@@ -13,6 +13,8 @@ import 'package:ecommerce_shop/view/screen/main/main_screen.dart';
 import 'package:ecommerce_shop/view/screen/on_boarding/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import '../../../../../provider/validate_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/auth';
@@ -26,8 +28,10 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+    var validationProvider = Provider.of<ValidateProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
@@ -50,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 16,
                     ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Navigator.pushNamed(context, Signup.routeName);
                       },
                       child: HeaderText(
@@ -83,12 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 24,
                     ),
                     CustomButton(
-                        onPressed: () {
-                          if(formKey.currentState!.validate()){
-                            BlocProvider.of<AuthBloc>(context).add(OnLoginEvent(
-                                emailController.text, passwordController.text));
-                          }
-                        },
+                        onPressed:
+                            validationProvider.isValid
+                                ?() {
+                                    BlocProvider.of<AuthBloc>(context).add(
+                                        OnLoginEvent(emailController.text,
+                                            passwordController.text));
+                                  }:null,
                         title: StringsManager.login,
                         color: ColorsManager.blackColor),
                     SizedBox(
@@ -122,7 +127,8 @@ class _LoginScreenState extends State<LoginScreen> {
             loadingDialog(context);
           } else if (state.loginRequestState == RequestState.error) {
             Navigator.pop(context);
-            responseDialog(context, 'Login', state.failures!.message ?? "",false);
+            responseDialog(
+                context, 'Login', state.failures!.message ?? "", false);
           } else if (state.loginRequestState == RequestState.success) {
             Navigator.pop(context);
             Navigator.pushNamed(context, MainScreen.routeName);
