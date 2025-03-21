@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductsScreen extends StatelessWidget {
+  final String id;
   static const String routeName = '/products_screen';
-  const ProductsScreen({super.key});
+  const ProductsScreen({super.key,required this.id});
 
   @override
   Widget build(BuildContext context) {
-    var subCategoryId = ModalRoute.of(context)!.settings.arguments as String;
+    // var subCategoryId = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         title: Text('Smart Watches'),
@@ -20,7 +21,7 @@ class ProductsScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: BlocProvider(
           create: (context) => getIt<ProductsBloc>()
-            ..add(GetProductsEvent(subCategoryId: subCategoryId)),
+            ..add(GetProductsEvent(subCategoryId: id)),
           child: BlocBuilder<ProductsBloc, ProductsState>(
               builder: (context, state) {
             if (state.productsRequestState == ProductsRequestState.loading) {

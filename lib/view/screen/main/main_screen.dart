@@ -18,7 +18,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     MainProvider mainProvider = Provider.of<MainProvider>(context);
     return Scaffold(
-      body: tabs[mainProvider.index],
+      body: currentTab(mainProvider.index, context),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: mainProvider.index,
         type: BottomNavigationBarType.fixed,
@@ -59,11 +59,21 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  final List<Widget> tabs = const [
-    HomeScreen(),
-    CategoriesScreen(),
-    MyCart(),
-    Wishlist(),
-    Profile()
-  ];
+  Widget currentTab(int index,BuildContext context){
+    switch(index){
+      case 0:
+        return HomeScreen();
+      case 1:
+        return CategoriesScreen();
+      case 2:
+        return  MyCart();
+      case 3:
+        return  Wishlist();
+      case 4:
+        return Profile();
+      default:
+        return HomeScreen();
+    }
+
+  }
 }

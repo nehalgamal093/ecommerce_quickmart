@@ -4,4 +4,6 @@ class EndPoints{
   static const String categories = "/categories";
   static String subCategories(String id) => "/categories/$id/subcategories";
   static String products(String id) => "/products?subCategory=$id";
+  static  String reviews(String id) => "/reviews?product=$id";
+  static const String writeReview = "/reviews";
 }

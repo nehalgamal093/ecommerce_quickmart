@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/caching/cache_helper.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/sign_up/signup.dart';
 import 'package:ecommerce_shop/view/change_password/change_password.dart';
@@ -11,11 +12,10 @@ import 'package:ecommerce_shop/view/screen/payment_method/payment_method.dart';
 import 'package:ecommerce_shop/view/shipping_address/shipping_address.dart';
 import 'package:ecommerce_shop/view/theme/light_theme.dart';
 import 'package:flutter/material.dart';
-import '../../../features/products/presentation/screens/products_screen/products_screen.dart';
-import '../../../features/sub_categories/presentation/screens/sub_categories/sub_categories_screen.dart';
+import '../../../features/product_info/presentation/screens/product_details/product_details.dart';
+import '../../../features/product_info/presentation/screens/write_review/write_review.dart';
 import '../../theme/base_theme.dart';
 import '../main/main_screen.dart';
-import '../product_details/product_details.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,14 +26,12 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: lightTheme.myThemeData,
-      initialRoute: OnBoardingScreen.routeName,
+      initialRoute: CacheHelper.getToken()==null?OnBoardingScreen.routeName:MainScreen.routeName,
       routes: {
         OnBoardingScreen.routeName: (context) => OnBoardingScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
         Signup.routeName: (context) => Signup(),
         MainScreen.routeName: (context) => MainScreen(),
-        SubCategoriesScreen.routeName: (context) => SubCategoriesScreen(),
-        ProductsScreen.routeName: (context) => ProductsScreen(),
         ProductDetails.routeName: (context) => ProductDetails(),
         Checkout.routeName:(context)=>Checkout(),
         Items.routeName:(context)=>Items(),
@@ -42,7 +40,8 @@ class MyApp extends StatelessWidget {
         PaymentMethod.routeName:(context)=>PaymentMethod(),
         ChangePassword.routeName:(context)=>ChangePassword(),
         FAQ.routeName:(context)=>FAQ(),
-        OrderHistory.routeName:(context)=>OrderHistory()
+        OrderHistory.routeName:(context)=>OrderHistory(),
+        WriteReview.routeName:(context)=>WriteReview()
       },
     );
   }

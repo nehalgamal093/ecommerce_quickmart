@@ -8,6 +8,8 @@ import 'package:ecommerce_shop/features/auth/data/models/register_request_model.
 import 'package:ecommerce_shop/features/auth/domain/repository/auth_repo.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/caching/cache_helper.dart';
+
 @Injectable(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {
   AuthRemoteDataSource authRemoteDataSource;
@@ -19,6 +21,7 @@ class AuthRepoImpl implements AuthRepo {
       String email, String password) async {
     try {
       var result = await authRemoteDataSource.login(email, password);
+      CacheHelper.saveToken(result.token!);
       return Right(result);
     } on ServerException catch (e) {
       return Left(RemoteFailures(e.message));

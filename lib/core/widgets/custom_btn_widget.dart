@@ -6,8 +6,10 @@ class CustomBtnWidget extends StatelessWidget {
   final String count;
   final String subTitle;
   final VoidCallback onPressed;
+  final Color backgroundColor;
+  final Color textColor;
   const CustomBtnWidget(
-      {super.key, required this.title, this.count = "", this.subTitle = "",required this.onPressed});
+      {super.key, required this.title, this.count = "", this.subTitle = "",required this.onPressed,this.backgroundColor= ColorsManager.blackColor,this.textColor =ColorsManager.whiteColor});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class CustomBtnWidget extends StatelessWidget {
             child: Container(
               height: size.height * .08,
               decoration: BoxDecoration(
-                color: ColorsManager.blackColor,
+                color: backgroundColor,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Center(
@@ -29,7 +31,7 @@ class CustomBtnWidget extends StatelessWidget {
                     children: [
                       Text(title,
                           style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              color: ColorsManager.whiteColor, fontSize: 14),),
+                              color: textColor, fontSize: 14),),
                       SizedBox(width: 5,),
                       Text(count,
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(

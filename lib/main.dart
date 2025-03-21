@@ -5,10 +5,12 @@ import 'package:ecommerce_shop/provider/validate_provider.dart';
 import 'package:ecommerce_shop/view/screen/app/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'core/caching/cache_helper.dart';
 import 'core/di/di.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
   configureDependencies();
   runApp(
 
@@ -25,7 +27,8 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => ValidateProvider(),
-        )
+        ),
+
       ],
       child: const MyApp(),
     ),

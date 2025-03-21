@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../common_widgets/label_container.dart';
-import '../../../resources/colors/colors_manager.dart';
 
-class LabelSection extends StatelessWidget {
-  const LabelSection({super.key});
+import '../../../../../../view/common_widgets/label_container.dart';
+import '../../../../../../view/resources/colors/colors_manager.dart';
+
+
+class LabelSections extends StatelessWidget {
+  const LabelSections({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -8,58 +8,67 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SubCategoriesScreen extends StatelessWidget {
   static const String routeName = '/sub_categories';
-  const SubCategoriesScreen({super.key});
+  final String id;
+  const SubCategoriesScreen({super.key,required this.id});
 
   @override
   Widget build(BuildContext context) {
-    String id = ModalRoute.of(context)!.settings.arguments as String;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(StringsManager.electronics),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: BlocProvider(
-            create: (context) =>
-                getIt<SubCategoriesBloc>()..add(GetSubCategoriesEvent(id)),
-            child: BlocBuilder<SubCategoriesBloc, SubCategoriesState>(
-                builder: (context, state) {
-                  if(state.subCatRequestState == SubCatRequestState.loading){
-                    return LoadingGrid(height: 150,);
-                  }
-              else if (state.subCatRequestState == SubCatRequestState.error) {
-                return Text('error');
-              } else if (state.subCatRequestState ==
-                  SubCatRequestState.success) {
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Expanded(
-                      child: GridView.builder(
-                          itemCount: state.categories!.result!.length,
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 20,
-                              crossAxisSpacing: 10,
-                              childAspectRatio: 160 / 180),
-                          itemBuilder: (context, index) {
-                            return SubCategoriesItem(
-                                categoryModel:
-                                    state.categories!.result![index]);
-                          }),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                  ],
-                );
-              } else {
-                return SizedBox();
-              }
-            })),
-      ),
+    return Navigator(
+      onGenerateRoute: (RouteSettings settings) {
+        return MaterialPageRoute(
+            settings: settings,
+          builder: (context) {
+            return Scaffold(
+              appBar: AppBar(
+                title: Text(StringsManager.electronics),
+              ),
+              body: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: BlocProvider(
+                    create: (context) =>
+                        getIt<SubCategoriesBloc>()..add(GetSubCategoriesEvent(id)),
+                    child: BlocBuilder<SubCategoriesBloc, SubCategoriesState>(
+                        builder: (context, state) {
+                          if(state.subCatRequestState == SubCatRequestState.loading){
+                            return LoadingGrid(height: 150,);
+                          }
+                      else if (state.subCatRequestState == SubCatRequestState.error) {
+                        return Text('error');
+                      } else if (state.subCatRequestState ==
+                          SubCatRequestState.success) {
+                        return Column(
+                          children: [
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Expanded(
+                              child: GridView.builder(
+                                  itemCount: state.categories!.result!.length,
+                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      mainAxisSpacing: 20,
+                                      crossAxisSpacing: 10,
+                                      childAspectRatio: 160 / 180),
+                                  itemBuilder: (context, index) {
+                                    return SubCategoriesItem(
+                                        categoryModel:
+                                            state.categories!.result![index]);
+                                  }),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                          ],
+                        );
+                      } else {
+                        return SizedBox();
+                      }
+                    })),
+              ),
+            );
+          }
+        );
+      }
     );
   }
 }

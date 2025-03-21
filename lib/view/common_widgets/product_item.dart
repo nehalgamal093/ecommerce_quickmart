@@ -1,8 +1,8 @@
 import 'package:ecommerce_shop/features/products/data/models/products.dart';
 import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
-import 'package:ecommerce_shop/view/screen/product_details/product_details.dart';
 import 'package:flutter/material.dart';
+import '../../features/product_info/presentation/screens/product_details/product_details.dart';
 
 class ProductItem extends StatelessWidget {
   final Result productModel;
