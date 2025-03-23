@@ -12,3 +12,8 @@ class WriteReviewEvent extends ProductInfoEvent{
   final ReviewRequestModel requestModel;
   WriteReviewEvent(this.requestModel);
 }
+
+class GetProductInfoEvent extends ProductInfoEvent{
+  final String id;
+  GetProductInfoEvent(this.id);
+}

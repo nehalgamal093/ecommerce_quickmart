@@ -1,11 +1,17 @@
 import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
-import 'package:ecommerce_shop/view/screen/wishlist/widgets/delete_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/wish_list/presentation/screens/wishlist/widgets/delete_bottom_sheet.dart';
+
 class ProductTileWidget extends StatelessWidget {
+  final String name;
+  final String image;
+  final String description;
+  final String price;
+  final String priceAfterDiscount;
   final bool isWishlist;
-  const ProductTileWidget({super.key, this.isWishlist = false});
+  const ProductTileWidget({super.key, this.isWishlist = false,required this.name, required this.image, required this.description, required this.price, required this.priceAfterDiscount});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +25,8 @@ class ProductTileWidget extends StatelessWidget {
           SizedBox(
             width: size.width * .40,
             child: ClipRRect(
-              child: Image.asset(
-                ImagesManager.product1,
+              child: Image.network(
+                image
               ),
             ),
           ),
@@ -36,7 +42,7 @@ class ProductTileWidget extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        'Loop Silicone Strong Magnetic Watch',
+                        description,
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
                               fontWeight: FontWeight.w400,
                               letterSpacing: .5,
@@ -63,7 +69,7 @@ class ProductTileWidget extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  '\$15.25',
+                 priceAfterDiscount,
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
                         fontWeight: FontWeight.w700,
                         letterSpacing: .5,
@@ -72,7 +78,7 @@ class ProductTileWidget extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  '\$20.00',
+                  price,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         fontWeight: FontWeight.w700,
                         color: ColorsManager.lightGreyColor,

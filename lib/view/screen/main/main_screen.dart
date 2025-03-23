@@ -5,10 +5,10 @@ import 'package:ecommerce_shop/view/resources/strings_manager.dart';
 import 'package:ecommerce_shop/view/screen/home/home.dart';
 import 'package:ecommerce_shop/view/screen/my_cart/my_cart.dart';
 import 'package:ecommerce_shop/view/screen/profile/profile.dart';
-import 'package:ecommerce_shop/view/screen/wishlist/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../features/categories/presentation/screens/categories/categories_screen.dart';
+import '../../../features/wish_list/presentation/screens/wishlist/wishlist.dart';
 
 class MainScreen extends StatelessWidget {
   static const String routeName = '/home';

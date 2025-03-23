@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_shop/features/products/data/data_source/remote_data_source/products_remote_data_source.dart';
+import 'package:ecommerce_shop/features/products/data/models/add_wish_list_response.dart';
 import 'package:ecommerce_shop/features/products/data/models/products.dart';
 import 'package:injectable/injectable.dart';
 
@@ -30,5 +31,11 @@ class ProductsRemoteDataSourceImpl implements ProductsRemoteDataSource {
     } on DioException catch (e) {
       throw ServerException(e.message ?? "Network error");
     }
+  }
+
+  @override
+  Future<AddWishListResponse> addToWishList(String productId) {
+    // TODO: implement addToWishList
+    throw UnimplementedError();
   }
 }

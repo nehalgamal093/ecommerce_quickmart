@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_shop/core/failures/failures.dart';
 import 'package:ecommerce_shop/features/product_info/data/data_source/remote_data_source/product_info_remote_data_source.dart';
+import 'package:ecommerce_shop/features/product_info/data/model/product_details_model.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review_request_model.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review_response.dart';
@@ -22,6 +23,7 @@ class ProductInfoRepoImpl implements ProductInfoRepo {
     } on ServerException catch (e) {
       return Left(RemoteFailures(e.message));
     } catch (e) {
+
       return Left(
         RemoteFailures("An unexpected error occurred"),
       );
@@ -41,6 +43,20 @@ class ProductInfoRepoImpl implements ProductInfoRepo {
     } catch (e) {
       return Left(
         RemoteFailures("An unexpected error occurred"),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AppFailures, ProductDetailsModel>> getProduct(String id) async{
+    try {
+      var result = await productInfoRemoteDataSource.getProductInfo(id);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(RemoteFailures(e.message));
+    } catch (e) {
+      return Left(
+        RemoteFailures(e.toString()),
       );
     }
   }

@@ -1,5 +1,6 @@
-import 'package:ecommerce_shop/features/products/data/models/products.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../data/model/product_details_model.dart';
 
 class ProductSection extends StatelessWidget {
   final Result product;

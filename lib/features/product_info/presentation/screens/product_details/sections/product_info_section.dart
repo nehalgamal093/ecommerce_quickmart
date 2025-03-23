@@ -1,9 +1,9 @@
 import 'package:ecommerce_shop/features/product_info/presentation/screens/product_details/sections/product_price_title.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/screens/product_details/sections/quantity_section.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/screens/product_details/sections/rating_bar.dart';
-import 'package:ecommerce_shop/features/products/data/models/products.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../view/resources/colors/colors_manager.dart';
+import '../../../../data/model/product_details_model.dart';
 import 'colors_bar.dart';
 import 'label_sections.dart';
 

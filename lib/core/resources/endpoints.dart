@@ -6,4 +6,6 @@ class EndPoints{
   static String products(String id) => "/products?subCategory=$id";
   static  String reviews(String id) => "/reviews?product=$id";
   static const String writeReview = "/reviews";
+  static  String product(String id) => "/products/$id";
+  static const String wishList = "/wishlist";
 }

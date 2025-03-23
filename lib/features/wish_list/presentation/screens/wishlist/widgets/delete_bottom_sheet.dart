@@ -1,7 +1,8 @@
 import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
-import '../../on_boarding/widgets/custom_button.dart';
+
+import '../../../../../../view/screen/on_boarding/widgets/custom_button.dart';
 
 Future<dynamic> showDeleteBottomSheet(BuildContext context){
   return showModalBottomSheet(context: context, builder: (context){

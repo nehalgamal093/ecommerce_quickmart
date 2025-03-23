@@ -36,7 +36,7 @@ class MyCart extends StatelessWidget {
               child: ListView.builder(
                   itemCount: 2,
                   itemBuilder:(context,index){
-                    return ProductTileWidget();
+                    return ProductTileWidget(isWishlist: true,name: "Product",description: "Product Description",image:"",price: 10.toString(),priceAfterDiscount: 10.toString(),);
                   }),
             ),
             Text('Order Info',style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize:16),),

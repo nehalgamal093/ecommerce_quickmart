@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:ecommerce_shop/core/caching/cache_helper.dart';
 import 'package:ecommerce_shop/core/network/api_manager/api_manager.dart';
 import 'package:ecommerce_shop/features/product_info/data/data_source/remote_data_source/product_info_remote_data_source.dart';
+import 'package:ecommerce_shop/features/product_info/data/model/product_details_model.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review_request_model.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review_response.dart';
@@ -43,6 +44,24 @@ class ProductInfoRemoteDataSourceImpl implements ProductInfoRemoteDataSource {
         return ReviewResponse.fromJson(response.data);
       } else {
         String errorMessage = "Writing Review failed";
+        if (response.data is Map<String, dynamic>) {
+          errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
+        }
+        throw ServerException(errorMessage);
+      }
+    } on DioException catch (e) {
+      throw ServerException(e.message ?? "Network error");
+    }
+  }
+
+  @override
+  Future<ProductDetailsModel> getProductInfo(String id) async{
+    var response = await apiManager.getRequest(EndPoints.product(id));
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return ProductDetailsModel.fromJson(response.data);
+      } else {
+        String errorMessage = "Product Details failed";
         if (response.data is Map<String, dynamic>) {
           errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
         }

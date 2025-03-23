@@ -51,4 +51,13 @@ class APIManager {
       throw Exception('Failed to POST $e');
     }
   }
+  Future<Response> patchRequest(String endpoint, dynamic data,
+      {Map<String, dynamic>? headers}) async {
+    try {
+      return await _dio.patch(endpoint,
+          data: data, options: Options(headers: headers));
+    } on DioException catch (e) {
+      throw Exception('Failed to Patch $e');
+    }
+  }
 }
