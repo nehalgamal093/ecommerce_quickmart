@@ -20,7 +20,6 @@ void main() async{
       MultiBlocProvider(
         providers: [
           BlocProvider(create: (context)=>getIt<ProductInfoBloc>()),
-          // BlocProvider(create: (context)=>getIt<MyCartBloc>())
         ],
         child: MultiProvider(
         providers: [

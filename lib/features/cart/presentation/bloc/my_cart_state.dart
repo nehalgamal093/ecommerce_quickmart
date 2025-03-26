@@ -11,10 +11,11 @@ final class MyCartInitial extends MyCartState {
 }
 class ItemsLoading extends MyCartState {}
  class ItemsLoaded extends MyCartState {
+  final num totalPrice;
   final List<CartItem>items;
-  const ItemsLoaded({required this.items});
+  const ItemsLoaded({required this.items,required this.totalPrice});
   @override
-  List<Object> get props => [items];
+  List<Object> get props => [items,totalPrice];
 }
 
 class ItemsError extends MyCartState {

@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_shop/core/failures/failures.dart';
-import 'package:ecommerce_shop/features/cart/data/models/delete_cart_response.dart';
 import 'package:ecommerce_shop/features/cart/domain/usecases/delete_cart_use_case.dart';
 import 'package:ecommerce_shop/features/cart/domain/usecases/get_cart_use_case.dart';
 import 'package:equatable/equatable.dart';
@@ -11,12 +10,12 @@ import '../../data/models/cart_model.dart';
 part 'my_cart_event.dart';
 part 'my_cart_state.dart';
 
-
 @injectable
 class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
   GetCartUseCase getCartUseCase;
   DeleteCartUseCase deleteCartUseCase;
-  MyCartBloc(this.getCartUseCase,this.deleteCartUseCase) : super(MyCartInitial()) {
+  MyCartBloc(this.getCartUseCase, this.deleteCartUseCase)
+      : super(MyCartInitial()) {
     on<LoadItems>(_onLoadItems);
     on<DeleteItem>(_onDeleteItem);
   }
@@ -26,29 +25,39 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
     var result = await getCartUseCase.call();
     result.fold((error) {
       emit(ItemsError(failures: error));
-    },(model){
-      emit(ItemsLoaded(items: model.cart!.items));
+    }, (model) {
+      emit(ItemsLoaded(
+          items: model.cart!.items, totalPrice: model.cart!.totalPrice));
     });
   }
 
-  Future<void> _onDeleteItem(DeleteItem event, Emitter<MyCartState> emit) async {
+  Future<void> _onDeleteItem(
+      DeleteItem event, Emitter<MyCartState> emit) async {
     if (state is ItemsLoaded) {
-      print('>>> state ${state}');
       final currentState = state as ItemsLoaded;
-      final updatedItems = List.of(currentState.items)..removeAt(event.index);
-      print('${updatedItems.map((e)=>e.product!.title).toList()}');
-      emit(ItemsLoaded(items: updatedItems));
+      List<CartItem> updatedCartItems = _deleteItem(state, event, currentState);
+      emit(
+        ItemsLoaded(
+          items: updatedCartItems,
+          totalPrice: _totalPriceAfterDelete(
+              currentState.totalPrice, currentState.items[event.index]),
+        ),
+      );
       var result = await deleteCartUseCase.call(event.id);
       result.fold((error) {
-print('error');
         emit(ItemsError(failures: error));
-      }, (model) {
-        print("Success");
-        // emit(ItemsLoaded(items: updatedItems));
-      });
+      }, (model) {});
     }
   }
 
+  num _totalPriceAfterDelete(num totalPrice, CartItem item) {
+    num totalPriceAfterDelete = totalPrice - item.product!.priceAfterDiscount!;
+    return totalPriceAfterDelete;
+  }
 
-
+  List<CartItem> _deleteItem(
+      MyCartState state, DeleteItem event, ItemsLoaded currentState) {
+    final updatedItems = List.of(currentState.items)..removeAt(event.index);
+    return updatedItems;
+  }
 }
