@@ -1,14 +1,17 @@
+import 'package:ecommerce_shop/core/widgets/loading_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/widgets/custom_btn_widget.dart';
 import '../../../../../../view/resources/colors/colors_manager.dart';
-
+import '../../../bloc/product_info_bloc.dart';
 
 class ButtonsSection extends StatelessWidget {
-  const ButtonsSection({super.key});
+  final String id;
+  const ButtonsSection({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children: [
         Expanded(
           child: CustomBtnWidget(
@@ -16,12 +19,42 @@ class ButtonsSection extends StatelessWidget {
             onPressed: () {},
             textColor: ColorsManager.blackColor,
             backgroundColor: ColorsManager.whiteColor,
-          ),),
-        SizedBox(width: 10,),
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
         Expanded(
-            child: CustomBtnWidget(
-                title: 'Add to cart',
-                onPressed: () {}))
+            child: BlocConsumer<ProductInfoBloc, ProductsInfoState>(
+                listener: (context, state) {
+          if (state.addToCartRequestState == ProductsInfoRequestState.success) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Product added to cart'),
+              ),
+            );
+          } else if (state.addToCartRequestState ==
+              ProductsInfoRequestState.error) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.failures!.message!),
+              ),
+            );
+          }
+        }, builder: (context, state) {
+               if (state.addToCartRequestState ==
+              ProductsInfoRequestState.loading) {
+                 return CustomBtnWidget(
+                     title: 'Loading',
+                     onPressed: () {
+                     });
+              }
+          return CustomBtnWidget(
+              title: 'Add to cart',
+              onPressed: () {
+                context.read<ProductInfoBloc>().add(AddToCartEvent(id));
+              });
+        }))
       ],
     );
   }

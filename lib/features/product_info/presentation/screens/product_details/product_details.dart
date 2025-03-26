@@ -36,7 +36,7 @@ class ProductDetails extends StatelessWidget {
                     child: ProductInfoSection(productModel: state.productDetailsModel!.result!),
                   ),
                   SliverToBoxAdapter(
-                    child: ButtonsSection(),
+                    child: ButtonsSection(id: state.productDetailsModel!.result!.id!,),
                   ),
                   SliverToBoxAdapter(
                     child: SizedBox(

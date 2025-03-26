@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../features/wish_list/presentation/screens/wishlist/widgets/delete_bottom_sheet.dart';
 
+
 class ProductTileWidget extends StatelessWidget {
   final String name;
   final String image;
@@ -11,7 +12,19 @@ class ProductTileWidget extends StatelessWidget {
   final String price;
   final String priceAfterDiscount;
   final bool isWishlist;
-  const ProductTileWidget({super.key, this.isWishlist = false,required this.name, required this.image, required this.description, required this.price, required this.priceAfterDiscount});
+final String id;
+final VoidCallback onTap;
+  const ProductTileWidget(
+      {super.key,
+      this.isWishlist = false,
+      required this.name,
+      required this.image,
+      required this.description,
+      required this.price,
+      required this.priceAfterDiscount,
+        required this.id,
+        required this.onTap
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +38,7 @@ class ProductTileWidget extends StatelessWidget {
           SizedBox(
             width: size.width * .40,
             child: ClipRRect(
-              child: Image.network(
-                image
-              ),
+              child: Image.network(image),
             ),
           ),
           SizedBox(
@@ -69,7 +80,7 @@ class ProductTileWidget extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                 priceAfterDiscount,
+                  priceAfterDiscount,
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
                         fontWeight: FontWeight.w700,
                         letterSpacing: .5,
@@ -135,9 +146,7 @@ class ProductTileWidget extends StatelessWidget {
                     SizedBox(
                       width: size.width * .10,
                       child: InkWell(
-                        onTap: (){
-                          showDeleteBottomSheet(context);
-                        },
+                        onTap:onTap,
                         child: Image.asset(
                           ImagesManager.trash,
                           width: 20,

@@ -25,7 +25,7 @@ class Wishlist extends StatelessWidget {
           } else if (state.wishlistRequestState ==
               WishlistRequestState.success) {
             return ListView.builder(
-                itemCount: 2,
+                itemCount: state.wishlistModel!.resultList!.length,
                 itemBuilder: (context, index) {
                   return ProductTileWidget(
                       isWishlist: true,
@@ -38,7 +38,9 @@ class Wishlist extends StatelessWidget {
                           .toString(),
                       priceAfterDiscount: state
                           .wishlistModel!.resultList![index].priceAfterDiscount!
-                          .toString());
+                          .toString(),id: state
+                      .wishlistModel!.resultList![index].id!,onTap: (){},);
+
                 });
           } else {
             return SizedBox();

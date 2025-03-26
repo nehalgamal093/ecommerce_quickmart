@@ -15,13 +15,13 @@ class APIManager {
         validateStatus: (status) => true,
       ),
     );
-    _dio.interceptors.add(
-      PrettyDioLogger(
-          requestHeader: true,
-          responseBody: true,
-          requestBody: true,
-          request: true),
-    );
+    // _dio.interceptors.add(
+    //   PrettyDioLogger(
+    //       requestHeader: true,
+    //       responseBody: true,
+    //       requestBody: true,
+    //       request: true),
+    // );
     _dio.interceptors.add(
       InterceptorsWrapper(onRequest: (options, handler) {
         handler.next(options);
@@ -55,6 +55,16 @@ class APIManager {
       {Map<String, dynamic>? headers}) async {
     try {
       return await _dio.patch(endpoint,
+          data: data, options: Options(headers: headers));
+    } on DioException catch (e) {
+      throw Exception('Failed to Patch $e');
+    }
+  }
+
+  Future<Response> deleteRequest(String endpoint,
+      {Map<String, dynamic>? headers,dynamic data}) async {
+    try {
+      return await _dio.delete(endpoint,
           data: data, options: Options(headers: headers));
     } on DioException catch (e) {
       throw Exception('Failed to Patch $e');

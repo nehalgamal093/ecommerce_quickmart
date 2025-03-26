@@ -17,3 +17,8 @@ class GetProductInfoEvent extends ProductInfoEvent{
   final String id;
   GetProductInfoEvent(this.id);
 }
+class AddToCartEvent extends ProductInfoEvent{
+  final String productId;
+  AddToCartEvent(this.productId);
+
+}

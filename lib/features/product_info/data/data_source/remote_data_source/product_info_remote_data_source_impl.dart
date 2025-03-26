@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:ecommerce_shop/core/caching/cache_helper.dart';
 import 'package:ecommerce_shop/core/network/api_manager/api_manager.dart';
 import 'package:ecommerce_shop/features/product_info/data/data_source/remote_data_source/product_info_remote_data_source.dart';
+import 'package:ecommerce_shop/features/product_info/data/model/add_cart_response.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/product_details_model.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review_request_model.dart';
@@ -62,6 +63,26 @@ class ProductInfoRemoteDataSourceImpl implements ProductInfoRemoteDataSource {
         return ProductDetailsModel.fromJson(response.data);
       } else {
         String errorMessage = "Product Details failed";
+        if (response.data is Map<String, dynamic>) {
+          errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
+        }
+        throw ServerException(errorMessage);
+      }
+    } on DioException catch (e) {
+      throw ServerException(e.message ?? "Network error");
+    }
+  }
+
+  @override
+  Future<AddCartResponse> addToCart(String productId) async{
+    var response = await apiManager.postRequest(
+        EndPoints.cart, {"product":productId},
+        headers: {"token": CacheHelper.getToken()});
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return AddCartResponse.fromJson(response.data);
+      } else {
+        String errorMessage = "Adding to cart failed";
         if (response.data is Map<String, dynamic>) {
           errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
         }

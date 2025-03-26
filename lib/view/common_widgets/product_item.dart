@@ -1,8 +1,7 @@
 import 'package:ecommerce_shop/features/products/data/models/products.dart';
-import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
+import 'package:ecommerce_shop/features/products/presentation/widgets/like_btn.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
-import '../../features/product_info/presentation/screens/product_details/product_details.dart';
 
 class ProductItem extends StatelessWidget {
   final Result productModel;
@@ -18,19 +17,7 @@ class ProductItem extends StatelessWidget {
           alignment: Alignment.topRight,
           children: [
             Image.network(productModel.images![0].attachmentFile!,width: size.width*.40,height: size.height*.20,),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: ColorsManager.blackColor,
-              ),
-              child: ImageIcon(
-                AssetImage(ImagesManager.heartIcon),
-                color: ColorsManager.whiteColor,
-                size: 20,
-              ),
-            )
+            LikeBtn(id: productModel.id!,)
           ],
         ),
         SizedBox(

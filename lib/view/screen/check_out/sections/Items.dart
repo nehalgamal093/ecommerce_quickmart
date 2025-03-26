@@ -14,7 +14,7 @@ class Items extends StatelessWidget {
       body: ListView.builder(
           itemCount: 2,
           itemBuilder: (context,index){
-        return ProductTileWidget(isWishlist: true,name: "Product",description: "Product Description",image:"",price: 10.toString(),priceAfterDiscount: 10.toString(),);
+        return ProductTileWidget(isWishlist: true,name: "Product",description: "Product Description",image:"",price: 10.toString(),priceAfterDiscount: 10.toString(),id:"1992",onTap: (){});
       }),
     );
   }

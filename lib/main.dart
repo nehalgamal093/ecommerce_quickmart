@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/features/cart/presentation/bloc/my_cart_bloc.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/bloc/product_info_bloc.dart';
 import 'package:ecommerce_shop/provider/main_provider.dart';
 import 'package:ecommerce_shop/provider/old_new_screen.dart';
@@ -18,7 +19,8 @@ void main() async{
 
       MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context)=>getIt<ProductInfoBloc>())
+          BlocProvider(create: (context)=>getIt<ProductInfoBloc>()),
+          // BlocProvider(create: (context)=>getIt<MyCartBloc>())
         ],
         child: MultiProvider(
         providers: [
