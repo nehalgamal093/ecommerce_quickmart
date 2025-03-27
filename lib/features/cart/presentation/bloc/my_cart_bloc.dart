@@ -65,17 +65,12 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
       result.fold((error) {
         emit(ItemsError(failures: error));
       }, (model) {
-        if (currentState.totalPrice > 500) {
-          num priceAfterDiscount =
-              currentState.totalPrice - model.cart!.discount!;
-          emit(ItemsLoaded(
-              items: currentState.items,
-              totalPrice: priceAfterDiscount,
-              discount: model.cart!.discount!));
-        } else {
-          emit(
-              ApplyCouponError(error: "Total price must be greater than 1500"));
-        }
+        num priceAfterDiscount =
+            currentState.totalPrice - model.cart!.discount!;
+        emit(ItemsLoaded(
+            items: currentState.items,
+            totalPrice: priceAfterDiscount,
+            discount: model.cart!.discount!));
       });
     }
   }

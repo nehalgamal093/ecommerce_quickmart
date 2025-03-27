@@ -25,9 +25,3 @@ class ItemsError extends MyCartState {
   @override
   List<Object> get props => [failures];
 }
-class ApplyCouponError extends MyCartState {
-  final String error;
-  const ApplyCouponError({required this.error});
-  @override
-  List<Object> get props => [error];
-}

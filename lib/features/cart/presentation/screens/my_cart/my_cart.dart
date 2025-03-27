@@ -158,9 +158,7 @@ class _MyCartState extends State<MyCart> {
                     ],
                   )),
             );
-          } else if(state is ApplyCouponError){
-            return Text(state.error);
-          } else {
+          }  else {
             return Text('Error');
           }
         }));
