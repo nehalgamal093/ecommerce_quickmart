@@ -3,7 +3,9 @@ import 'package:ecommerce_shop/core/widgets/custom_textfield_widget.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
 
-Future<dynamic> showVoucherBottomSheet(BuildContext context){
+import '../../../bloc/my_cart_bloc.dart';
+
+Future<dynamic> showVoucherBottomSheet(BuildContext context,TextEditingController controller,MyCartBloc bloc){
   return showModalBottomSheet(context: context, builder: (context){
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
@@ -20,9 +22,12 @@ Future<dynamic> showVoucherBottomSheet(BuildContext context){
             SizedBox(height: 32,),
             Text('Voucher Code',style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 16,fontWeight: FontWeight.w700,color: ColorsManager.blackColor),),
             SizedBox(height: 16,),
-            CustomTextFieldWidget(hintText: 'Enter Voucher Code',),
+            CustomTextFieldWidget(hintText: 'Enter Voucher Code',controller: controller,),
             SizedBox(height: 24,),
-            CustomBtnWidget(title: 'Apply',onPressed: (){},),
+            CustomBtnWidget(title: 'Apply',onPressed: (){
+              bloc.add(ApplyCoupon(controller.text));
+              Navigator.pop(context);
+            },),
             SizedBox(height: 8,),
           ],
         )

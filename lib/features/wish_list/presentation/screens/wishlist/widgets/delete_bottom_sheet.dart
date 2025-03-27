@@ -2,8 +2,9 @@ import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
 import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../view/screen/on_boarding/widgets/custom_button.dart';
+import '../../../../../cart/presentation/bloc/my_cart_bloc.dart';
 
-Future<dynamic> showDeleteBottomSheet(BuildContext context, String id,int index) {
+Future<dynamic> showDeleteBottomSheet(BuildContext context, String id,int index,MyCartBloc bloc) {
   return showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -31,19 +32,19 @@ Future<dynamic> showDeleteBottomSheet(BuildContext context, String id,int index)
                           fontWeight: FontWeight.w700,
                           color: ColorsManager.blackColor),
                     ),
+                    SizedBox(
+                      height: 24,
+                    ),
                     CustomBtnWidget(
                       title: 'Delete',
                       count: '(1)',
                       subTitle: 'product',
                       onPressed: () {
-//                         context.read<MyCartBloc>().add(DeleteItem(index,id));
-//                         // cartItems.removeLast();
-// Navigator.pop(context);
+                        bloc.add(DeleteItem(index, id));
+                        Navigator.pop(context);
                       },
                     ),
-                    SizedBox(
-                      height: 24,
-                    ),
+
                     SizedBox(
                       height: 8,
                     ),

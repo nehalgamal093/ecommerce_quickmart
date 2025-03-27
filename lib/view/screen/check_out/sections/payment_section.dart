@@ -8,9 +8,18 @@ import 'package:provider/provider.dart';
 
 import '../../../../provider/order_tracking_state.dart';
 
-class PaymentSection extends StatelessWidget {
+class PaymentSection extends StatefulWidget {
   const PaymentSection({super.key});
 
+  @override
+  State<PaymentSection> createState() => _PaymentSectionState();
+}
+
+class _PaymentSectionState extends State<PaymentSection> {
+  TextEditingController cardHolderController = TextEditingController();
+  TextEditingController cardNumberController = TextEditingController();
+  TextEditingController expirationController = TextEditingController();
+  TextEditingController cvvController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<OrderTrackingState>(context);
@@ -32,7 +41,7 @@ class PaymentSection extends StatelessWidget {
         SizedBox(
           height: 5,
         ),
-        CustomTextFieldWidget(hintText: 'Enter card holder name'),
+        CustomTextFieldWidget(hintText: 'Enter card holder name',controller: cardHolderController,),
         SizedBox(
           height: 15,
         ),
@@ -40,7 +49,7 @@ class PaymentSection extends StatelessWidget {
         SizedBox(
           height: 5,
         ),
-        CustomTextFieldWidget(hintText: '4111 1111 1111'),
+        CustomTextFieldWidget(hintText: '4111 1111 1111',controller: cardNumberController,),
         SizedBox(
           height: 15,
         ),
@@ -53,7 +62,7 @@ class PaymentSection extends StatelessWidget {
                   SizedBox(
                     height: 5,
                   ),
-                  CustomTextFieldWidget(hintText: 'MM/YY'),
+                  CustomTextFieldWidget(hintText: 'MM/YY',controller: expirationController,),
                 ],
               ),
             ),
@@ -67,7 +76,7 @@ class PaymentSection extends StatelessWidget {
                   SizedBox(
                     height: 5,
                   ),
-                  CustomTextFieldWidget(hintText: '123'),
+                  CustomTextFieldWidget(hintText: '123',controller: cvvController,),
                 ],
               ),
             )

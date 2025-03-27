@@ -4,12 +4,14 @@ import '../../view/resources/colors/colors_manager.dart';
 class CustomTextFieldWidget extends StatelessWidget {
   final String hintText;
   final int maxLines;
-  const CustomTextFieldWidget({super.key, required this.hintText,this.maxLines=1});
+  final TextEditingController controller;
+  const CustomTextFieldWidget({super.key, required this.hintText,this.maxLines=1, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       maxLines: maxLines,
+      controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(

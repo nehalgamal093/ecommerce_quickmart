@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_shop/core/failures/failures.dart';
+import 'package:ecommerce_shop/features/cart/data/models/apply_coupon_reponse.dart';
 import 'package:ecommerce_shop/features/cart/data/models/cart_model.dart';
 import 'package:ecommerce_shop/features/cart/data/models/delete_cart_response.dart';
 import 'package:ecommerce_shop/features/cart/domain/repository/cart_repo.dart';
@@ -29,10 +30,25 @@ class CartRepoImpl implements CartRepo {
   }
 
   @override
-  Future<Either<AppFailures, DeleteCartResponse>> deleteCart(String id) async{
+  Future<Either<AppFailures, DeleteCartResponse>> deleteCart(String id) async {
     try {
       var result = await cartRemoteDataSource.deleteCart(id);
 
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(RemoteFailures(e.message));
+    } catch (e) {
+      return Left(
+        RemoteFailures("An unexpected error occurred"),
+      );
+    }
+  }
+
+  @override
+  Future<Either<AppFailures, ApplyCouponReponse>> applyCoupon(
+      String code) async {
+    try {
+      var result = await cartRemoteDataSource.applyCoupon(code);
       return Right(result);
     } on ServerException catch (e) {
       return Left(RemoteFailures(e.message));

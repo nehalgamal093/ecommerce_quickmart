@@ -20,6 +20,7 @@ void main() async{
       MultiBlocProvider(
         providers: [
           BlocProvider(create: (context)=>getIt<ProductInfoBloc>()),
+
         ],
         child: MultiProvider(
         providers: [

@@ -8,135 +8,161 @@ import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:ecommerce_shop/view/screen/check_out/check_out.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/widgets/loading_grid.dart';
 import '../../../data/models/cart_model.dart';
 
-class MyCart extends StatelessWidget {
+class MyCart extends StatefulWidget {
   const MyCart({super.key});
 
   @override
+  State<MyCart> createState() => _MyCartState();
+}
+
+class _MyCartState extends State<MyCart> {
+  final TextEditingController voucherController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('My Cart'),
-          actions: [
-            TextButton(
-                onPressed: () {
-                  showVoucherBottomSheet(context);
-                },
-                child: Text(
-                  'Voucher Code',
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: ColorsManager.cyanColor),
-                )),
-            SizedBox(
-              width: 16,
-            )
-          ],
-        ),
-        body: BlocProvider(
-          create: (context) => getIt<MyCartBloc>()..add(LoadItems()),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child:
-                BlocBuilder<MyCartBloc, MyCartState>(builder: (context, state) {
-              if (state is ItemsLoading) {
-                return LoadingGrid(height: 100);
-              } else if (state is ItemsError) {
-                return Text('Error');
-              } else if (state is ItemsLoaded) {
-                List<CartItem> cartItems = state.items;
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: CartList(
-                        cartItems: cartItems,
-                      ),
-                    ),
-                    Text(
-                      'Order Info',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(fontSize: 16),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Sub Total',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        Text(
-                          '\$${state.totalPrice.toString().insertCommas()}',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Shipping Cost',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        Text(
-                          '\$0.00',
-                          style: Theme.of(context).textTheme.bodySmall,
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Total',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(fontSize: 16),
-                        ),
-                        Text(
-                          '\$${state.totalPrice.toString().insertCommas()}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(fontSize: 16),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    CustomBtnWidget(
-                      title: "Checkout",
-                      count: '(${state.items.length.toString()})',
+    return BlocProvider(
+        create: (context) => getIt<MyCartBloc>()..add(LoadItems()),
+        child: BlocBuilder<MyCartBloc, MyCartState>(builder: (context, state) {
+          if (state is ItemsLoading) {
+            return LoadingGrid(height: 100);
+          } else if (state is ItemsError) {
+            return Text('Error');
+          } else if (state is ItemsLoaded) {
+            final bloc = context.read<MyCartBloc>();
+            List<CartItem> cartItems = state.items;
+            return Scaffold(
+              appBar: AppBar(
+                title: Text('My Cart'),
+                actions: [
+                  TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, Checkout.routeName);
+                        showVoucherBottomSheet(context, voucherController,bloc);
                       },
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                  ],
-                );
-              } else {
-                return SizedBox();
-              }
-            }),
-          ),
-        ));
+                      child: Text(
+                        'Voucher Code',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: ColorsManager.cyanColor),
+                      )),
+                  SizedBox(
+                    width: 16,
+                  )
+                ],
+              ),
+              body: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: CartList(
+                          cartItems: cartItems,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        'Order Info',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(fontSize: 16),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Sub Total',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          Text(
+                            '\$${state.totalPrice.toString()}',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Shipping Cost',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          Text(
+                            '\$0.00',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                     state.discount >0? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Discount',
+                            style: Theme.of(context).textTheme.bodySmall!.copyWith(color: ColorsManager.subGreen),
+                          ),
+                          Text(
+                            '- ${state.discount.toString()}',
+                            style: Theme.of(context).textTheme.bodySmall!.copyWith(color: ColorsManager.subGreen),
+                          )
+                        ],
+                      ):SizedBox(),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Total',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(fontSize: 16),
+                          ),
+                          Text(
+                            '\$${state.totalPrice.toString()}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(fontSize: 16),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      CustomBtnWidget(
+                        title: "Checkout",
+                        count: '(${state.items.length.toString()})',
+                        onPressed: () {
+                          Navigator.pushNamed(context, Checkout.routeName);
+                        },
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                    ],
+                  )),
+            );
+          } else if(state is ApplyCouponError){
+            return Text(state.error);
+          } else {
+            return Text('Error');
+          }
+        }));
   }
 }

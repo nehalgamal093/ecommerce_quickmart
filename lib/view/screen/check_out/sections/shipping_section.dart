@@ -8,9 +8,17 @@ import 'package:provider/provider.dart';
 import '../../../../provider/order_tracking_state.dart';
 import '../../../resources/colors/colors_manager.dart';
 
-class ShippingSection extends StatelessWidget {
+class ShippingSection extends StatefulWidget {
   const ShippingSection({super.key});
 
+  @override
+  State<ShippingSection> createState() => _ShippingSectionState();
+}
+
+class _ShippingSectionState extends State<ShippingSection> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController streetAddressController = TextEditingController();
+  TextEditingController postalCodeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<OrderTrackingState>(context);
@@ -21,7 +29,7 @@ class ShippingSection extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        CustomTextFieldWidget(hintText: 'Enter full name'),
+        CustomTextFieldWidget(hintText: 'Enter full name',controller: nameController,),
         SizedBox(
           height: 15,
         ),
@@ -86,7 +94,7 @@ class ShippingSection extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        CustomTextFieldWidget(hintText: 'Enter street address'),
+        CustomTextFieldWidget(hintText: 'Enter street address',controller: streetAddressController,),
         SizedBox(
           height: 15,
         ),
@@ -94,7 +102,7 @@ class ShippingSection extends StatelessWidget {
         SizedBox(
           height: 15,
         ),
-        CustomTextFieldWidget(hintText: 'Enter postal code'),
+        CustomTextFieldWidget(hintText: 'Enter postal code',controller:postalCodeController ,),
         SizedBox(
           height: 20,
         ),

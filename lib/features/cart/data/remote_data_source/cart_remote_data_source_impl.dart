@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_shop/core/network/api_manager/api_manager.dart';
+import 'package:ecommerce_shop/features/cart/data/models/apply_coupon_reponse.dart';
 import 'package:ecommerce_shop/features/cart/data/models/cart_model.dart';
 import 'package:ecommerce_shop/features/cart/data/models/delete_cart_response.dart';
 import 'package:ecommerce_shop/features/cart/data/remote_data_source/cart_remote_data_source.dart';
@@ -44,6 +45,28 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
         return DeleteCartResponse.fromJson(response.data);
       } else {
         String errorMessage = "Delete from cart failed";
+        if (response.data is Map<String, dynamic>) {
+          errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
+        }
+        throw ServerException(errorMessage);
+      }
+    } on DioException catch (e) {
+      throw ServerException(e.message ?? "Network error");
+    }
+  }
+
+  @override
+  Future<ApplyCouponReponse> applyCoupon(String code) async{
+    var response = await apiManager.postRequest(
+      EndPoints.applyCoupon,
+      {"code":code},
+      headers: {"token": CacheHelper.getToken()},
+    );
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return ApplyCouponReponse.fromJson(response.data);
+      } else {
+        String errorMessage = "apply coupon failed";
         if (response.data is Map<String, dynamic>) {
           errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
         }

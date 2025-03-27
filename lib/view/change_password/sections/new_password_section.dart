@@ -5,9 +5,16 @@ import '../../../core/widgets/custom_textfield_widget.dart';
 import '../../../core/widgets/label_text.dart';
 import '../../../provider/old_new_screen.dart';
 
-class NewPasswordSection extends StatelessWidget {
+class NewPasswordSection extends StatefulWidget {
   const NewPasswordSection({super.key});
 
+  @override
+  State<NewPasswordSection> createState() => _NewPasswordSectionState();
+}
+
+class _NewPasswordSectionState extends State<NewPasswordSection> {
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<OldNewScreen>(context);
@@ -23,11 +30,11 @@ class NewPasswordSection extends StatelessWidget {
           SizedBox(height: 20,),
           LabelText(label: 'Password'),
           SizedBox(height: 5,),
-          CustomTextFieldWidget(hintText: 'Enter your password',),
+          CustomTextFieldWidget(hintText: 'Enter your password',controller: passwordController,),
           SizedBox(height: 20,),
           LabelText(label: 'Confirm Password'),
           SizedBox(height: 5,),
-          CustomTextFieldWidget(hintText: 'Enter your password',),
+          CustomTextFieldWidget(hintText: 'Enter your password',controller: confirmPasswordController,),
           SizedBox(height: 30,),
           CustomBtnWidget(title: 'Continue', onPressed: (){
             provider.changeScreen(0);

@@ -13,9 +13,10 @@ class ItemsLoading extends MyCartState {}
  class ItemsLoaded extends MyCartState {
   final num totalPrice;
   final List<CartItem>items;
-  const ItemsLoaded({required this.items,required this.totalPrice});
+  final num discount ;
+  const ItemsLoaded({required this.items,required this.totalPrice,required this.discount});
   @override
-  List<Object> get props => [items,totalPrice];
+  List<Object> get props => [items,totalPrice,discount];
 }
 
 class ItemsError extends MyCartState {
@@ -23,4 +24,10 @@ class ItemsError extends MyCartState {
   const ItemsError({required this.failures});
   @override
   List<Object> get props => [failures];
+}
+class ApplyCouponError extends MyCartState {
+  final String error;
+  const ApplyCouponError({required this.error});
+  @override
+  List<Object> get props => [error];
 }

@@ -9,4 +9,5 @@ class EndPoints{
   static  String product(String id) => "/products/$id";
   static const String wishList = "/wishlist";
   static const String cart ="/cart";
+  static const String applyCoupon = "/cart/applycoupon";
 }

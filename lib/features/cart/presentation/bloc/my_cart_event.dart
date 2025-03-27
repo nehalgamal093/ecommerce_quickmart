@@ -15,3 +15,11 @@ final String id;
   @override
   List<Object> get props => [index,id];
 }
+
+class ApplyCoupon extends MyCartEvent {
+  final String code;
+  const ApplyCoupon(this.code);
+
+  @override
+  List<Object> get props => [code];
+}
