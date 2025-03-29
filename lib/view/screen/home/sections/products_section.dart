@@ -2,6 +2,8 @@ import 'package:ecommerce_shop/features/products/data/models/products.dart';
 import 'package:ecommerce_shop/view/common_widgets/product_item.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../features/product_info/presentation/screens/product_details/product_details.dart';
+
 class ProductsSection extends StatelessWidget {
   final Products products;
   const ProductsSection({super.key, required this.products});
@@ -11,8 +13,19 @@ class ProductsSection extends StatelessWidget {
     return SliverGrid(
       delegate: SliverChildBuilderDelegate(childCount: products.result!.length,
           (context, index) {
-        return ProductItem(
-          productModel: products.result![index],
+        return InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    ProductDetails(id: products.result![index].id!),
+              ),
+            );
+          },
+          child: ProductItem(
+            productModel: products.result![index],
+          ),
         );
       }),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

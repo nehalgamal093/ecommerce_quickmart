@@ -12,16 +12,7 @@ class SubCategoriesItem extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  ProductsScreen(
-                      id: categoryModel.id!)),
-        );
-        // Navigator.pushNamed(context, ProductsScreen.routeName,arguments: categoryModel.id);
-      },
+
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
         child: Column(

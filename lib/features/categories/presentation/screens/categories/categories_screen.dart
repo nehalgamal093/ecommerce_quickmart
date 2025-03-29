@@ -4,21 +4,17 @@ import 'package:ecommerce_shop/features/categories/presentation/bloc/categories_
 import 'package:ecommerce_shop/features/categories/presentation/screens/categories/widgets/category_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../sub_categories/presentation/screens/sub_categories/sub_categories_screen.dart';
 
 class CategoriesScreen extends StatelessWidget {
+  static const String routeName = '/categories';
   const CategoriesScreen({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Navigator(onGenerateRoute: (RouteSettings settings) {
-      return MaterialPageRoute(
-          settings: settings,
-          builder: (context) {
-            return Scaffold(
+    return Scaffold(
               appBar: AppBar(
                 title: Text('Categories'),
               ),
@@ -77,7 +73,6 @@ class CategoriesScreen extends StatelessWidget {
                 }),
               ),
             );
-          });
-    });
+
   }
 }

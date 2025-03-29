@@ -1,6 +1,8 @@
 import 'package:ecommerce_shop/core/caching/cache_helper.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/sign_up/signup.dart';
+import 'package:ecommerce_shop/features/products/presentation/screens/products_screen/products_screen.dart';
+import 'package:ecommerce_shop/features/sub_categories/presentation/screens/sub_categories/sub_categories_screen.dart';
 import 'package:ecommerce_shop/view/change_password/change_password.dart';
 import 'package:ecommerce_shop/view/faq/faq.dart';
 import 'package:ecommerce_shop/view/screen/check_out/check_out.dart';
@@ -12,6 +14,7 @@ import 'package:ecommerce_shop/view/screen/payment_method/payment_method.dart';
 import 'package:ecommerce_shop/view/shipping_address/shipping_address.dart';
 import 'package:ecommerce_shop/view/theme/light_theme.dart';
 import 'package:flutter/material.dart';
+import '../../../features/categories/presentation/screens/categories/categories_screen.dart';
 import '../../../features/product_info/presentation/screens/product_details/product_details.dart';
 import '../../../features/product_info/presentation/screens/write_review/write_review.dart';
 import '../../theme/base_theme.dart';
@@ -23,6 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     BaseTheme lightTheme = LightTheme();
     return MaterialApp(
+
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: lightTheme.myThemeData,
@@ -40,8 +44,13 @@ class MyApp extends StatelessWidget {
         ChangePassword.routeName:(context)=>ChangePassword(),
         FAQ.routeName:(context)=>FAQ(),
         OrderHistory.routeName:(context)=>OrderHistory(),
-        WriteReview.routeName:(context)=>WriteReview()
+        WriteReview.routeName:(context)=>WriteReview(),
+        ProductDetails.routeName:(context)=>ProductDetails(id: '',),
+        ProductsScreen.routeName:(context)=>ProductsScreen(id: '',),
+        CategoriesScreen.routeName:(context)=>CategoriesScreen(),
+        SubCategoriesScreen.routeName:(context)=>SubCategoriesScreen(id: '')
       },
+
     );
   }
 }
