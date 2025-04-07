@@ -2,8 +2,8 @@ import 'package:ecommerce_shop/features/products/presentation/bloc/products_bloc
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/di.dart';
-import '../../../../view/resources/assets_manager/images_manager.dart';
-import '../../../../view/resources/colors/colors_manager.dart';
+import '../../../../core/resources/assets_manager/images_manager.dart';
+import '../../../../core/resources/colors/colors_manager.dart';
 
 class LikeBtn extends StatelessWidget {
   final String id;

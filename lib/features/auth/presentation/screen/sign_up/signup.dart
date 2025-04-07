@@ -2,17 +2,17 @@ import 'package:ecommerce_shop/core/di/di.dart';
 import 'package:ecommerce_shop/features/auth/data/models/register_request_model.dart';
 import 'package:ecommerce_shop/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
-import 'package:ecommerce_shop/view/common_widgets/custom_text_field.dart';
-import 'package:ecommerce_shop/view/common_widgets/header_text.dart';
-import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
-import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
-import 'package:ecommerce_shop/view/resources/strings_manager.dart';
+import 'package:ecommerce_shop/core/widgets/custom_text_field.dart';
 import 'package:ecommerce_shop/core/widgets/label_text.dart';
-import 'package:ecommerce_shop/view/screen/on_boarding/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/resources/assets_manager/images_manager.dart';
+import '../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../core/resources/strings_manager.dart';
+import '../../../../../core/widgets/header_text.dart';
 import '../../../../../core/widgets/loading_dialog.dart';
 import '../../../../../core/widgets/response_dialog.dart';
+import '../../../../on_boarding/widgets/custom_button.dart';
 
 class Signup extends StatefulWidget {
   static const String routeName = '/signup';

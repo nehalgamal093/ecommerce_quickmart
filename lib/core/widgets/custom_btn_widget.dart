@@ -1,5 +1,5 @@
-import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
+import '../resources/colors/colors_manager.dart';
 
 class CustomBtnWidget extends StatelessWidget {
   final String title;
@@ -13,6 +13,8 @@ class CustomBtnWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+
     Size size = MediaQuery.of(context).size;
     return InkWell(
       onTap: onPressed,
@@ -20,7 +22,7 @@ class CustomBtnWidget extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              height: size.height * .08,
+              height:isPortrait? size.height * .08:size.height * .1,
               decoration: BoxDecoration(
                 color: backgroundColor,
                 borderRadius: BorderRadius.circular(12),

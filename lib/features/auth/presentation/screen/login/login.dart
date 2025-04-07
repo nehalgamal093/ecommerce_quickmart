@@ -5,16 +5,16 @@ import 'package:ecommerce_shop/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/sections/login_field_section.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/sections/privacy_policy_section.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/sign_up/signup.dart';
-import 'package:ecommerce_shop/view/common_widgets/header_text.dart';
-import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
-import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
-import 'package:ecommerce_shop/view/resources/strings_manager.dart';
-import 'package:ecommerce_shop/view/screen/main/main_screen.dart';
-import 'package:ecommerce_shop/view/screen/on_boarding/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import '../../../../../provider/validate_provider.dart';
+import '../../../../../core/provider/validate_provider.dart';
+import '../../../../../core/resources/assets_manager/images_manager.dart';
+import '../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../core/resources/strings_manager.dart';
+import '../../../../../core/widgets/header_text.dart';
+import '../../../../main/main_screen.dart';
+import '../../../../on_boarding/widgets/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/auth';

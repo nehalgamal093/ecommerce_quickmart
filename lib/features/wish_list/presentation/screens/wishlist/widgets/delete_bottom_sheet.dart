@@ -1,8 +1,8 @@
 import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
-import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
-import '../../../../../../view/screen/on_boarding/widgets/custom_button.dart';
+import '../../../../../../core/resources/colors/colors_manager.dart';
 import '../../../../../cart/presentation/bloc/my_cart_bloc.dart';
+import '../../../../../on_boarding/widgets/custom_button.dart';
 
 Future<dynamic> showDeleteBottomSheet(BuildContext context, String id,int index,MyCartBloc bloc) {
   return showModalBottomSheet(

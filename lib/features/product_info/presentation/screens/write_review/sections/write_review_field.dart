@@ -1,7 +1,5 @@
-import 'package:ecommerce_shop/core/widgets/custom_textfield_widget.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../../view/common_widgets/custom_text_field.dart';
+import '../../../../../../core/widgets/custom_text_field.dart';
 
 class WriteReviewField extends StatelessWidget {
   final TextEditingController textEditingController;

@@ -1,9 +1,7 @@
-import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
-import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
 
-import '../../features/wish_list/presentation/screens/wishlist/widgets/delete_bottom_sheet.dart';
-
+import '../resources/assets_manager/images_manager.dart';
+import '../resources/colors/colors_manager.dart';
 
 class ProductTileWidget extends StatelessWidget {
   final String name;
@@ -31,14 +29,15 @@ final VoidCallback onTap;
     Size size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.all(6),
-      height: size.height * .20,
+
       width: size.width,
       child: Row(
         children: [
           SizedBox(
-            width: size.width * .40,
+            // height: size.height*.2,
+            width: size.width * .30,
             child: ClipRRect(
-              child: Image.network(image),
+              child: Image.network(image,fit: BoxFit.cover,),
             ),
           ),
           SizedBox(

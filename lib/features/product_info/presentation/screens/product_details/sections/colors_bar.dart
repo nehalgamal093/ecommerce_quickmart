@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../../view/resources/colors/colors_manager.dart';
+
+import '../../../../../../core/resources/colors/colors_manager.dart';
 
 class ColorsBar extends StatelessWidget {
   const ColorsBar({super.key});

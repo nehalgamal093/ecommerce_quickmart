@@ -1,29 +1,26 @@
 part of 'wishlist_bloc.dart';
 
-enum WishlistRequestState { initial, loading, success, error }
-
-class WishlistState {
-  WishlistRequestState? wishlistRequestState;
-  WishlistModel? wishlistModel;
-  AppFailures? failures;
-
-  WishlistState(
-      {this.wishlistRequestState, this.wishlistModel, this.failures});
-
-  WishlistState copyWith(
-      {WishlistRequestState? wishlistRequestState,
-      WishlistModel? wishlistModel,
-      AppFailures? failures}) {
-    return WishlistState(
-        wishlistRequestState: wishlistRequestState ?? this.wishlistRequestState,
-        wishlistModel: wishlistModel ?? this.wishlistModel,
-        failures: failures ?? this.failures);
-  }
+abstract class WishlistState extends Equatable {
+  const WishlistState();
+  @override
+  List<Object> get props => [];
 }
 
-final class WishlistInitial extends WishlistState {
-  WishlistInitial()
-      : super(
-          wishlistRequestState: WishlistRequestState.initial,
-        );
+final class WishlistInitial extends WishlistState {}
+
+class WishlistLoading extends WishlistState {}
+
+class WishlistLoaded extends WishlistState {
+  final List<Result> list;
+
+  const WishlistLoaded({required this.list});
+  @override
+  List<Object> get props => [list];
+}
+
+class WishlistError extends WishlistState {
+  final AppFailures failures;
+  const WishlistError({required this.failures});
+  @override
+  List<Object> get props => [failures];
 }

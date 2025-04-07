@@ -1,10 +1,10 @@
 import 'package:ecommerce_shop/core/di/di.dart';
 import 'package:ecommerce_shop/core/widgets/loading_grid.dart';
 import 'package:ecommerce_shop/features/products/presentation/bloc/products_bloc.dart';
-import 'package:ecommerce_shop/view/common_widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/widgets/product_item.dart';
 import '../../../../product_info/presentation/screens/product_details/product_details.dart';
 
 class ProductsScreen extends StatelessWidget {

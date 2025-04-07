@@ -17,4 +17,13 @@ class CacheHelper{
   static void clearToken() {
     sharedPref.remove('token');
   }
+  static void saveUserId(String id){
+    sharedPref.setString('userID',id);
+  }
+  static String? getUserId() {
+    return sharedPref.getString('userID');
+  }
+  static void clearUserId() {
+    sharedPref.remove('userID');
+  }
 }

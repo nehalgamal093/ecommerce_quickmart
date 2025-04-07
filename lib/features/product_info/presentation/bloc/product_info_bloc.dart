@@ -8,7 +8,6 @@ import 'package:ecommerce_shop/features/product_info/domain/usecases/add_cart_us
 import 'package:ecommerce_shop/features/product_info/domain/usecases/product_details_use_case.dart';
 import 'package:ecommerce_shop/features/product_info/domain/usecases/reviews_use_case.dart';
 import 'package:ecommerce_shop/features/product_info/domain/usecases/write_review_use_case.dart';
-import 'package:ecommerce_shop/features/products/presentation/bloc/products_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/failures/failures.dart';

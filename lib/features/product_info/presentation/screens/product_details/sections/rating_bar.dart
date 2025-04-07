@@ -1,6 +1,7 @@
-import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
+import '../../../../../../core/resources/colors/colors_manager.dart';
 
 class ProductRatingBar extends StatelessWidget {
   const ProductRatingBar({super.key});

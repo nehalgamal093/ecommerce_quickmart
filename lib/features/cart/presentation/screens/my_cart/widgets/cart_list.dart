@@ -11,22 +11,30 @@ class CartList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: cartItems.length,
-        itemBuilder: (context, index) {
-          return ProductTileWidget(
-            isWishlist: true,
-            name: cartItems[index].product!.title!,
-            description: cartItems[index].product!.description!,
-            image: cartItems[index].product!.images![0].attachmentFile!,
-            price: cartItems[index].product!.priceAfterDiscount.toString(),
-            priceAfterDiscount: cartItems[index].product!.price.toString(),
-            id: cartItems[index].product!.id!,
-            onTap: () {
-              final bloc = context.read<MyCartBloc>();
-               showDeleteBottomSheet(context,cartItems[index].product!.id!,index,bloc);
-            },
-          );
-        });
+    return SliverGrid(
+      delegate: SliverChildBuilderDelegate(childCount: cartItems.length,
+              (context, index) {
+            return  ProductTileWidget(
+              isWishlist: true,
+              name: cartItems[index].product!.title!,
+              description: cartItems[index].product!.description!,
+              image: cartItems[index].product!.images![0].attachmentFile!,
+              price: cartItems[index].product!.priceAfterDiscount.toString(),
+              priceAfterDiscount: cartItems[index].product!.price.toString(),
+              id: cartItems[index].product!.id!,
+              onTap: () {
+                final bloc = context.read<MyCartBloc>();
+                showDeleteBottomSheet(context,cartItems[index].product!.id!,index,bloc);
+              },
+            );
+          }),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          crossAxisCount: 1,
+          childAspectRatio:  150 / 65
+        ),
+    );
+
   }
 }

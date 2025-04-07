@@ -1,5 +1,3 @@
-/// message : "success"
-/// result : {"comment":"Nice","product":"67d75ac5d7c6ee4f73f543ba","user":"67dc954e30b82aef2affbcd8","ratings":2,"_id":"67dc959830b82aef2affbce4","createdAt":"2025-03-20T22:24:24.093Z","updatedAt":"2025-03-20T22:24:24.093Z","__v":0}
 
 class ReviewResponse {
   ReviewResponse({
@@ -34,14 +32,6 @@ ReviewResponse copyWith({  String? message,
 
 }
 
-/// comment : "Nice"
-/// product : "67d75ac5d7c6ee4f73f543ba"
-/// user : "67dc954e30b82aef2affbcd8"
-/// ratings : 2
-/// _id : "67dc959830b82aef2affbce4"
-/// createdAt : "2025-03-20T22:24:24.093Z"
-/// updatedAt : "2025-03-20T22:24:24.093Z"
-/// __v : 0
 
 class Result {
   Result({

@@ -1,11 +1,12 @@
 import 'package:ecommerce_shop/core/widgets/label_text.dart';
-import 'package:ecommerce_shop/provider/validate_provider.dart';
-import 'package:ecommerce_shop/view/common_widgets/custom_text_field.dart';
-import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
-import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
-import 'package:ecommerce_shop/view/resources/strings_manager.dart';
+import 'package:ecommerce_shop/features/auth/presentation/provider/obscure_password_provider.dart';
+import 'package:ecommerce_shop/core/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../../../../core/provider/validate_provider.dart';
+import '../../../../../../core/resources/assets_manager/images_manager.dart';
+import '../../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../../core/resources/strings_manager.dart';
 
 class LoginFieldSection extends StatefulWidget {
   final TextEditingController emailController;
@@ -29,7 +30,7 @@ class _LoginFieldSectionState extends State<LoginFieldSection> {
   @override
   Widget build(BuildContext context) {
     var validationProvider = Provider.of<ValidateProvider>(context);
-
+    var isObscure = Provider.of<ObscurePasswordProvider>(context);
     return Column(
       children: [
         LabelText(label: 'Email'),
@@ -39,7 +40,7 @@ class _LoginFieldSectionState extends State<LoginFieldSection> {
         CustomTextField(
           errorText: validationProvider.errorEmailText,
           onChanged: (val) {
-          validationProvider.validateEmail(val);
+            validationProvider.validateEmail(val);
           },
           controller: widget.emailController,
           hintText: StringsManager.enterEmail,
@@ -52,17 +53,25 @@ class _LoginFieldSectionState extends State<LoginFieldSection> {
           height: 5,
         ),
         CustomTextField(
+          isObscure: isObscure.isSecured,
           errorText: validationProvider.errorPasswordText,
           onChanged: (val) {
             validationProvider.validatePassword(val);
           },
           controller: widget.passwordController,
           hintText: StringsManager.enterPassword,
-          icon: ImageIcon(
-            AssetImage(
-              ImagesManager.eyeIcon,
-            ),
-            color: ColorsManager.blackColor,
+          icon: InkWell(
+            onTap: () {
+              isObscure.changeSecurePassword();
+            },
+            child: isObscure.isSecured
+                ? Icon(Icons.visibility_off)
+                : ImageIcon(
+                    AssetImage(
+                      ImagesManager.eyeIcon,
+                    ),
+                    color: ColorsManager.blackColor,
+                  ),
           ),
         ),
       ],

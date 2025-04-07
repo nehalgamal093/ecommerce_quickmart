@@ -1,8 +1,7 @@
-import 'package:ecommerce_shop/core/widgets/loading_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../core/resources/colors/colors_manager.dart';
 import '../../../../../../core/widgets/custom_btn_widget.dart';
-import '../../../../../../view/resources/colors/colors_manager.dart';
 import '../../../bloc/product_info_bloc.dart';
 
 class ButtonsSection extends StatelessWidget {

@@ -1,6 +1,7 @@
-import 'package:ecommerce_shop/view/resources/assets_manager/images_manager.dart';
-import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
 import 'package:flutter/material.dart';
+
+import '../resources/assets_manager/images_manager.dart';
+import '../resources/colors/colors_manager.dart';
 
 responseDialog(
     BuildContext context, String title, String content, bool success) {

@@ -5,10 +5,10 @@ import 'package:ecommerce_shop/features/product_info/presentation/screens/produc
 import 'package:ecommerce_shop/features/product_info/presentation/screens/product_details/sections/product_info_section.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/screens/product_details/sections/product_reviews_section.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/screens/product_details/sections/review_bar_section.dart';
-import 'package:ecommerce_shop/view/resources/colors/colors_manager.dart';
+import 'package:ecommerce_shop/features/product_info/presentation/screens/widgets/loading_product_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/widgets/loading_grid.dart';
+import '../../../../../core/resources/colors/colors_manager.dart';
 import '../write_review/write_review.dart';
 
 class ProductDetails extends StatelessWidget {
@@ -22,81 +22,83 @@ class ProductDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text('Product Details'),
       ),
-      body: BlocProvider(
-        create: (context) =>
-            getIt<ProductInfoBloc>()..add(GetProductInfoEvent(id)),
-        child: BlocBuilder<ProductInfoBloc, ProductsInfoState>(
-            builder: (context, state) {
-          if (state.productDetailsRequestState ==
-              ProductsInfoRequestState.loading) {
-            return LoadingGrid(height: 100);
-          } else if (state.productDetailsRequestState ==
-              ProductsInfoRequestState.error) {
-            return Text(state.failures!.message!);
-          } else if (state.productDetailsRequestState ==
-              ProductsInfoRequestState.success) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: CustomScrollView(slivers: [
-                SliverToBoxAdapter(
-                  child: ProductInfoSection(
-                      productModel: state.productDetailsModel!.result!),
-                ),
-                SliverToBoxAdapter(
-                  child: ButtonsSection(
-                    id: state.productDetailsModel!.result!.id!,
+      body: SafeArea(
+        child: BlocProvider(
+          create: (context) =>
+              getIt<ProductInfoBloc>()..add(GetProductInfoEvent(id)),
+          child: BlocBuilder<ProductInfoBloc, ProductsInfoState>(
+              builder: (context, state) {
+            if (state.productDetailsRequestState ==
+                ProductsInfoRequestState.loading) {
+              return LoadingProductInfo();
+            } else if (state.productDetailsRequestState ==
+                ProductsInfoRequestState.error) {
+              return Text(state.failures!.message!);
+            } else if (state.productDetailsRequestState ==
+                ProductsInfoRequestState.success) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: CustomScrollView(slivers: [
+                  SliverToBoxAdapter(
+                    child: ProductInfoSection(
+                        productModel: state.productDetailsModel!.result!),
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 10,
+                  SliverToBoxAdapter(
+                    child: ButtonsSection(
+                      id: state.productDetailsModel!.result!.id!,
+                    ),
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: ReviewBarSection(),
-                ),
-                SliverToBoxAdapter(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Divider(
-                        color: ColorsManager.lightGreyColor,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                    ],
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 10,
+                    ),
                   ),
-                ),
-                ProductReviewsSection(
-                  result: state.productDetailsModel!.result!,
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 20,
+                  SliverToBoxAdapter(
+                    child: ReviewBarSection(),
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: CustomBtnWidget(
-                      title: 'Write A Review',
-                      onPressed: () {
-                        Navigator.pushNamed(context, WriteReview.routeName,
-                            arguments: state.productDetailsModel!.result!);
-                      }),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 10,
+                  SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Divider(
+                          color: ColorsManager.lightGreyColor,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ]),
-            );
-          } else {
-            return SizedBox();
-          }
-        }),
+                  ProductReviewsSection(
+                    result: state.productDetailsModel!.result!,
+                  ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 20,
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: CustomBtnWidget(
+                        title: 'Write A Review',
+                        onPressed: () {
+                          Navigator.pushNamed(context, WriteReview.routeName,
+                              arguments: state.productDetailsModel!.result!);
+                        }),
+                  ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 10,
+                    ),
+                  ),
+                ]),
+              );
+            } else {
+              return SizedBox();
+            }
+          }),
+        ),
       ),
     );
   }

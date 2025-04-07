@@ -2,7 +2,7 @@ import 'package:ecommerce_shop/features/product_info/presentation/screens/produc
 import 'package:ecommerce_shop/features/product_info/presentation/screens/product_details/sections/quantity_section.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/screens/product_details/sections/rating_bar.dart';
 import 'package:flutter/material.dart';
-import '../../../../../../view/resources/colors/colors_manager.dart';
+import '../../../../../../core/resources/colors/colors_manager.dart';
 import '../../../../data/model/product_details_model.dart';
 import 'colors_bar.dart';
 import 'label_sections.dart';
@@ -13,12 +13,14 @@ class ProductInfoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+
     Size size = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: size.height*.5,
+          height: isPortrait?size.height*.5:size.height*.8,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Image.network(

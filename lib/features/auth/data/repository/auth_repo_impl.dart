@@ -22,6 +22,7 @@ class AuthRepoImpl implements AuthRepo {
     try {
       var result = await authRemoteDataSource.login(email, password);
       CacheHelper.saveToken(result.token!);
+      CacheHelper.saveUserId(result.id!);
       return Right(result);
     } on ServerException catch (e) {
       return Left(RemoteFailures(e.message));

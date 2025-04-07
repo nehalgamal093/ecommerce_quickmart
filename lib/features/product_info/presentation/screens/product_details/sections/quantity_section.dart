@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../view/resources/colors/colors_manager.dart';
+import '../../../../../../core/resources/colors/colors_manager.dart';
 
 class QuantitySection extends StatelessWidget {
   const QuantitySection({super.key});

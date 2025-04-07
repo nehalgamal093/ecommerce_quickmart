@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../../view/common_widgets/label_container.dart';
-import '../../../../../../view/resources/colors/colors_manager.dart';
-
+import '../../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../../core/widgets/label_container.dart';
 
 class LabelSections extends StatelessWidget {
   const LabelSections({super.key});

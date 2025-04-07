@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../../../../../../view/resources/colors/colors_manager.dart';
+
+import '../../../../../../core/resources/colors/colors_manager.dart';
 
 class ReviewBarSection extends StatelessWidget {
   const ReviewBarSection({super.key});
