@@ -4,11 +4,11 @@ import '../resources/colors/colors_manager.dart';
 
 class LoadingGrid extends StatelessWidget {
   final double height;
-  const LoadingGrid({super.key,required this.height});
+  const LoadingGrid({super.key, required this.height});
 
   @override
   Widget build(BuildContext context) {
-    return   Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
@@ -32,12 +32,12 @@ class LoadingGrid extends StatelessWidget {
     );
   }
 }
-Widget loadingItem(){
+
+Widget loadingItem() {
   return Container(
     decoration: BoxDecoration(
       color: ColorsManager.veryLightGreyColor,
       borderRadius: BorderRadius.circular(16),
     ),
-
   );
 }

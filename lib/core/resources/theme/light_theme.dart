@@ -16,7 +16,10 @@ class LightTheme extends BaseTheme {
   @override
   ThemeData get myThemeData => ThemeData(
       scaffoldBackgroundColor: background,
-      appBarTheme: AppBarTheme(backgroundColor: background),
+      appBarTheme: AppBarTheme(
+        backgroundColor: background,
+        scrolledUnderElevation: 0.0,
+      ),
       textTheme: TextTheme(
         titleLarge: GoogleFonts.plusJakartaSans(
           fontSize: 24,

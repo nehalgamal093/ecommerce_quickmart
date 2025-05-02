@@ -20,31 +20,41 @@ class LoadingProductInfo extends StatelessWidget {
               decoration: BoxDecoration(
                 color: ColorsManager.veryLightGreyColor,
                 borderRadius: BorderRadius.circular(10),
-            ),),
-            SizedBox(height: 15,),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
             Container(
-              width: size.width*.7,
+              width: size.width * .7,
               height: size.height * .05,
               decoration: BoxDecoration(
                 color: ColorsManager.veryLightGreyColor,
                 borderRadius: BorderRadius.circular(10),
-              ),),
-            SizedBox(height: 15,),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
             Container(
-              width: size.width*.5,
+              width: size.width * .5,
               height: size.height * .05,
               decoration: BoxDecoration(
                 color: ColorsManager.veryLightGreyColor,
                 borderRadius: BorderRadius.circular(10),
-              ),),
-            SizedBox(height: 15,),
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
             Container(
-              width: size.width*.6,
+              width: size.width * .6,
               height: size.height * .05,
               decoration: BoxDecoration(
                 color: ColorsManager.veryLightGreyColor,
                 borderRadius: BorderRadius.circular(10),
-              ),),
+              ),
+            ),
           ],
         ),
       ),

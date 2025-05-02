@@ -15,7 +15,7 @@ class Result {
     return map;
   }
 
-  Result.fromJson(dynamic json){
+  Result.fromJson(dynamic json) {
     city = json["city"];
     street = json["street"];
     phone = json["phone"];
@@ -38,7 +38,7 @@ class AddressesModel {
     return map;
   }
 
-  AddressesModel.fromJson(dynamic json){
+  AddressesModel.fromJson(dynamic json) {
     message = json["message"];
     if (json["result"] != null) {
       resultList = [];

@@ -5,11 +5,12 @@ class HeaderText extends StatelessWidget {
   final String title;
   final String text;
   final String span;
-  const HeaderText({super.key,required this.title,required this.text,required this.span});
+  const HeaderText(
+      {super.key, required this.title, required this.text, required this.span});
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -21,9 +22,7 @@ class HeaderText extends StatelessWidget {
         ),
         RichText(
           text: TextSpan(children: [
-            TextSpan(
-                text: text,
-                style: Theme.of(context).textTheme.bodySmall),
+            TextSpan(text: text, style: Theme.of(context).textTheme.bodySmall),
             TextSpan(
               text: span,
               style: Theme.of(context)

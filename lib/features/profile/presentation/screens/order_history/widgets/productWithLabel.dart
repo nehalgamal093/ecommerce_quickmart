@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
 
 class ProductWithLabel extends StatelessWidget {
-
   const ProductWithLabel({super.key});
 
   @override
@@ -20,12 +20,16 @@ class ProductWithLabel extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
-              color:ColorsManager.redAccentColor,
-              borderRadius: BorderRadius.circular(8)
+                color: ColorsManager.redAccentColor,
+                borderRadius: BorderRadius.circular(8)),
+            child: Text(
+              StringsManager.estimatedTime,
+              style: TextStyle(color: ColorsManager.whiteColor),
             ),
-            child: Text('Estimated time: 7 working days',style: TextStyle(color:ColorsManager.whiteColor),),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Row(
             children: [
               SizedBox(
@@ -48,8 +52,11 @@ class ProductWithLabel extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            'Loop Silicone Strong Magnetic Watch',
-                            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                            StringsManager.loopWatch,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
                                   fontWeight: FontWeight.w400,
                                   letterSpacing: .5,
                                 ),
@@ -63,7 +70,7 @@ class ProductWithLabel extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      '\$15.25',
+                      StringsManager.price1,
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             fontWeight: FontWeight.w700,
                             letterSpacing: .5,
@@ -72,7 +79,7 @@ class ProductWithLabel extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      '\$20.00',
+                      StringsManager.price2,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.w700,
                             color: ColorsManager.lightGreyColor,
@@ -89,8 +96,8 @@ class ProductWithLabel extends StatelessWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            border:
-                                Border.all(color: ColorsManager.veryLightGreyColor),
+                            border: Border.all(
+                                color: ColorsManager.veryLightGreyColor),
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: Row(
@@ -106,8 +113,8 @@ class ProductWithLabel extends StatelessWidget {
                                   )),
                               Text(
                                 '2',
-                                style:
-                                    TextStyle(color: ColorsManager.lightGreyColor),
+                                style: TextStyle(
+                                    color: ColorsManager.lightGreyColor),
                               ),
                               TextButton(
                                 onPressed: () {},

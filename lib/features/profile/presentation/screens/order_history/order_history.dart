@@ -3,6 +3,7 @@ import 'package:ecommerce_shop/features/profile/presentation/screens/order_histo
 import 'package:flutter/material.dart';
 
 import '../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../core/resources/constants/strings_manager.dart';
 
 class OrderHistory extends StatefulWidget {
   static const String routeName = "/order_history";
@@ -25,7 +26,7 @@ class _OrderHistoryState extends State<OrderHistory>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Order History'),
+        title: Text(StringsManager.orderHistory),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -36,7 +37,10 @@ class _OrderHistoryState extends State<OrderHistory>
               dividerColor: Colors.transparent,
               indicatorColor: Colors.transparent,
               labelColor: ColorsManager.whiteColor,
-              labelStyle: Theme.of(context).textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w700),
+              labelStyle: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(fontWeight: FontWeight.w700),
               indicatorSize: TabBarIndicatorSize.tab,
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(
@@ -44,9 +48,14 @@ class _OrderHistoryState extends State<OrderHistory>
                 ),
                 color: ColorsManager.blackColor,
               ),
-              tabs: [Tab(text: 'Ongoing'), Tab(text: 'Completed')],
+              tabs: [
+                Tab(text: StringsManager.ongoing),
+                Tab(text: StringsManager.completed)
+              ],
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Expanded(
                 child: TabBarView(
                     controller: _tabController,

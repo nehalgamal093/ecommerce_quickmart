@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce_shop/core/failures/failures.dart';
 import 'package:ecommerce_shop/features/categories/data/models/categories.dart';
 import 'package:ecommerce_shop/features/sub_categories/data/data_source/remote_data_source/sub_categories_remote_data_source.dart';
 import 'package:ecommerce_shop/features/sub_categories/domain/repository/sub_categories_repo.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/failures/remote_failures.dart';
+import '../../../../core/logic/failures/failures.dart';
+import '../../../../core/logic/failures/remote_failures.dart';
 import '../../../auth/data/data_source/remote_data_source/auth_remote_data_source_impl.dart';
 
 @Injectable(as: SubCategoriesRepo)

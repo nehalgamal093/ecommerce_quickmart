@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
 
 class ReviewBarSection extends StatelessWidget {
   const ReviewBarSection({super.key});
@@ -11,14 +12,14 @@ class ReviewBarSection extends StatelessWidget {
     return Column(
       children: [
         Text(
-          'Reviews',
+          StringsManager.reviews,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         SizedBox(
           height: 20,
         ),
         Text(
-          '4.0',
+          StringsManager.rate,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         SizedBox(
@@ -43,7 +44,7 @@ class ReviewBarSection extends StatelessWidget {
           height: 10,
         ),
         Text(
-          'Based on 12 reviews',
+          StringsManager.baseOn12Review,
           style: Theme.of(context).textTheme.bodySmall,
         ),
         SizedBox(
@@ -53,7 +54,7 @@ class ReviewBarSection extends StatelessWidget {
           children: [
             SizedBox(
               width: 100,
-              child: Text('Excellent'),
+              child: Text(StringsManager.excellent),
             ),
             SizedBox(
               width: 10,
@@ -73,7 +74,7 @@ class ReviewBarSection extends StatelessWidget {
           children: [
             SizedBox(
               width: 100,
-              child: Text('Good'),
+              child: Text(StringsManager.good),
             ),
             SizedBox(
               width: 10,
@@ -93,7 +94,7 @@ class ReviewBarSection extends StatelessWidget {
           children: [
             SizedBox(
               width: 100,
-              child: Text('Average'),
+              child: Text(StringsManager.average),
             ),
             SizedBox(
               width: 10,
@@ -111,7 +112,10 @@ class ReviewBarSection extends StatelessWidget {
         ),
         Row(
           children: [
-            SizedBox(width: 100, child: Text('Below Average'),),
+            SizedBox(
+              width: 100,
+              child: Text(StringsManager.belowAverage),
+            ),
             SizedBox(
               width: 10,
             ),
@@ -130,7 +134,7 @@ class ReviewBarSection extends StatelessWidget {
           children: [
             SizedBox(
               width: 100,
-              child: Text('Poor'),
+              child: Text(StringsManager.poor),
             ),
             SizedBox(
               width: 10,

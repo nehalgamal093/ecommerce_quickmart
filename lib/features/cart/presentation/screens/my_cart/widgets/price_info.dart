@@ -5,7 +5,8 @@ import '../../../../../../core/resources/colors/colors_manager.dart';
 class PriceInfo extends StatelessWidget {
   final String totalPrice;
   final num discount;
-  const PriceInfo({super.key,required this.totalPrice,required this.discount});
+  const PriceInfo(
+      {super.key, required this.totalPrice, required this.discount});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +18,7 @@ class PriceInfo extends StatelessWidget {
         ),
         Text(
           'Order Info',
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge!
-              .copyWith(fontSize: 16),
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16),
         ),
         SizedBox(
           height: 8,
@@ -59,24 +57,24 @@ class PriceInfo extends StatelessWidget {
         ),
         discount > 0
             ? Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Discount',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall!
-                  .copyWith(color: ColorsManager.subGreen),
-            ),
-            Text(
-              '- ${discount.toString()}',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall!
-                  .copyWith(color: ColorsManager.subGreen),
-            )
-          ],
-        )
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Discount',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(color: ColorsManager.subGreen),
+                  ),
+                  Text(
+                    '- ${discount.toString()}',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(color: ColorsManager.subGreen),
+                  )
+                ],
+              )
             : SizedBox(),
         SizedBox(
           height: 8,

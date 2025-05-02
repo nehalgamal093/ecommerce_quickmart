@@ -41,7 +41,9 @@ class CustomButton extends StatelessWidget {
                 .bodySmall!
                 .copyWith(color: textColor, fontWeight: FontWeight.w600),
           ),
-          SizedBox(width: 5,),
+          SizedBox(
+            width: 5,
+          ),
           icon
         ],
       ),

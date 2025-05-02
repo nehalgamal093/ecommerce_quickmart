@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
 import '../../../../../../core/widgets/label_container.dart';
 
 class LabelSections extends StatelessWidget {
@@ -7,17 +9,15 @@ class LabelSections extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children: [
         LabelContainer(
-            text: 'Top Rated',
-            color: ColorsManager.subBlue),
+            text: StringsManager.topRated, color: ColorsManager.subBlue),
         SizedBox(
           width: 5,
         ),
         LabelContainer(
-            text: 'Free shipping',
-            color: ColorsManager.subGreen),
+            text: StringsManager.freeShipping, color: ColorsManager.subGreen),
       ],
     );
   }

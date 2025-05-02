@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_shop/core/network/api_manager/api_manager.dart';
-import 'package:ecommerce_shop/core/resources/endpoints.dart';
+import 'package:ecommerce_shop/core/resources/constants/endpoints.dart';
 import 'package:ecommerce_shop/features/categories/data/data_source/remote_data_source/categories_remote_datasource.dart';
 import 'package:ecommerce_shop/features/categories/data/models/categories.dart';
 import 'package:injectable/injectable.dart';

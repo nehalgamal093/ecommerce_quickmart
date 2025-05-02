@@ -13,7 +13,7 @@ class AddressRequest {
     return map;
   }
 
-  AddressRequest.fromJson(dynamic json){
+  AddressRequest.fromJson(dynamic json) {
     street = json["street"];
     city = json["city"];
     phone = json["phone"];

@@ -10,8 +10,8 @@ class ProductTileWidget extends StatelessWidget {
   final String price;
   final String priceAfterDiscount;
   final bool isWishlist;
-final String id;
-final VoidCallback onTap;
+  final String id;
+  final VoidCallback onTap;
   const ProductTileWidget(
       {super.key,
       this.isWishlist = false,
@@ -20,16 +20,14 @@ final VoidCallback onTap;
       required this.description,
       required this.price,
       required this.priceAfterDiscount,
-        required this.id,
-        required this.onTap
-      });
+      required this.id,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.all(6),
-
       width: size.width,
       child: Row(
         children: [
@@ -37,7 +35,10 @@ final VoidCallback onTap;
             // height: size.height*.2,
             width: size.width * .30,
             child: ClipRRect(
-              child: Image.network(image,fit: BoxFit.cover,),
+              child: Image.network(
+                image,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           SizedBox(
@@ -145,7 +146,7 @@ final VoidCallback onTap;
                     SizedBox(
                       width: size.width * .10,
                       child: InkWell(
-                        onTap:onTap,
+                        onTap: onTap,
                         child: Image.asset(
                           ImagesManager.trash,
                           width: 20,

@@ -2,6 +2,7 @@ import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/assets_manager/images_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
 
 class Ongoing extends StatelessWidget {
   const Ongoing({super.key});
@@ -20,21 +21,22 @@ class Ongoing extends StatelessWidget {
           height: 15,
         ),
         Text(
-          'No ongoing order',
+          StringsManager.noOngoingOrder,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         SizedBox(
           height: 15,
         ),
         Text(
-          'We currently don\'t have any active orders in progress. Feel free to explore our products and place a new order.',
+          StringsManager.weDontHaveActiveOrders,
           style: Theme.of(context).textTheme.bodySmall,
           textAlign: TextAlign.center,
         ),
         SizedBox(
           height: 25,
         ),
-        CustomBtnWidget(title: 'Explore Categories', onPressed: (){})
+        CustomBtnWidget(
+            title: StringsManager.exploreCategories, onPressed: () {})
       ],
     );
   }

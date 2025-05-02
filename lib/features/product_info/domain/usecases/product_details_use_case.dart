@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce_shop/core/failures/failures.dart';
+import '../../../../core/logic/failures/failures.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/product_details_model.dart';
 import 'package:ecommerce_shop/features/product_info/domain/repository/product_info_repo.dart';
 import 'package:injectable/injectable.dart';

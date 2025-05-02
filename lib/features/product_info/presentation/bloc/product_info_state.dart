@@ -6,34 +6,30 @@ class ProductsInfoState {
   ProductsInfoRequestState? productsInfoRequestState;
   ProductsInfoRequestState? writingReviewRequestState;
   ProductsInfoRequestState? productDetailsRequestState;
-  ProductsInfoRequestState? addToCartRequestState;
-  AddCartResponse? addCartResponse;
   Review? reviews;
   ProductDetailsModel? productDetailsModel;
   ReviewResponse? reviewResponse;
   AppFailures? failures;
 
-  ProductsInfoState(
-      {this.productsInfoRequestState,
-      this.reviews,
-      this.failures,
-      this.writingReviewRequestState,
-      this.reviewResponse,
-      this.productDetailsRequestState,
-      this.productDetailsModel,
-      this.addToCartRequestState,
-      this.addCartResponse});
+  ProductsInfoState({
+    this.productsInfoRequestState,
+    this.reviews,
+    this.failures,
+    this.writingReviewRequestState,
+    this.reviewResponse,
+    this.productDetailsRequestState,
+    this.productDetailsModel,
+  });
 
-  ProductsInfoState copyWith(
-      {ProductsInfoRequestState? productsInfoRequestState,
-      ProductsInfoRequestState? writingReviewRequestState,
-      ReviewResponse? reviewResponse,
-      ProductsInfoRequestState? productDetailsRequestState,
-      ProductDetailsModel? productDetailsModel,
-      Review? reviews,
-      AppFailures? failures,
-      ProductsInfoRequestState? addToCartRequestState,
-      AddCartResponse? addCartResponse}) {
+  ProductsInfoState copyWith({
+    ProductsInfoRequestState? productsInfoRequestState,
+    ProductsInfoRequestState? writingReviewRequestState,
+    ReviewResponse? reviewResponse,
+    ProductsInfoRequestState? productDetailsRequestState,
+    ProductDetailsModel? productDetailsModel,
+    Review? reviews,
+    AppFailures? failures,
+  }) {
     return ProductsInfoState(
         productsInfoRequestState:
             productsInfoRequestState ?? this.productsInfoRequestState,
@@ -42,9 +38,6 @@ class ProductsInfoState {
             writingReviewRequestState ?? this.writingReviewRequestState,
         reviews: reviews ?? this.reviews,
         failures: failures ?? this.failures,
-        addToCartRequestState:
-            addToCartRequestState ?? this.addToCartRequestState,
-        addCartResponse: addCartResponse ?? this.addCartResponse,
         productDetailsRequestState:
             productDetailsRequestState ?? this.productDetailsRequestState,
         productDetailsModel: productDetailsModel ?? this.productDetailsModel);

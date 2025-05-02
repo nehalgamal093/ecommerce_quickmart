@@ -8,41 +8,43 @@ class FAQ extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('FAQ'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
-                  itemCount:faqList.length ,
-                  itemBuilder: (context,index){
-                    return Column(
-
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(faqList[index].question),
-                        SizedBox(height: 5,),
-                        Text(
-                          faqList[index].answer,style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        SizedBox(height:10,),
-                      ],
-                    );
-                  }),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+        appBar: AppBar(
+          title: Text('FAQ'),
+        ),
+        body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
               children: [
-                Text('For any query, you can visit our website for'),
-                TextButton(onPressed: (){}, child: Text('Help Center'))
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: faqList.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(faqList[index].question),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              faqList[index].answer,
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        );
+                      }),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('For any query, you can visit our website for'),
+                    TextButton(onPressed: () {}, child: Text('Help Center'))
+                  ],
+                )
               ],
-            )
-          ],
-        )
-      )
-    );
+            )));
   }
 }

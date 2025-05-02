@@ -1,17 +1,17 @@
-
 class Products {
   Products({
-      num? pages, 
-      String? message, 
-      num? page, 
-      num? pagePerCategory, 
-      List<Result>? result,}){
+    num? pages,
+    String? message,
+    num? page,
+    num? pagePerCategory,
+    List<Result>? result,
+  }) {
     _pages = pages;
     _message = message;
     _page = page;
     _pagePerCategory = pagePerCategory;
     _result = result;
-}
+  }
 
   Products.fromJson(dynamic json) {
     _pages = json['pages'];
@@ -30,17 +30,20 @@ class Products {
   num? _page;
   num? _pagePerCategory;
   List<Result>? _result;
-Products copyWith({  num? pages,
-  String? message,
-  num? page,
-  num? pagePerCategory,
-  List<Result>? result,
-}) => Products(  pages: pages ?? _pages,
-  message: message ?? _message,
-  page: page ?? _page,
-  pagePerCategory: pagePerCategory ?? _pagePerCategory,
-  result: result ?? _result,
-);
+  Products copyWith({
+    num? pages,
+    String? message,
+    num? page,
+    num? pagePerCategory,
+    List<Result>? result,
+  }) =>
+      Products(
+        pages: pages ?? _pages,
+        message: message ?? _message,
+        page: page ?? _page,
+        pagePerCategory: pagePerCategory ?? _pagePerCategory,
+        result: result ?? _result,
+      );
   num? get pages => _pages;
   String? get message => _message;
   num? get page => _page;
@@ -58,31 +61,29 @@ Products copyWith({  num? pages,
     }
     return map;
   }
-
 }
-
 
 class Result {
   Result({
-      String? id, 
-      String? title, 
-      String? slug, 
-      num? price, 
-      num? priceAfterDiscount, 
-      num? ratingAvg, 
-      num? ratingCount, 
-      String? description, 
-      num? quantity, 
-      num? sold, 
-      List<Images>? images, 
-      String? category, 
-      String? subCategory, 
-      String? brand, 
-      String? createdAt, 
-      String? updatedAt, 
-      num? v, 
-      List<String>? myReviews, 
- }){
+    String? id,
+    String? title,
+    String? slug,
+    num? price,
+    num? priceAfterDiscount,
+    num? ratingAvg,
+    num? ratingCount,
+    String? description,
+    num? quantity,
+    num? sold,
+    List<Images>? images,
+    String? category,
+    String? subCategory,
+    String? brand,
+    String? createdAt,
+    String? updatedAt,
+    num? v,
+    List<String>? myReviews,
+  }) {
     _id = id;
     _title = title;
     _slug = slug;
@@ -101,8 +102,7 @@ class Result {
     _updatedAt = updatedAt;
     _v = v;
     _myReviews = myReviews;
-
-}
+  }
 
   Result.fromJson(dynamic json) {
     _id = json['_id'];
@@ -127,7 +127,8 @@ class Result {
     _createdAt = json['createdAt'];
     _updatedAt = json['updatedAt'];
     _v = json['__v'];
-    _myReviews = json['myReviews'] != null ? json['myReviews'].cast<String>() : [];
+    _myReviews =
+        json['myReviews'] != null ? json['myReviews'].cast<String>() : [];
   }
   String? _id;
   String? _title;
@@ -147,43 +148,46 @@ class Result {
   String? _updatedAt;
   num? _v;
   List<String>? _myReviews;
-Result copyWith({  String? id,
-  String? title,
-  String? slug,
-  num? price,
-  num? priceAfterDiscount,
-  num? ratingAvg,
-  num? ratingCount,
-  String? description,
-  num? quantity,
-  num? sold,
-  List<Images>? images,
-  String? category,
-  String? subCategory,
-  String? brand,
-  String? createdAt,
-  String? updatedAt,
-  num? v,
-  List<String>? myReviews,
-}) => Result(  id: id ?? _id,
-  title: title ?? _title,
-  slug: slug ?? _slug,
-  price: price ?? _price,
-  priceAfterDiscount: priceAfterDiscount ?? _priceAfterDiscount,
-  ratingAvg: ratingAvg ?? _ratingAvg,
-  ratingCount: ratingCount ?? _ratingCount,
-  description: description ?? _description,
-  quantity: quantity ?? _quantity,
-  sold: sold ?? _sold,
-  images: images ?? _images,
-  category: category ?? _category,
-  subCategory: subCategory ?? _subCategory,
-  brand: brand ?? _brand,
-  createdAt: createdAt ?? _createdAt,
-  updatedAt: updatedAt ?? _updatedAt,
-  v: v ?? _v,
-  myReviews: myReviews ?? _myReviews,
-);
+  Result copyWith({
+    String? id,
+    String? title,
+    String? slug,
+    num? price,
+    num? priceAfterDiscount,
+    num? ratingAvg,
+    num? ratingCount,
+    String? description,
+    num? quantity,
+    num? sold,
+    List<Images>? images,
+    String? category,
+    String? subCategory,
+    String? brand,
+    String? createdAt,
+    String? updatedAt,
+    num? v,
+    List<String>? myReviews,
+  }) =>
+      Result(
+        id: id ?? _id,
+        title: title ?? _title,
+        slug: slug ?? _slug,
+        price: price ?? _price,
+        priceAfterDiscount: priceAfterDiscount ?? _priceAfterDiscount,
+        ratingAvg: ratingAvg ?? _ratingAvg,
+        ratingCount: ratingCount ?? _ratingCount,
+        description: description ?? _description,
+        quantity: quantity ?? _quantity,
+        sold: sold ?? _sold,
+        images: images ?? _images,
+        category: category ?? _category,
+        subCategory: subCategory ?? _subCategory,
+        brand: brand ?? _brand,
+        createdAt: createdAt ?? _createdAt,
+        updatedAt: updatedAt ?? _updatedAt,
+        v: v ?? _v,
+        myReviews: myReviews ?? _myReviews,
+      );
   String? get id => _id;
   String? get title => _title;
   String? get slug => _slug;
@@ -202,7 +206,6 @@ Result copyWith({  String? id,
   String? get updatedAt => _updatedAt;
   num? get v => _v;
   List<String>? get myReviews => _myReviews;
-
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -228,44 +231,42 @@ Result copyWith({  String? id,
     map['myReviews'] = _myReviews;
     return map;
   }
-
 }
-
 
 class Images {
   Images({
-      String? attachmentFile, 
-      String? cloudinaryId, 
-      String? id,}){
+    String? attachmentFile,
+    String? cloudinaryId,
+    String? id,
+  }) {
     _attachmentFile = attachmentFile;
     _cloudinaryId = cloudinaryId;
     _id = id;
     _id = id;
-}
+  }
 
   Images.fromJson(dynamic json) {
     _attachmentFile = json['attachment_file'];
     _cloudinaryId = json['cloudinary_id'];
     _id = json['_id'];
-
   }
   String? _attachmentFile;
   String? _cloudinaryId;
   String? _id;
 
-Images copyWith({  String? attachmentFile,
-  String? cloudinaryId,
-  String? id,
-
-}) => Images(  attachmentFile: attachmentFile ?? _attachmentFile,
-  cloudinaryId: cloudinaryId ?? _cloudinaryId,
-  id: id ?? _id,
-
-);
+  Images copyWith({
+    String? attachmentFile,
+    String? cloudinaryId,
+    String? id,
+  }) =>
+      Images(
+        attachmentFile: attachmentFile ?? _attachmentFile,
+        cloudinaryId: cloudinaryId ?? _cloudinaryId,
+        id: id ?? _id,
+      );
   String? get attachmentFile => _attachmentFile;
   String? get cloudinaryId => _cloudinaryId;
   String? get id => _id;
-
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -275,5 +276,4 @@ Images copyWith({  String? attachmentFile,
 
     return map;
   }
-
 }

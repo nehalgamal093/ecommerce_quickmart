@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../core/resources/constants/strings_manager.dart';
 
 class OrderSuccess extends StatelessWidget {
   static const String routeName = "/order_success";
@@ -20,23 +21,41 @@ class OrderSuccess extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height:size.height*.6 ,
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 20),
-                    decoration: BoxDecoration(
-                      color: ColorsManager.lightCyanColor,
-                      borderRadius: BorderRadius.circular(32),
-                    ),
-                    child: Image.asset(ImagesManager.onlineShopping),),
-                SizedBox(height: 16,),
-                Text('Your order has been placed successfully',style: Theme.of(context).textTheme.titleLarge,textAlign: TextAlign.center,),
-                SizedBox(height: 16,),
-                Text('Thank you for choosing us! Feel free to continue shopping and explore our wide range of products. Happy Shopping!',style: Theme.of(context).textTheme.bodySmall,textAlign: TextAlign.center,),
-                SizedBox(height: 20,),
-                CustomBtnWidget(title: 'Continue Shopping', onPressed: (){
-                  Navigator.pop(context);
-                }),
-                SizedBox(height: 40,),
+                  height: size.height * .6,
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  decoration: BoxDecoration(
+                    color: ColorsManager.lightCyanColor,
+                    borderRadius: BorderRadius.circular(32),
+                  ),
+                  child: Image.asset(ImagesManager.onlineShopping),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  StringsManager.orderPlacedSuccessfully,
+                  style: Theme.of(context).textTheme.titleLarge,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  StringsManager.thankYouForChoosingUs,
+                  style: Theme.of(context).textTheme.bodySmall,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomBtnWidget(
+                    title: StringsManager.continueShopping,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    }),
+                SizedBox(
+                  height: 40,
+                ),
               ],
             ),
           ),

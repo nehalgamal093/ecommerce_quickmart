@@ -1,16 +1,17 @@
-import 'package:ecommerce_shop/core/caching/cache_helper.dart';
 import 'package:ecommerce_shop/core/di/di.dart';
 import 'package:ecommerce_shop/core/widgets/logout_dialog.dart';
-import 'package:ecommerce_shop/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+
 import '../../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
 import '../../../../../../core/widgets/custom_btn_widget.dart';
 import '../../../../../../core/widgets/custom_textfield_widget.dart';
 import '../../../../../../core/widgets/label_text.dart';
 import '../../../../../auth/presentation/provider/obscure_password_provider.dart';
+import '../../../bloc/profile_bloc/profile_bloc.dart';
 
 class NewPasswordSection extends StatefulWidget {
   const NewPasswordSection({super.key});
@@ -24,11 +25,9 @@ class _NewPasswordSectionState extends State<NewPasswordSection> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     var isObscure = Provider.of<ObscurePasswordProvider>(context);
-
 
     return SafeArea(
       child: BlocProvider(
@@ -67,58 +66,58 @@ class _NewPasswordSectionState extends State<NewPasswordSection> {
                     SizedBox(
                       height: 20,
                     ),
-                    LabelText(label: 'Password'),
+                    LabelText(label: StringsManager.password),
                     SizedBox(
                       height: 5,
                     ),
                     CustomTextFieldWidget(
-                      hintText: 'Enter your password',
+                      hintText: StringsManager.enterPassword,
                       controller: passwordController,
                       isObscure: isObscure.isNewSecured,
-                      icon:InkWell(
+                      icon: InkWell(
                         onTap: () {
                           isObscure.changeNewSecurePassword();
                         },
                         child: isObscure.isNewSecured
                             ? Icon(Icons.visibility_off)
                             : ImageIcon(
-                          AssetImage(
-                            ImagesManager.eyeIcon,
-                          ),
-                          color: ColorsManager.blackColor,
-                        ),
+                                AssetImage(
+                                  ImagesManager.eyeIcon,
+                                ),
+                                color: ColorsManager.blackColor,
+                              ),
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    LabelText(label: 'Confirm Password'),
+                    LabelText(label: StringsManager.confirmPassword),
                     SizedBox(
                       height: 5,
                     ),
                     CustomTextFieldWidget(
-                      hintText: 'Enter your password',
+                      hintText: StringsManager.enterPassword,
                       controller: confirmPasswordController,
                       isObscure: isObscure.isConfirmSecured,
                       icon: InkWell(
                         onTap: () {
                           isObscure.changeSecureConfirmPassword();
                         },
-                        child:  isObscure.isConfirmSecured
+                        child: isObscure.isConfirmSecured
                             ? Icon(Icons.visibility_off)
                             : ImageIcon(
-                          AssetImage(
-                            ImagesManager.eyeIcon,
-                          ),
-                          color: ColorsManager.blackColor,
-                        ),
+                                AssetImage(
+                                  ImagesManager.eyeIcon,
+                                ),
+                                color: ColorsManager.blackColor,
+                              ),
                       ),
                     ),
                     SizedBox(
                       height: 30,
                     ),
                     CustomBtnWidget(
-                        title: 'Continue',
+                        title: StringsManager.continueProcess,
                         onPressed: () {
                           context.read<ProfileBloc>().add(ChangePasswordEvent(
                               confirmPasswordController.text));

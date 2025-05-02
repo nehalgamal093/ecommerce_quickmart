@@ -1,12 +1,13 @@
+import 'package:ecommerce_shop/core/widgets/custom_text_field.dart';
 import 'package:ecommerce_shop/core/widgets/label_text.dart';
 import 'package:ecommerce_shop/features/auth/presentation/provider/obscure_password_provider.dart';
-import 'package:ecommerce_shop/core/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../core/provider/validate_provider.dart';
+
 import '../../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../../core/resources/colors/colors_manager.dart';
-import '../../../../../../core/resources/strings_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
+import '../../../provider/validate_provider.dart';
 
 class LoginFieldSection extends StatefulWidget {
   final TextEditingController emailController;

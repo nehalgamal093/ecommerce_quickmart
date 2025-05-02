@@ -1,14 +1,15 @@
 import 'package:ecommerce_shop/core/di/di.dart';
+import 'package:ecommerce_shop/core/widgets/custom_text_field.dart';
+import 'package:ecommerce_shop/core/widgets/label_text.dart';
 import 'package:ecommerce_shop/features/auth/data/models/register_request_model.dart';
 import 'package:ecommerce_shop/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
-import 'package:ecommerce_shop/core/widgets/custom_text_field.dart';
-import 'package:ecommerce_shop/core/widgets/label_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../core/resources/colors/colors_manager.dart';
-import '../../../../../core/resources/strings_manager.dart';
+import '../../../../../core/resources/constants/strings_manager.dart';
 import '../../../../../core/widgets/header_text.dart';
 import '../../../../../core/widgets/loading_dialog.dart';
 import '../../../../../core/widgets/response_dialog.dart';
@@ -24,7 +25,6 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -55,7 +55,7 @@ class _SignupState extends State<Signup> {
                       height: 16,
                     ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Navigator.pushNamed(context, LoginScreen.routeName);
                       },
                       child: HeaderText(
@@ -71,7 +71,7 @@ class _SignupState extends State<Signup> {
                       height: 5,
                     ),
                     CustomTextField(
-                        onChanged: (val){},
+                        onChanged: (val) {},
                         controller: fullNameController,
                         hintText: StringsManager.enterFullName),
                     SizedBox(
@@ -82,7 +82,7 @@ class _SignupState extends State<Signup> {
                       height: 5,
                     ),
                     CustomTextField(
-                        onChanged: (val){},
+                        onChanged: (val) {},
                         controller: emailController,
                         hintText: StringsManager.enterEmail),
                     SizedBox(
@@ -93,7 +93,7 @@ class _SignupState extends State<Signup> {
                       height: 5,
                     ),
                     CustomTextField(
-                        onChanged: (val){},
+                        onChanged: (val) {},
                         controller: passwordController,
                         hintText: StringsManager.enterPassword),
                     SizedBox(
@@ -104,7 +104,7 @@ class _SignupState extends State<Signup> {
                       height: 5,
                     ),
                     CustomTextField(
-                        onChanged: (val){},
+                        onChanged: (val) {},
                         controller: phoneController,
                         hintText: 'Enter your phone'),
                     SizedBox(
@@ -117,7 +117,7 @@ class _SignupState extends State<Signup> {
                               email: emailController.text,
                               password: passwordController.text,
                               phone: phoneController.text);
-                          if(formKey.currentState!.validate()){
+                          if (formKey.currentState!.validate()) {
                             BlocProvider.of<AuthBloc>(context)
                                 .add(OnRegisterEvent(model));
                           }
@@ -147,7 +147,7 @@ class _SignupState extends State<Signup> {
               } else if (state.registerRequestState == RequestState.error) {
                 Navigator.pop(context);
                 responseDialog(
-                    context, 'Register', state.failures!.message ?? "",false);
+                    context, 'Register', state.failures!.message ?? "", false);
               } else if (state.registerRequestState == RequestState.success) {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, LoginScreen.routeName);

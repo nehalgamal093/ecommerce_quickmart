@@ -1,14 +1,13 @@
-
-
 class ReviewRequestModel {
   ReviewRequestModel({
-      String? comment, 
-      String? product, 
-      num? ratings,}){
+    String? comment,
+    String? product,
+    num? ratings,
+  }) {
     _comment = comment;
     _product = product;
     _ratings = ratings;
-}
+  }
 
   ReviewRequestModel.fromJson(dynamic json) {
     _comment = json['comment'];
@@ -18,13 +17,16 @@ class ReviewRequestModel {
   String? _comment;
   String? _product;
   num? _ratings;
-ReviewRequestModel copyWith({  String? comment,
-  String? product,
-  num? ratings,
-}) => ReviewRequestModel(  comment: comment ?? _comment,
-  product: product ?? _product,
-  ratings: ratings ?? _ratings,
-);
+  ReviewRequestModel copyWith({
+    String? comment,
+    String? product,
+    num? ratings,
+  }) =>
+      ReviewRequestModel(
+        comment: comment ?? _comment,
+        product: product ?? _product,
+        ratings: ratings ?? _ratings,
+      );
   String? get comment => _comment;
   String? get product => _product;
   num? get ratings => _ratings;
@@ -36,5 +38,4 @@ ReviewRequestModel copyWith({  String? comment,
     map['ratings'] = _ratings;
     return map;
   }
-
 }

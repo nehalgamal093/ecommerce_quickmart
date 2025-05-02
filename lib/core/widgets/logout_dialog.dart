@@ -3,7 +3,9 @@ import '../../features/auth/presentation/screen/login/login.dart';
 import '../caching/cache_helper.dart';
 import '../resources/colors/colors_manager.dart';
 
-logoutDialog(BuildContext context,) {
+logoutDialog(
+  BuildContext context,
+) {
   return showDialog(
       context: context,
       builder: (context) {
@@ -26,7 +28,6 @@ logoutDialog(BuildContext context,) {
               SizedBox(
                 height: 20,
               ),
-
             ],
           ),
           actions: [
@@ -41,7 +42,7 @@ logoutDialog(BuildContext context,) {
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => LoginScreen()),
-                        (route) => false);
+                    (route) => false);
               },
               child: Text(
                 'Logout',

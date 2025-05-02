@@ -1,8 +1,10 @@
 import 'package:ecommerce_shop/features/profile/presentation/screens/profile/sections/header_section.dart';
 import 'package:ecommerce_shop/features/profile/presentation/screens/profile/widgets/title_icon_widget.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../core/resources/constants/strings_manager.dart';
 import '../change_password/change_password.dart';
 import '../faq/faq.dart';
 import '../order_history/order_history.dart';
@@ -14,7 +16,8 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -26,7 +29,7 @@ class Profile extends StatelessWidget {
                 height: 30,
               ),
               Container(
-                height:isPortrait ? size.height*.9: size.width*.65,
+                height: isPortrait ? size.height * .9 : size.width * .65,
                 margin: const EdgeInsets.only(top: 100),
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
@@ -38,16 +41,18 @@ class Profile extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    Text('Personal Information'),
+                    Text(StringsManager.personalInformation),
                     SizedBox(
                       height: 20,
                     ),
                     TitleIconWidget(
                       icon: ImagesManager.box,
-                      title: 'Shipping Address',
+                      title: StringsManager.shippingAddress,
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ShippingAddress()));
-          
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ShippingAddress()));
                       },
                     ),
                     SizedBox(
@@ -61,7 +66,7 @@ class Profile extends StatelessWidget {
                     ),
                     TitleIconWidget(
                       icon: ImagesManager.cardTick,
-                      title: 'Payment Method',
+                      title: StringsManager.paymentMethod,
                       onPressed: () {
                         Navigator.pushNamed(context, PaymentMethod.routeName);
                       },
@@ -77,22 +82,26 @@ class Profile extends StatelessWidget {
                     ),
                     TitleIconWidget(
                       icon: ImagesManager.clipboardTick,
-                      title: 'Order History',
+                      title: StringsManager.orderHistory,
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => OrderHistory()));
-
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => OrderHistory(),
+                          ),
+                        );
                       },
                     ),
                     SizedBox(
                       height: 30,
                     ),
-                    Text('Support & Information'),
+                    Text(StringsManager.supportAndInformation),
                     SizedBox(
                       height: 20,
                     ),
                     TitleIconWidget(
                       icon: ImagesManager.privacyPolicy,
-                      title: 'Privacy Policy',
+                      title: StringsManager.privacyPolicy,
                       onPressed: () {},
                     ),
                     SizedBox(
@@ -106,7 +115,7 @@ class Profile extends StatelessWidget {
                     ),
                     TitleIconWidget(
                       icon: ImagesManager.document,
-                      title: 'Terms & Conditions',
+                      title: StringsManager.termsAndConditions,
                       onPressed: () {},
                     ),
                     SizedBox(
@@ -120,7 +129,7 @@ class Profile extends StatelessWidget {
                     ),
                     TitleIconWidget(
                       icon: ImagesManager.faq,
-                      title: 'FAQ',
+                      title: StringsManager.faq,
                       onPressed: () {
                         Navigator.pushNamed(context, FAQ.routeName);
                       },
@@ -128,16 +137,19 @@ class Profile extends StatelessWidget {
                     SizedBox(
                       height: 30,
                     ),
-                    Text('Account Management'),
+                    Text(StringsManager.accountManagement),
                     SizedBox(
                       height: 20,
                     ),
                     TitleIconWidget(
                       icon: ImagesManager.changePassword,
-                      title: 'Change Password',
+                      title: StringsManager.changePassword,
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ChangePassword(),));
-          
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ChangePassword(),
+                            ));
                       },
                     ),
                     SizedBox(
@@ -151,14 +163,13 @@ class Profile extends StatelessWidget {
                     ),
                     TitleIconWidget(
                       icon: ImagesManager.document,
-                      title: 'Dark Theme',
+                      title: StringsManager.darkTheme,
                       onPressed: () {},
                       widget: Switch(
                         value: false,
                         onChanged: (val) {},
                       ),
                     ),
-                    
                   ],
                 ),
               ),

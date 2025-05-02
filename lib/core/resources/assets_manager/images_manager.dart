@@ -1,4 +1,4 @@
-class ImagesManager{
+class ImagesManager {
   static const String onBoarding1 = 'assets/images/onboarding1.png';
   static const String onBoarding2 = 'assets/images/onboarding2.png';
   static const String onBoarding3 = 'assets/images/onboarding3.png';
@@ -26,20 +26,8 @@ class ImagesManager{
   static const String heartIcon = 'assets/icons/heart.png';
   static const String profileIcon = 'assets/icons/profile.png';
 
-
-
   static const String orderHistory = 'assets/images/order_history.png';
   static const String header = 'assets/images/header.png';
-  static const String fabric = 'assets/images/fabric.png';
-  static const String gift = 'assets/images/gift.png';
-  static const String electric = 'assets/images/electric.png';
-  static const String car = 'assets/images/car.png';
-  static const String bag = 'assets/images/bag.png';
-  static const String health = 'assets/images/health.png';
-  static const String house = 'assets/images/house.png';
-  static const String mobile = 'assets/images/mobile.png';
-  static const String sofa = 'assets/images/sofa.png';
-  static const String tv = 'assets/images/tv.png';
   static const String googlePay = 'assets/images/google_pay.png';
   static const String payPal = 'assets/images/pay_pal.png';
   static const String onlineShopping = 'assets/images/online_shopping.png';
@@ -47,16 +35,5 @@ class ImagesManager{
   static const String success = 'assets/images/success.png';
   static const String avatar = 'assets/images/avatar.png';
   static const String product1 = 'assets/images/product1.png';
-  static const String product2 = 'assets/images/product2.png';
-  static const String product3 = 'assets/images/product3.png';
-  static const String product4 = 'assets/images/product4.png';
-
-  static const String product5 = 'assets/images/product5.png';
-  static const String product6 = 'assets/images/product6.png';
-  static const String product7 = 'assets/images/product7.png';
-  static const String product8= 'assets/images/product8.png';
-  static const String product9 = 'assets/images/product9.png';
-  static const String product10 = 'assets/images/product10.png';
-  static const String product11 = 'assets/images/product11.png';
-  static const String product12 = 'assets/images/product12.png';
+  static const String somethingWrong = 'assets/images/something_wrong.png';
 }

@@ -9,8 +9,8 @@ class Completed extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: 2,
-        itemBuilder: (context,index){
-      return ProductWithLabel();
-    });
+        itemBuilder: (context, index) {
+          return ProductWithLabel();
+        });
   }
 }

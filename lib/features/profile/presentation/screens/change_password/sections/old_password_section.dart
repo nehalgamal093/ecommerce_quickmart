@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../core/provider/old_new_screen.dart';
+
 import '../../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
 import '../../../../../../core/widgets/custom_btn_widget.dart';
 import '../../../../../../core/widgets/custom_textfield_widget.dart';
 import '../../../../../../core/widgets/label_text.dart';
 import '../../../../../auth/presentation/provider/obscure_password_provider.dart';
+import '../../../provider/old_new_screen.dart';
 
 class OldPasswordSection extends StatefulWidget {
   const OldPasswordSection({super.key});
@@ -31,25 +33,25 @@ class _OldPasswordSectionState extends State<OldPasswordSection> {
             height: 20,
           ),
           Text(
-            'Old Password',
+            StringsManager.oldPassword,
             style: Theme.of(context).textTheme.titleLarge,
           ),
           SizedBox(
             height: 5,
           ),
           Text(
-            'Enter old password to change the password',
+            StringsManager.enterOldToChangePassword,
             style: Theme.of(context).textTheme.bodySmall,
           ),
           SizedBox(
             height: 20,
           ),
-          LabelText(label: 'Password'),
+          LabelText(label: StringsManager.password),
           SizedBox(
             height: 5,
           ),
           CustomTextFieldWidget(
-            hintText: 'Enter your password',
+            hintText: StringsManager.enterPassword,
             controller: passwordController,
             icon: InkWell(
               onTap: () {
@@ -70,7 +72,7 @@ class _OldPasswordSectionState extends State<OldPasswordSection> {
             height: 30,
           ),
           CustomBtnWidget(
-              title: 'Save',
+              title: StringsManager.save,
               onPressed: () {
                 provider.changeScreen(1);
               })

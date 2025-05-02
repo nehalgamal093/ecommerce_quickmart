@@ -1,11 +1,11 @@
-
 class ReviewResponse {
   ReviewResponse({
-      String? message, 
-      Result? result,}){
+    String? message,
+    Result? result,
+  }) {
     _message = message;
     _result = result;
-}
+  }
 
   ReviewResponse.fromJson(dynamic json) {
     _message = json['message'];
@@ -13,11 +13,14 @@ class ReviewResponse {
   }
   String? _message;
   Result? _result;
-ReviewResponse copyWith({  String? message,
-  Result? result,
-}) => ReviewResponse(  message: message ?? _message,
-  result: result ?? _result,
-);
+  ReviewResponse copyWith({
+    String? message,
+    Result? result,
+  }) =>
+      ReviewResponse(
+        message: message ?? _message,
+        result: result ?? _result,
+      );
   String? get message => _message;
   Result? get result => _result;
 
@@ -29,20 +32,19 @@ ReviewResponse copyWith({  String? message,
     }
     return map;
   }
-
 }
-
 
 class Result {
   Result({
-      String? comment, 
-      String? product, 
-      String? user, 
-      num? ratings, 
-      String? id, 
-      String? createdAt, 
-      String? updatedAt, 
-      num? v,}){
+    String? comment,
+    String? product,
+    String? user,
+    num? ratings,
+    String? id,
+    String? createdAt,
+    String? updatedAt,
+    num? v,
+  }) {
     _comment = comment;
     _product = product;
     _user = user;
@@ -51,7 +53,7 @@ class Result {
     _createdAt = createdAt;
     _updatedAt = updatedAt;
     _v = v;
-}
+  }
 
   Result.fromJson(dynamic json) {
     _comment = json['comment'];
@@ -71,23 +73,26 @@ class Result {
   String? _createdAt;
   String? _updatedAt;
   num? _v;
-Result copyWith({  String? comment,
-  String? product,
-  String? user,
-  num? ratings,
-  String? id,
-  String? createdAt,
-  String? updatedAt,
-  num? v,
-}) => Result(  comment: comment ?? _comment,
-  product: product ?? _product,
-  user: user ?? _user,
-  ratings: ratings ?? _ratings,
-  id: id ?? _id,
-  createdAt: createdAt ?? _createdAt,
-  updatedAt: updatedAt ?? _updatedAt,
-  v: v ?? _v,
-);
+  Result copyWith({
+    String? comment,
+    String? product,
+    String? user,
+    num? ratings,
+    String? id,
+    String? createdAt,
+    String? updatedAt,
+    num? v,
+  }) =>
+      Result(
+        comment: comment ?? _comment,
+        product: product ?? _product,
+        user: user ?? _user,
+        ratings: ratings ?? _ratings,
+        id: id ?? _id,
+        createdAt: createdAt ?? _createdAt,
+        updatedAt: updatedAt ?? _updatedAt,
+        v: v ?? _v,
+      );
   String? get comment => _comment;
   String? get product => _product;
   String? get user => _user;
@@ -109,5 +114,4 @@ Result copyWith({  String? comment,
     map['__v'] = _v;
     return map;
   }
-
 }

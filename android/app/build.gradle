@@ -7,16 +7,16 @@ plugins {
 
 android {
     namespace = "com.example.ecommerce_shop"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = '17'
     }
 
     defaultConfig {
@@ -24,7 +24,7 @@ android {
         applicationId = "com.example.ecommerce_shop"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
+        minSdk = 21
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -38,7 +38,19 @@ android {
         }
     }
 }
+dependencies {
+    // Geolocator-compatible versions
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.core:core:1.12.0'
 
+    // Force Geolocator's dependencies to compatible versions
+    configurations.all {
+        resolutionStrategy {
+            force 'com.google.android.gms:play-services-location:21.2.0'
+            force 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+        }
+    }
+}
 flutter {
     source = "../.."
 }

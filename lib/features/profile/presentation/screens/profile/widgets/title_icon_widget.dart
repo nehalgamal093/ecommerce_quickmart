@@ -9,10 +9,11 @@ class TitleIconWidget extends StatelessWidget {
   final VoidCallback onPressed;
   const TitleIconWidget(
       {super.key,
-        required this.icon,
+      required this.icon,
       required this.title,
       this.widget = const Icon(Icons.arrow_forward_ios_outlined,
-          color: ColorsManager.greyColor),required this.onPressed});
+          color: ColorsManager.greyColor),
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +21,10 @@ class TitleIconWidget extends StatelessWidget {
       onTap: onPressed,
       child: Row(
         children: [
-          Image.asset(icon,color: ColorsManager.greyColor),
-          SizedBox(width: 5,),
+          Image.asset(icon, color: ColorsManager.greyColor),
+          SizedBox(
+            width: 5,
+          ),
           Text(
             title,
             style: Theme.of(context).textTheme.bodySmall!.copyWith(

@@ -15,7 +15,20 @@ class Result {
   String? passwordChangedAt;
 
   Result(
-      {this.id, this.name, this.email, this.password, this.phone, this.role, this.isActive, this.verified, this.wishlistList, this.addressesList, this.createdAt, this.updatedAt, this.v, this.passwordChangedAt});
+      {this.id,
+      this.name,
+      this.email,
+      this.password,
+      this.phone,
+      this.role,
+      this.isActive,
+      this.verified,
+      this.wishlistList,
+      this.addressesList,
+      this.createdAt,
+      this.updatedAt,
+      this.v,
+      this.passwordChangedAt});
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -38,7 +51,7 @@ class Result {
     return map;
   }
 
-  Result.fromJson(dynamic json){
+  Result.fromJson(dynamic json) {
     id = json["_id"];
     name = json["name"];
     email = json["email"];
@@ -48,7 +61,7 @@ class Result {
     isActive = json["isActive"];
     verified = json["verified"];
     wishlistList =
-    json["wishlist"] != null ? json["wishlist"].cast<String>() : [];
+        json["wishlist"] != null ? json["wishlist"].cast<String>() : [];
     if (json["addresses"] != null) {
       addressesList = [];
     }
@@ -74,7 +87,7 @@ class ChangePasswordResponse {
     return map;
   }
 
-  ChangePasswordResponse.fromJson(dynamic json){
+  ChangePasswordResponse.fromJson(dynamic json) {
     message = json["message"];
     result = json["result"] != null ? Result.fromJson(json["result"]) : null;
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/resources/constants/strings_manager.dart';
 import '../check_out/sections/payment_section.dart';
-
 
 class PaymentMethod extends StatelessWidget {
   static const String routeName = '/payment_method';
@@ -11,7 +11,7 @@ class PaymentMethod extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Payment Method'),
+          title: Text(StringsManager.paymentMethod),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -23,7 +23,6 @@ class PaymentMethod extends StatelessWidget {
               PaymentSection(),
             ],
           ),
-        ));
+        ),);
   }
 }
-

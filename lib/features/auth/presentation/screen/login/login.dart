@@ -8,13 +8,14 @@ import 'package:ecommerce_shop/features/auth/presentation/screen/sign_up/signup.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import '../../../../../core/provider/validate_provider.dart';
+
 import '../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../core/resources/colors/colors_manager.dart';
-import '../../../../../core/resources/strings_manager.dart';
+import '../../../../../core/resources/constants/strings_manager.dart';
 import '../../../../../core/widgets/header_text.dart';
-import '../../../../main/main_screen.dart';
+import '../../../../main/presentation/screens/main_screen.dart';
 import '../../../../on_boarding/widgets/custom_button.dart';
+import '../../provider/validate_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/auth';
@@ -87,13 +88,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 24,
                     ),
                     CustomButton(
-                        onPressed:
-                            validationProvider.isValid
-                                ?() {
-                                    BlocProvider.of<AuthBloc>(context).add(
-                                        OnLoginEvent(emailController.text,
-                                            passwordController.text));
-                                  }:null,
+                        onPressed: validationProvider.isValid
+                            ? () {
+                                BlocProvider.of<AuthBloc>(context).add(
+                                    OnLoginEvent(emailController.text,
+                                        passwordController.text));
+                              }
+                            : null,
                         title: StringsManager.login,
                         color: ColorsManager.blackColor),
                     SizedBox(

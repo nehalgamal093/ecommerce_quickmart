@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/colors/colors_manager.dart';
-import '../../../../../../core/resources/strings_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
 
 class PrivacyPolicySection extends StatelessWidget {
   const PrivacyPolicySection({super.key});

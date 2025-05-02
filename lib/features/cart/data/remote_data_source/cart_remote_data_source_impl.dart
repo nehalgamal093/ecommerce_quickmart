@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_shop/core/network/api_manager/api_manager.dart';
+import 'package:ecommerce_shop/core/resources/constants/endpoints.dart';
 import 'package:ecommerce_shop/features/cart/data/models/apply_coupon_reponse.dart';
 import 'package:ecommerce_shop/features/cart/data/models/cart_model.dart';
 import 'package:ecommerce_shop/features/cart/data/models/delete_cart_response.dart';
@@ -7,8 +8,8 @@ import 'package:ecommerce_shop/features/cart/data/remote_data_source/cart_remote
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/caching/cache_helper.dart';
-import '../../../../core/resources/endpoints.dart';
 import '../../../auth/data/data_source/remote_data_source/auth_remote_data_source_impl.dart';
+import '../models/add_cart_response.dart';
 
 @Injectable(as: CartRemoteDataSource)
 class CartRemoteDataSourceImpl implements CartRemoteDataSource {
@@ -35,11 +36,11 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   }
 
   @override
-  Future<DeleteCartResponse> deleteCart(String id) async{
+  Future<DeleteCartResponse> deleteCart(String id) async {
     var response = await apiManager.deleteRequest(
-        '${EndPoints.cart}/$id',
-        headers: {"token": CacheHelper.getToken()},
-       );
+      '${EndPoints.cart}/$id',
+      headers: {"token": CacheHelper.getToken()},
+    );
     try {
       if (response.statusCode == 200 || response.statusCode == 201) {
         return DeleteCartResponse.fromJson(response.data);
@@ -56,10 +57,10 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   }
 
   @override
-  Future<ApplyCouponReponse> applyCoupon(String code) async{
+  Future<ApplyCouponReponse> applyCoupon(String code) async {
     var response = await apiManager.postRequest(
       EndPoints.applyCoupon,
-      {"code":code},
+      {"code": code},
       headers: {"token": CacheHelper.getToken()},
     );
     try {
@@ -67,6 +68,26 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
         return ApplyCouponReponse.fromJson(response.data);
       } else {
         String errorMessage = "apply coupon failed";
+        if (response.data is Map<String, dynamic>) {
+          errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
+        }
+        throw ServerException(errorMessage);
+      }
+    } on DioException catch (e) {
+      throw ServerException(e.message ?? "Network error");
+    }
+  }
+
+  @override
+  Future<AddCartResponse> addToCart(String productId) async {
+    var response = await apiManager.postRequest(
+        EndPoints.cart, {"product": productId},
+        headers: {"token": CacheHelper.getToken()});
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return AddCartResponse.fromJson(response.data);
+      } else {
+        String errorMessage = "Adding to cart failed";
         if (response.data is Map<String, dynamic>) {
           errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
         }

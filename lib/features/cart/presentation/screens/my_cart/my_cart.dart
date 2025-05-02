@@ -1,4 +1,3 @@
-import 'package:ecommerce_shop/core/di/di.dart';
 import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
 import 'package:ecommerce_shop/core/widgets/loading_list.dart';
 import 'package:ecommerce_shop/features/cart/presentation/bloc/my_cart_bloc.dart';
@@ -24,78 +23,75 @@ class _MyCartState extends State<MyCart> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: BlocProvider(
-          create: (context) => getIt<MyCartBloc>()..add(LoadItems()),
-          child:
-              BlocBuilder<MyCartBloc, MyCartState>(builder: (context, state) {
-            if (state is ItemsLoading) {
-              return LoadingList();
-            } else if (state is ItemsError) {
-              return Text('Error');
-            } else if (state is ItemsLoaded) {
-              final bloc = context.read<MyCartBloc>();
-              List<CartItem> cartItems = state.items;
-              return Scaffold(
-                appBar: AppBar(
-                  title: Text('My Cart'),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        showVoucherBottomSheet(
-                            context, voucherController, bloc);
-                      },
-                      child: Text(
-                        'Voucher Code',
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: ColorsManager.cyanColor),
+      child: BlocBuilder<MyCartBloc, MyCartState>(builder: (context, state) {
+        if (state is ItemsLoading) {
+          return LoadingList();
+        } else if (state is ItemsError) {
+          return Text('Error');
+        } else if (state is ItemsLoaded) {
+          final bloc = context.read<MyCartBloc>();
+          List<CartItem> cartItems = state.items;
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('My Cart'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    showVoucherBottomSheet(context, voucherController, bloc);
+                  },
+                  child: Text(
+                    'Voucher Code',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: ColorsManager.cyanColor),
+                  ),
+                ),
+                SizedBox(
+                  width: 16,
+                )
+              ],
+            ),
+            body: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: PriceInfo(
+                          totalPrice: state.totalPrice.toString(),
+                          discount: state.discount),
+                    ),
+                    CartList(
+                      cartItems: cartItems,
+                    ),
+                    SliverToBoxAdapter(
+                      child: CustomBtnWidget(
+                        title: "Checkout",
+                        count: '(${state.items.length.toString()})',
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Checkout(
+                                cartItems: state.items,
+                                totalPrice: state.totalPrice,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
-                    SizedBox(
-                      width: 16,
-                    )
+                    SliverToBoxAdapter(
+                      child: SizedBox(
+                        height: 15,
+                      ),
+                    ),
                   ],
-                ),
-                body: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: CustomScrollView(
-                      
-                      slivers: [
-                        SliverToBoxAdapter(
-                          child: PriceInfo(
-                              totalPrice: state.totalPrice.toString(),
-                              discount: state.discount),
-                        ),
-                        
-                          CartList(
-                            cartItems: cartItems,
-                          ),
-                        
-                        SliverToBoxAdapter(
-                          child: CustomBtnWidget(
-                            title: "Checkout",
-                            count: '(${state.items.length.toString()})',
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Checkout()),
-                              );
-                            },
-                          ),
-                        ),
-                        SliverToBoxAdapter(
-                          child: SizedBox(
-                            height: 15,
-                          ),
-                        ),
-                      ],
-                    )),
-              );
-            } else {
-              return Text('Error');
-            }
-          })),
+                )),
+          );
+        } else {
+          return Text('Error');
+        }
+      }),
     );
   }
 }

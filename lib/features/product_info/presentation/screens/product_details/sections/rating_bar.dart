@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
 
 class ProductRatingBar extends StatelessWidget {
   const ProductRatingBar({super.key});
@@ -28,7 +29,7 @@ class ProductRatingBar extends StatelessWidget {
         SizedBox(
           width: 10,
         ),
-        Text('4.5 (2,495 reviews) '),
+        Text(StringsManager.reviewsCount),
       ],
     );
   }

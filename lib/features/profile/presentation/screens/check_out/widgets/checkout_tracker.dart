@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
 
 class CheckoutTracker extends StatelessWidget {
   final int currIndex;
-  const CheckoutTracker({super.key,required this.currIndex});
+  const CheckoutTracker({super.key, required this.currIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,8 @@ class CheckoutTracker extends StatelessWidget {
           TrackerItem(
             image: ImagesManager.box,
             activeImage: ImagesManager.activeBox,
-            title: 'Shipping',
-            color: changeColorOfItem(0,currIndex),
+            title: StringsManager.shipping,
+            color: changeColorOfItem(0, currIndex),
           ),
           Expanded(
             child: Divider(
@@ -32,7 +33,7 @@ class CheckoutTracker extends StatelessWidget {
           TrackerItem(
             image: ImagesManager.cardTick,
             activeImage: ImagesManager.activeCardTick,
-            title: 'Payment',
+            title: StringsManager.payment,
             color: changeColorOfItem(1, currIndex),
           ),
           Expanded(
@@ -46,7 +47,7 @@ class CheckoutTracker extends StatelessWidget {
           TrackerItem(
             image: ImagesManager.clipboardTick,
             activeImage: '',
-            title: 'Review',
+            title: StringsManager.review,
             color: changeColorOfItem(2, currIndex),
           ),
         ],

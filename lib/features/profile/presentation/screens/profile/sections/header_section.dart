@@ -2,9 +2,10 @@ import 'package:ecommerce_shop/core/di/di.dart';
 import 'package:ecommerce_shop/core/widgets/logout_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../../core/resources/colors/colors_manager.dart';
-import '../../../bloc/profile_bloc.dart';
+import '../../../bloc/profile_bloc/profile_bloc.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key});

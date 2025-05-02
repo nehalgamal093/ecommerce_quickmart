@@ -14,10 +14,11 @@ class LoadingList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: List.generate(8, (index) {
-          if(index==0){
-            return SizedBox(height: 50,);
-          }
-          else if (index % 2 == 0) {
+          if (index == 0) {
+            return SizedBox(
+              height: 50,
+            );
+          } else if (index % 2 == 0) {
             return Row(
               children: [
                 Container(
@@ -32,7 +33,7 @@ class LoadingList extends StatelessWidget {
                   width: 10,
                 ),
                 SizedBox(
-                  height: size.height*.25,
+                  height: size.height * .25,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,

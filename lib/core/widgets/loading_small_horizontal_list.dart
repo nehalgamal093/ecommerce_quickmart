@@ -9,7 +9,11 @@ class LoadingSmallHorizontalList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
+        SizedBox(
+          height: 20,
+        ),
+        SizedBox(
+          height: 100,
           child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
@@ -27,8 +31,8 @@ class LoadingSmallHorizontalList extends StatelessWidget {
 
 Widget loadingListItem() {
   return Container(
-    width: 76,
-    height: 60,
+    height: 70,
+    width: 70,
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: ColorsManager.veryLightGreyColor),

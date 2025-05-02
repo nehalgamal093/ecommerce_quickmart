@@ -3,7 +3,8 @@ import 'package:ecommerce_shop/features/profile/presentation/screens/change_pass
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../core/provider/old_new_screen.dart';
+import '../../../../../core/resources/constants/strings_manager.dart';
+import '../../provider/old_new_screen.dart';
 
 class ChangePassword extends StatelessWidget {
   static const String routeName = '/change_password';
@@ -14,10 +15,10 @@ class ChangePassword extends StatelessWidget {
     var provider = Provider.of<OldNewScreen>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Change Password'),
+        title: Text(StringsManager.changePassword),
         actions: [
           Text('${provider.index}0'),
-          Text('/02'),
+          Text(StringsManager.c2),
           SizedBox(
             width: 10,
           )

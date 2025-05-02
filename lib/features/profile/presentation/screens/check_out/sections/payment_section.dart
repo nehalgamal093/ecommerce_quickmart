@@ -4,8 +4,10 @@ import 'package:ecommerce_shop/core/widgets/custom_textfield_widget.dart';
 import 'package:ecommerce_shop/core/widgets/label_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../core/provider/order_tracking_state.dart';
+
 import '../../../../../../core/resources/assets_manager/images_manager.dart';
+import '../../../../../../core/resources/constants/strings_manager.dart';
+import '../../../../../main/presentation/provider/order_tracking_state.dart';
 
 class PaymentSection extends StatefulWidget {
   const PaymentSection({super.key});
@@ -36,19 +38,25 @@ class _PaymentSectionState extends State<PaymentSection> {
         SizedBox(
           height: 24,
         ),
-        LabelText(label: 'Card Holder Name'),
+        LabelText(label: StringsManager.cardHolderName),
         SizedBox(
           height: 5,
         ),
-        CustomTextFieldWidget(hintText: 'Enter card holder name',controller: cardHolderController,),
+        CustomTextFieldWidget(
+          hintText: StringsManager.enterCardHolderName,
+          controller: cardHolderController,
+        ),
         SizedBox(
           height: 15,
         ),
-        LabelText(label: 'Card Number'),
+        LabelText(label: StringsManager.cardNumber),
         SizedBox(
           height: 5,
         ),
-        CustomTextFieldWidget(hintText: '4111 1111 1111',controller: cardNumberController,),
+        CustomTextFieldWidget(
+          hintText: StringsManager.dummyCardNumber,
+          controller: cardNumberController,
+        ),
         SizedBox(
           height: 15,
         ),
@@ -57,11 +65,14 @@ class _PaymentSectionState extends State<PaymentSection> {
             Expanded(
               child: Column(
                 children: [
-                  LabelText(label: 'Expiration'),
+                  LabelText(label: StringsManager.expiration),
                   SizedBox(
                     height: 5,
                   ),
-                  CustomTextFieldWidget(hintText: 'MM/YY',controller: expirationController,),
+                  CustomTextFieldWidget(
+                    hintText: StringsManager.dateTemplate,
+                    controller: expirationController,
+                  ),
                 ],
               ),
             ),
@@ -71,11 +82,14 @@ class _PaymentSectionState extends State<PaymentSection> {
             Expanded(
               child: Column(
                 children: [
-                  LabelText(label: 'CVV'),
+                  LabelText(label: StringsManager.cvv),
                   SizedBox(
                     height: 5,
                   ),
-                  CustomTextFieldWidget(hintText: '123',controller: cvvController,),
+                  CustomTextFieldWidget(
+                    hintText: StringsManager.dummyCVV,
+                    controller: cvvController,
+                  ),
                 ],
               ),
             )
@@ -84,9 +98,11 @@ class _PaymentSectionState extends State<PaymentSection> {
         SizedBox(
           height: 100,
         ),
-        CustomBtnWidget(title: 'Continue', onPressed: () {
-          provider.changeTrackingState(2);
-        })
+        CustomBtnWidget(
+            title: StringsManager.continueProcess,
+            onPressed: () {
+              provider.changeTrackingState(2);
+            })
       ],
     );
   }

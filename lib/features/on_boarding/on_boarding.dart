@@ -13,7 +13,6 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-
   final PageController pageController =
       PageController(initialPage: 0, viewportFraction: 1);
 
@@ -53,8 +52,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 effect: WormEffect(
                     dotWidth: 10,
                     dotHeight: 10,
-                    activeDotColor:
-                        ColorsManager.cyanColor),
+                    activeDotColor: ColorsManager.cyanColor),
                 onDotClicked: (index) {})
           ],
         ),

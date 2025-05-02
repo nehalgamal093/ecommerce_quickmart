@@ -1,5 +1,5 @@
 import '../resources/assets_manager/images_manager.dart';
-import '../resources/strings_manager.dart';
+import '../resources/constants/strings_manager.dart';
 
 class OnBoardingItemModel {
   final String title;

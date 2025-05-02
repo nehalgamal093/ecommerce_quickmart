@@ -13,6 +13,7 @@ class Cities {
       'Prince Edward Island'
     ];
   }
+
   Map<String, List<String>> getCitiesByProvince() {
     return {
       'Ontario': ['Toronto', 'Ottawa', 'Mississauga', 'Hamilton'],

@@ -6,45 +6,73 @@ import '../resources/colors/colors_manager.dart';
 
 class ProductItem extends StatelessWidget {
   final Result productModel;
-  const ProductItem({super.key,required this.productModel});
+
+  const ProductItem({super.key, required this.productModel});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        border: Border.all(color: ColorsManager.veryLightGreyColor),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            LikeBtn(id: productModel.id!,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                LikeBtn(
+                  id: productModel.id!,
+                ),
+              ],
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.network(
+                productModel.images![0].attachmentFile!,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              productModel.title!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  color: ColorsManager.blackColor, fontWeight: FontWeight.w700),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Text(
+                  productModel.priceAfterDiscount.toString(),
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: ColorsManager.blackColor,
+                      fontWeight: FontWeight.w700),
+                ),
+                Spacer(),
+                Text(
+                  productModel.price.toString(),
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: ColorsManager.lightGreyColor,
+                      fontWeight: FontWeight.w700,
+                      decoration: TextDecoration.lineThrough,
+                      decorationColor: ColorsManager.lightGreyColor),
+                )
+              ],
+            )
           ],
         ),
-        Expanded(child: Image.network(productModel.images![0].attachmentFile!)),
-
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          productModel.title!,
-          style: Theme.of(context).textTheme.bodySmall!.copyWith(
-              color: ColorsManager.blackColor, fontWeight: FontWeight.w700),
-        ),
-        Text(
-          productModel.price.toString(),
-          style: Theme.of(context).textTheme.bodySmall!.copyWith(
-              color: ColorsManager.blackColor, fontWeight: FontWeight.w700),
-        ),
-        Text(
-          productModel.priceAfterDiscount.toString(),
-          style: Theme.of(context).textTheme.bodySmall!.copyWith(
-              color: ColorsManager.lightGreyColor,
-              fontWeight: FontWeight.w700,
-              decoration: TextDecoration.lineThrough,
-              decorationColor: ColorsManager.lightGreyColor),
-        )
-      ],
+      ),
     );
   }
 }

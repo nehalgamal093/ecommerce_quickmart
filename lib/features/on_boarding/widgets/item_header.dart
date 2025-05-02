@@ -8,7 +8,6 @@ class ItemHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -17,7 +16,7 @@ class ItemHeader extends StatelessWidget {
           width: 100,
         ),
         InkWell(
-          onTap: (){
+          onTap: () {
             Navigator.pushNamed(context, LoginScreen.routeName);
           },
           child: Text(

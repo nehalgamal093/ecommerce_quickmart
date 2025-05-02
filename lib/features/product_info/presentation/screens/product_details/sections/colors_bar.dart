@@ -7,7 +7,7 @@ class ColorsBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children: [
         CircleAvatar(
           backgroundColor: ColorsManager.subBlue,

@@ -1,13 +1,13 @@
-
 class Review {
   Review({
-      String? message, 
-      num? page, 
-      List<Result>? result,}){
+    String? message,
+    num? page,
+    List<Result>? result,
+  }) {
     _message = message;
     _page = page;
     _result = result;
-}
+  }
 
   Review.fromJson(dynamic json) {
     _message = json['message'];
@@ -22,13 +22,16 @@ class Review {
   String? _message;
   num? _page;
   List<Result>? _result;
-Review copyWith({  String? message,
-  num? page,
-  List<Result>? result,
-}) => Review(  message: message ?? _message,
-  page: page ?? _page,
-  result: result ?? _result,
-);
+  Review copyWith({
+    String? message,
+    num? page,
+    List<Result>? result,
+  }) =>
+      Review(
+        message: message ?? _message,
+        page: page ?? _page,
+        result: result ?? _result,
+      );
   String? get message => _message;
   num? get page => _page;
   List<Result>? get result => _result;
@@ -42,20 +45,19 @@ Review copyWith({  String? message,
     }
     return map;
   }
-
 }
-
 
 class Result {
   Result({
-      String? id, 
-      String? comment, 
-      String? product, 
-      User? user, 
-      num? ratings, 
-      String? createdAt, 
-      String? updatedAt, 
-      num? v,}){
+    String? id,
+    String? comment,
+    String? product,
+    User? user,
+    num? ratings,
+    String? createdAt,
+    String? updatedAt,
+    num? v,
+  }) {
     _id = id;
     _comment = comment;
     _product = product;
@@ -64,7 +66,7 @@ class Result {
     _createdAt = createdAt;
     _updatedAt = updatedAt;
     _v = v;
-}
+  }
 
   Result.fromJson(dynamic json) {
     _id = json['_id'];
@@ -84,23 +86,26 @@ class Result {
   String? _createdAt;
   String? _updatedAt;
   num? _v;
-Result copyWith({  String? id,
-  String? comment,
-  String? product,
-  User? user,
-  num? ratings,
-  String? createdAt,
-  String? updatedAt,
-  num? v,
-}) => Result(  id: id ?? _id,
-  comment: comment ?? _comment,
-  product: product ?? _product,
-  user: user ?? _user,
-  ratings: ratings ?? _ratings,
-  createdAt: createdAt ?? _createdAt,
-  updatedAt: updatedAt ?? _updatedAt,
-  v: v ?? _v,
-);
+  Result copyWith({
+    String? id,
+    String? comment,
+    String? product,
+    User? user,
+    num? ratings,
+    String? createdAt,
+    String? updatedAt,
+    num? v,
+  }) =>
+      Result(
+        id: id ?? _id,
+        comment: comment ?? _comment,
+        product: product ?? _product,
+        user: user ?? _user,
+        ratings: ratings ?? _ratings,
+        createdAt: createdAt ?? _createdAt,
+        updatedAt: updatedAt ?? _updatedAt,
+        v: v ?? _v,
+      );
   String? get id => _id;
   String? get comment => _comment;
   String? get product => _product;
@@ -124,17 +129,16 @@ Result copyWith({  String? id,
     map['__v'] = _v;
     return map;
   }
-
 }
-
 
 class User {
   User({
-      String? id, 
-      String? name,}){
+    String? id,
+    String? name,
+  }) {
     _id = id;
     _name = name;
-}
+  }
 
   User.fromJson(dynamic json) {
     _id = json['_id'];
@@ -142,11 +146,14 @@ class User {
   }
   String? _id;
   String? _name;
-User copyWith({  String? id,
-  String? name,
-}) => User(  id: id ?? _id,
-  name: name ?? _name,
-);
+  User copyWith({
+    String? id,
+    String? name,
+  }) =>
+      User(
+        id: id ?? _id,
+        name: name ?? _name,
+      );
   String? get id => _id;
   String? get name => _name;
 
@@ -156,5 +163,4 @@ User copyWith({  String? id,
     map['name'] = _name;
     return map;
   }
-
 }

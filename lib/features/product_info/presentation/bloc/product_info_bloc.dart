@@ -1,16 +1,15 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_shop/features/product_info/data/model/add_cart_response.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/product_details_model.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review_request_model.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review_response.dart';
-import 'package:ecommerce_shop/features/product_info/domain/usecases/add_cart_use_case.dart';
 import 'package:ecommerce_shop/features/product_info/domain/usecases/product_details_use_case.dart';
 import 'package:ecommerce_shop/features/product_info/domain/usecases/reviews_use_case.dart';
 import 'package:ecommerce_shop/features/product_info/domain/usecases/write_review_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../core/failures/failures.dart';
+
+import '../../../../core/logic/failures/failures.dart';
 
 part 'product_info_event.dart';
 part 'product_info_state.dart';
@@ -20,9 +19,9 @@ class ProductInfoBloc extends Bloc<ProductInfoEvent, ProductsInfoState> {
   ReviewsUseCase reviewsUseCase;
   WriteReviewUseCase writeReviewUseCase;
   ProductDetailsUseCase productDetailsUseCase;
-  AddCartUseCase addCartUseCase;
-  ProductInfoBloc(this.reviewsUseCase, this.writeReviewUseCase,
-      this.productDetailsUseCase, this.addCartUseCase)
+
+  ProductInfoBloc(
+      this.reviewsUseCase, this.writeReviewUseCase, this.productDetailsUseCase)
       : super(ProductsInfoInitial()) {
     on<GetReviewsEvent>(
       (event, emit) async {
@@ -90,25 +89,5 @@ class ProductInfoBloc extends Bloc<ProductInfoEvent, ProductsInfoState> {
         });
       },
     );
-    on<AddToCartEvent>((event, emit) async {
-      emit(
-        state.copyWith(addToCartRequestState: ProductsInfoRequestState.loading),
-      );
-      var result = await addCartUseCase.call(event.productId);
-
-      result.fold((error) {
-        emit(
-          state.copyWith(
-              addToCartRequestState: ProductsInfoRequestState.error,
-              failures: error),
-        );
-      }, (model) {
-        emit(
-          state.copyWith(
-              addToCartRequestState: ProductsInfoRequestState.success,
-              addCartResponse: model),
-        );
-      });
-    });
   }
 }

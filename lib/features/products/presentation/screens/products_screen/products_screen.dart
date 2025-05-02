@@ -1,11 +1,12 @@
 import 'package:ecommerce_shop/core/di/di.dart';
+import 'package:ecommerce_shop/core/widgets/error_widget.dart';
 import 'package:ecommerce_shop/core/widgets/loading_grid.dart';
 import 'package:ecommerce_shop/features/products/presentation/bloc/products_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/widgets/product_item.dart';
-import '../../../../product_info/presentation/screens/product_details/product_details.dart';
+import '../../../../../core/resources/constants/strings_manager.dart';
+import '../sections/products_list.dart';
 
 class ProductsScreen extends StatelessWidget {
   final String id;
@@ -15,61 +16,31 @@ class ProductsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Smart Watches'),
+      appBar: AppBar(
+        title: Text(StringsManager.smartWatches),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: BlocProvider(
+          create: (context) => getIt<ProductsBloc>()
+            ..add(
+              GetProductsEvent(subCategoryId: id),
+            ),
+          child: BlocBuilder<ProductsBloc, ProductsState>(
+              builder: (context, state) {
+            ProductsRequestState requestState = state.productsRequestState!;
+            if (requestState == ProductsRequestState.loading) {
+              return LoadingGrid(height: 200);
+            } else if (requestState == ProductsRequestState.error) {
+              return SomethingWentWrongWidget();
+            } else if (requestState == ProductsRequestState.success) {
+              return ProductsList(products: state.products!);
+            } else {
+              return SizedBox();
+            }
+          }),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: BlocProvider(
-            create: (context) =>
-                getIt<ProductsBloc>()..add(GetProductsEvent(subCategoryId: id)),
-            child: BlocBuilder<ProductsBloc, ProductsState>(
-                builder: (context, state) {
-              if (state.productsRequestState == ProductsRequestState.loading) {
-                return LoadingGrid(height: 100);
-              } else if (state.productsRequestState ==
-                  ProductsRequestState.error) {
-                return Text('Error');
-              } else if (state.productsRequestState ==
-                  ProductsRequestState.success) {
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Expanded(
-                      child: GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisSpacing: 10,
-                                  crossAxisCount: 2,
-                                  mainAxisSpacing: 10,
-                                  childAspectRatio: 150 / 270),
-                          itemCount: state.products!.result!.length,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    settings:RouteSettings(name: ProductDetails.routeName),
-                                    builder: (context) => ProductDetails(
-                                        id: state.products!.result![index].id!),
-                                  ),
-                                );
-                              },
-                              child: ProductItem(
-                                  productModel: state.products!.result![index]),
-                            );
-                          }),
-                    )
-                  ],
-                );
-              } else {
-                return SizedBox();
-              }
-            }),
-          ),
-        ));
+      ),
+    );
   }
 }

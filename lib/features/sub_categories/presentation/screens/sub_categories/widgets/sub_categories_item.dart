@@ -9,21 +9,22 @@ class SubCategoriesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
 
     Size size = MediaQuery.of(context).size;
     return InkWell(
-
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
         child: Column(
-          crossAxisAlignment:isPortrait? CrossAxisAlignment.start:CrossAxisAlignment.center,
+          crossAxisAlignment:
+              isPortrait ? CrossAxisAlignment.start : CrossAxisAlignment.center,
           children: [
             Image.network(
               categoryModel.image!,
               fit: BoxFit.cover,
-              width: isPortrait?size.width * .40:size.width * .50,
-              height: isPortrait? size.height * .20: size.height * .40,
+              width: isPortrait ? size.width * .40 : size.width * .50,
+              height: isPortrait ? size.height * .20 : size.height * .40,
             ),
             SizedBox(
               height: 10,

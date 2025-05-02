@@ -6,14 +6,15 @@ abstract class MyCartEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadItems extends MyCartEvent {}
+class LoadCartItems extends MyCartEvent {}
+
 class DeleteItem extends MyCartEvent {
   final int index;
-final String id;
-  const DeleteItem(this.index,this.id);
+  final String id;
+  const DeleteItem(this.index, this.id);
 
   @override
-  List<Object> get props => [index,id];
+  List<Object> get props => [index, id];
 }
 
 class ApplyCoupon extends MyCartEvent {
@@ -22,4 +23,9 @@ class ApplyCoupon extends MyCartEvent {
 
   @override
   List<Object> get props => [code];
+}
+
+class AddToCartEvent extends MyCartEvent {
+  final String id;
+  const AddToCartEvent(this.id);
 }

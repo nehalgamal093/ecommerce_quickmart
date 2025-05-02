@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_shop/core/failures/failures.dart';
+import '../../../../core/logic/failures/failures.dart';
 import 'package:ecommerce_shop/features/cart/domain/usecases/apply_coupon_use_case.dart';
 import 'package:ecommerce_shop/features/cart/domain/usecases/delete_cart_use_case.dart';
 import 'package:ecommerce_shop/features/cart/domain/usecases/get_cart_use_case.dart';
@@ -7,6 +7,7 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../data/models/cart_model.dart';
+import '../../domain/usecases/add_cart_use_case.dart';
 
 part 'my_cart_event.dart';
 part 'my_cart_state.dart';
@@ -16,17 +17,22 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
   GetCartUseCase getCartUseCase;
   DeleteCartUseCase deleteCartUseCase;
   ApplyCouponUseCase applyCouponUseCase;
-  MyCartBloc(
-      this.getCartUseCase, this.deleteCartUseCase, this.applyCouponUseCase)
+  AddCartUseCase addCartUseCase;
+
+  MyCartBloc(this.getCartUseCase, this.deleteCartUseCase,
+      this.applyCouponUseCase, this.addCartUseCase)
       : super(MyCartInitial()) {
-    on<LoadItems>(_onLoadItems);
+    on<LoadCartItems>(_onLoadItems);
     on<DeleteItem>(_onDeleteItem);
     on<ApplyCoupon>(_onApplyCoupon);
+    on<AddToCartEvent>(_onAddToCart);
   }
 
-  Future<void> _onLoadItems(LoadItems event, Emitter<MyCartState> emit) async {
+  Future<void> _onLoadItems(
+      LoadCartItems event, Emitter<MyCartState> emit) async {
     emit(ItemsLoading());
     var result = await getCartUseCase.call();
+
     result.fold((error) {
       emit(ItemsError(failures: error));
     }, (model) {
@@ -54,6 +60,16 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
         emit(ItemsError(failures: error));
       }, (model) {});
     }
+  }
+
+  Future<void> _onAddToCart(
+      AddToCartEvent event, Emitter<MyCartState> emit) async {
+    var result = await addCartUseCase.call(event.id);
+    result.fold((error) {
+      emit(ItemsError(failures: error));
+    }, (model) {
+      add(LoadCartItems());
+    });
   }
 
   Future<void> _onApplyCoupon(

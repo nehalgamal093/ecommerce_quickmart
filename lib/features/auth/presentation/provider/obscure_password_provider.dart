@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 
-class ObscurePasswordProvider extends ChangeNotifier{
+class ObscurePasswordProvider extends ChangeNotifier {
   bool isSecured = true;
   bool isOldSecured = true;
   bool isNewSecured = true;
   bool isConfirmSecured = true;
-  void changeSecurePassword(){
+  void changeSecurePassword() {
     isSecured = !isSecured;
     notifyListeners();
   }
-  void changeOldSecurePassword(){
+
+  void changeOldSecurePassword() {
     isOldSecured = !isOldSecured;
     notifyListeners();
   }
-  void changeNewSecurePassword(){
+
+  void changeNewSecurePassword() {
     isNewSecured = !isNewSecured;
     notifyListeners();
   }
-  void changeSecureConfirmPassword(){
+
+  void changeSecureConfirmPassword() {
     isConfirmSecured = !isConfirmSecured;
     notifyListeners();
   }

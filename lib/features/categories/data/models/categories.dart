@@ -1,13 +1,13 @@
-
 class Categories {
   Categories({
-      String? message, 
-      num? page, 
-      List<Result>? result,}){
+    String? message,
+    num? page,
+    List<Result>? result,
+  }) {
     _message = message;
     _page = page;
     _result = result;
-}
+  }
 
   Categories.fromJson(dynamic json) {
     _message = json['message'];
@@ -22,13 +22,16 @@ class Categories {
   String? _message;
   num? _page;
   List<Result>? _result;
-Categories copyWith({  String? message,
-  num? page,
-  List<Result>? result,
-}) => Categories(  message: message ?? _message,
-  page: page ?? _page,
-  result: result ?? _result,
-);
+  Categories copyWith({
+    String? message,
+    num? page,
+    List<Result>? result,
+  }) =>
+      Categories(
+        message: message ?? _message,
+        page: page ?? _page,
+        result: result ?? _result,
+      );
   String? get message => _message;
   num? get page => _page;
   List<Result>? get result => _result;
@@ -42,19 +45,19 @@ Categories copyWith({  String? message,
     }
     return map;
   }
-
 }
 
 class Result {
   Result({
-      String? id, 
-      String? name, 
-      String? slug, 
-      String? image, 
-      String? cloudinaryId, 
-      String? createdAt, 
-      String? updatedAt, 
-      num? v,}){
+    String? id,
+    String? name,
+    String? slug,
+    String? image,
+    String? cloudinaryId,
+    String? createdAt,
+    String? updatedAt,
+    num? v,
+  }) {
     _id = id;
     _name = name;
     _slug = slug;
@@ -63,7 +66,7 @@ class Result {
     _createdAt = createdAt;
     _updatedAt = updatedAt;
     _v = v;
-}
+  }
 
   Result.fromJson(dynamic json) {
     _id = json['_id'];
@@ -83,23 +86,26 @@ class Result {
   String? _createdAt;
   String? _updatedAt;
   num? _v;
-Result copyWith({  String? id,
-  String? name,
-  String? slug,
-  String? image,
-  String? cloudinaryId,
-  String? createdAt,
-  String? updatedAt,
-  num? v,
-}) => Result(  id: id ?? _id,
-  name: name ?? _name,
-  slug: slug ?? _slug,
-  image: image ?? _image,
-  cloudinaryId: cloudinaryId ?? _cloudinaryId,
-  createdAt: createdAt ?? _createdAt,
-  updatedAt: updatedAt ?? _updatedAt,
-  v: v ?? _v,
-);
+  Result copyWith({
+    String? id,
+    String? name,
+    String? slug,
+    String? image,
+    String? cloudinaryId,
+    String? createdAt,
+    String? updatedAt,
+    num? v,
+  }) =>
+      Result(
+        id: id ?? _id,
+        name: name ?? _name,
+        slug: slug ?? _slug,
+        image: image ?? _image,
+        cloudinaryId: cloudinaryId ?? _cloudinaryId,
+        createdAt: createdAt ?? _createdAt,
+        updatedAt: updatedAt ?? _updatedAt,
+        v: v ?? _v,
+      );
   String? get id => _id;
   String? get name => _name;
   String? get slug => _slug;
@@ -121,5 +127,4 @@ Result copyWith({  String? id,
     map['__v'] = _v;
     return map;
   }
-
 }

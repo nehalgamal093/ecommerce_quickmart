@@ -15,7 +15,7 @@ class CartItems {
     return map;
   }
 
-  CartItems.fromJson(dynamic json){
+  CartItems.fromJson(dynamic json) {
     product = json["product"];
     quantity = json["quantity"];
     price = json["price"];
@@ -33,7 +33,13 @@ class Result {
   num? v;
 
   Result(
-      {this.id, this.user, this.cartItemsList, this.totalPrice, this.createdAt, this.updatedAt, this.v});
+      {this.id,
+      this.user,
+      this.cartItemsList,
+      this.totalPrice,
+      this.createdAt,
+      this.updatedAt,
+      this.v});
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -49,7 +55,7 @@ class Result {
     return map;
   }
 
-  Result.fromJson(dynamic json){
+  Result.fromJson(dynamic json) {
     id = json["_id"];
     user = json["user"];
     if (json["cartItems"] != null) {
@@ -80,7 +86,7 @@ class DeleteCartResponse {
     return map;
   }
 
-  DeleteCartResponse.fromJson(dynamic json){
+  DeleteCartResponse.fromJson(dynamic json) {
     message = json["message"];
     result = json["result"] != null ? Result.fromJson(json["result"]) : null;
   }

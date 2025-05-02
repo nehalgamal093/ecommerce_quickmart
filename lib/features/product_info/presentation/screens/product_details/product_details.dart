@@ -8,7 +8,9 @@ import 'package:ecommerce_shop/features/product_info/presentation/screens/produc
 import 'package:ecommerce_shop/features/product_info/presentation/screens/widgets/loading_product_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../core/resources/colors/colors_manager.dart';
+import '../../../../../core/resources/constants/strings_manager.dart';
 import '../write_review/write_review.dart';
 
 class ProductDetails extends StatelessWidget {
@@ -20,86 +22,85 @@ class ProductDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product Details'),
+        title: Text(StringsManager.productDetails),
       ),
       body: SafeArea(
-        child: BlocProvider(
-          create: (context) =>
-              getIt<ProductInfoBloc>()..add(GetProductInfoEvent(id)),
-          child: BlocBuilder<ProductInfoBloc, ProductsInfoState>(
-              builder: (context, state) {
-            if (state.productDetailsRequestState ==
-                ProductsInfoRequestState.loading) {
-              return LoadingProductInfo();
-            } else if (state.productDetailsRequestState ==
-                ProductsInfoRequestState.error) {
-              return Text(state.failures!.message!);
-            } else if (state.productDetailsRequestState ==
-                ProductsInfoRequestState.success) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: CustomScrollView(slivers: [
-                  SliverToBoxAdapter(
-                    child: ProductInfoSection(
-                        productModel: state.productDetailsModel!.result!),
+          child: BlocProvider(
+        create: (context) =>
+            getIt<ProductInfoBloc>()..add(GetProductInfoEvent(id)),
+        child: BlocBuilder<ProductInfoBloc, ProductsInfoState>(
+            builder: (context, state) {
+          if (state.productDetailsRequestState ==
+              ProductsInfoRequestState.loading) {
+            return LoadingProductInfo();
+          } else if (state.productDetailsRequestState ==
+              ProductsInfoRequestState.error) {
+            return Text(state.failures!.message!);
+          } else if (state.productDetailsRequestState ==
+              ProductsInfoRequestState.success) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: CustomScrollView(slivers: [
+                SliverToBoxAdapter(
+                  child: ProductInfoSection(
+                      productModel: state.productDetailsModel!.result!),
+                ),
+                SliverToBoxAdapter(
+                  child: ButtonsSection(
+                    id: state.productDetailsModel!.result!.id!,
                   ),
-                  SliverToBoxAdapter(
-                    child: ButtonsSection(
-                      id: state.productDetailsModel!.result!.id!,
-                    ),
+                ),
+                SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 10,
                   ),
-                  SliverToBoxAdapter(
-                    child: SizedBox(
-                      height: 10,
-                    ),
+                ),
+                SliverToBoxAdapter(
+                  child: ReviewBarSection(),
+                ),
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Divider(
+                        color: ColorsManager.lightGreyColor,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
-                  SliverToBoxAdapter(
-                    child: ReviewBarSection(),
+                ),
+                ProductReviewsSection(
+                  result: state.productDetailsModel!.result!,
+                ),
+                SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 20,
                   ),
-                  SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Divider(
-                          color: ColorsManager.lightGreyColor,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                      ],
-                    ),
+                ),
+                SliverToBoxAdapter(
+                  child: CustomBtnWidget(
+                      title: StringsManager.writeReview,
+                      onPressed: () {
+                        Navigator.pushNamed(context, WriteReview.routeName,
+                            arguments: state.productDetailsModel!.result!);
+                      }),
+                ),
+                SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 10,
                   ),
-                  ProductReviewsSection(
-                    result: state.productDetailsModel!.result!,
-                  ),
-                  SliverToBoxAdapter(
-                    child: SizedBox(
-                      height: 20,
-                    ),
-                  ),
-                  SliverToBoxAdapter(
-                    child: CustomBtnWidget(
-                        title: 'Write A Review',
-                        onPressed: () {
-                          Navigator.pushNamed(context, WriteReview.routeName,
-                              arguments: state.productDetailsModel!.result!);
-                        }),
-                  ),
-                  SliverToBoxAdapter(
-                    child: SizedBox(
-                      height: 10,
-                    ),
-                  ),
-                ]),
-              );
-            } else {
-              return SizedBox();
-            }
-          }),
-        ),
-      ),
+                ),
+              ]),
+            );
+          } else {
+            return SizedBox();
+          }
+        }),
+      )),
     );
   }
 }
