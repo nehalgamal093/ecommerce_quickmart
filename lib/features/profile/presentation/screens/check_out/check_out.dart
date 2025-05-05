@@ -38,8 +38,8 @@ class Checkout extends StatelessWidget {
             BlocConsumer<PaymentBloc, PaymentState>(listener: (context, state) {
           if (state.paymentRequestState == PaymentRequestState.success) {
             var bloc = BlocProvider.of<PaymentBloc>(context);
-            Navigator.pushReplacement(
-              context,
+            Navigator.of(context).pushReplacement(
+
               MaterialPageRoute(
                 builder: (context) =>
                     PaymentWebView(clientSecret: bloc.clientSecret),

@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -56,7 +57,7 @@ class ReviewSection extends StatelessWidget {
           ),
           Text(
             StringsManager.shippingAddress,
-            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+            style: context.bodySmall!.copyWith(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
                 color: ColorsManager.blackColor),
@@ -104,7 +105,7 @@ class ReviewSection extends StatelessWidget {
           ),
           Text(
             StringsManager.orderInfo,
-            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+            style: context.bodySmall!.copyWith(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
                 color: ColorsManager.blackColor),
@@ -129,7 +130,7 @@ class ReviewSection extends StatelessWidget {
                 flex: 2,
                 child: Text(
                   StringsManager.total,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  style: context.bodySmall!.copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: ColorsManager.blackColor),
@@ -139,7 +140,7 @@ class ReviewSection extends StatelessWidget {
                 flex: 3,
                 child: Text(
                   '\$${totalPrice.toString()}',
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  style: context.bodySmall!.copyWith(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: ColorsManager.blackColor),

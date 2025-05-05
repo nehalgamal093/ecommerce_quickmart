@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
 import 'package:ecommerce_shop/core/widgets/loading_list.dart';
 import 'package:ecommerce_shop/features/cart/presentation/bloc/my_cart_bloc.dart';
@@ -41,7 +42,7 @@ class _MyCartState extends State<MyCart> {
                   },
                   child: Text(
                     'Voucher Code',
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    style: context.bodySmall!.copyWith(
                         fontWeight: FontWeight.w600,
                         color: ColorsManager.cyanColor),
                   ),

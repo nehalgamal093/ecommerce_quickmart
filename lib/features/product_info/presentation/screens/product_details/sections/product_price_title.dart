@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 class ProductPriceTitle extends StatelessWidget {
@@ -17,22 +18,17 @@ class ProductPriceTitle extends StatelessWidget {
       children: [
         Text(
           name,
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18),
+          style: context.titleLarge!.copyWith(fontSize: 18),
         ),
         Column(
           children: [
             Text(
               price,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontSize: 18),
+              style: context.titleLarge!.copyWith(fontSize: 18),
             ),
             Text(
               priceAfterDiscount,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall!
+              style: context.bodySmall!
                   .copyWith(decoration: TextDecoration.lineThrough),
             ),
           ],

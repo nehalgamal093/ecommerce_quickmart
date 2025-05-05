@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 class LabelContainer extends StatelessWidget {
@@ -9,12 +10,11 @@ class LabelContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8),
-      decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(8)),
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.displaySmall,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8),
       ),
+      child: Text(text, style: context.displaySmall),
     );
   }
 }

@@ -1,3 +1,7 @@
+import 'package:ecommerce_shop/core/di/di.dart';
+import 'package:ecommerce_shop/core/network/network_helper/network_bloc/network_bloc.dart';
+import 'package:ecommerce_shop/core/widgets/error_widget.dart';
+import 'package:ecommerce_shop/features/payment_webview/presentation/screens/payment_webview.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/provider/hide_show_bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,32 +47,45 @@ class MainScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-        body: IndexedStack(
-          index: mainProvider.index,
-          children: [
-            _buildNavigator(
-              0,
-              HomeScreen(),
-            ),
-            _buildNavigator(
-              1,
-              CategoriesScreen(),
-            ),
-            _buildNavigator(
-              2,
-              MyCart(),
-            ),
-            _buildNavigator(
-              3,
-              Wishlist(),
-            ),
-            _buildNavigator(
-              4,
-              Profile(),
-            ),
-
-            // Add other tabs
-          ],
+        body: BlocProvider(
+          create: (context) => getIt<NetworkBloc>()..add(NetworkObserve()),
+          child:
+              BlocBuilder<NetworkBloc, NetworkState>(builder: (context, state) {
+            if (state is NetworkFailure) {
+              return SomethingWentWrongWidget(
+                  title: StringsManager.noInternet,
+                  img: ImagesManager.routerDevice);
+            } else if (state is NetworkSuccess) {
+              return IndexedStack(
+                index: mainProvider.index,
+                children: [
+                  _buildNavigator(
+                    0,
+                    HomeScreen(),
+                  ),
+                  _buildNavigator(
+                    1,
+                    CategoriesScreen(),
+                  ),
+                  _buildNavigator(
+                    2,
+                    MyCart(),
+                  ),
+                  _buildNavigator(
+                    3,
+                    Wishlist(),
+                  ),
+                  _buildNavigator(
+                    4,
+                    Profile(),
+                  ),
+                  // Add other tabs
+                ],
+              );
+            } else {
+              return SizedBox();
+            }
+          }),
         ),
         bottomNavigationBar: Consumer<HideShowBottomNavProvider>(
             builder: (context, visibility, child) {
@@ -160,14 +177,14 @@ class MainScreen extends StatelessWidget {
   Widget _buildNavigator(int index, Widget screen) {
     return Navigator(
       key: _navigatorKeys[index],
-      // onGenerateRoute: (settings) => MaterialPageRoute(
-      //   builder: (_) => screen,
-      // ),
       onGenerateRoute: (RouteSettings settings) {
         WidgetBuilder builder;
         switch (settings.name) {
           case '/image-view':
             builder = (BuildContext _) => ImageView();
+            break;
+          case 'pay':
+            builder = (BuildContext _) => PaymentWebView(clientSecret: '');
             break;
           default:
             builder = (BuildContext _) => screen;

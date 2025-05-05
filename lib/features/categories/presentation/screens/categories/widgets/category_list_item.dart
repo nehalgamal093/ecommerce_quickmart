@@ -1,6 +1,4 @@
-import 'package:ecommerce_shop/features/categories/data/models/categories.dart';
-import 'package:flutter/material.dart';
-import '../../../../../../core/resources/colors/colors_manager.dart';
+import '../../file_imports/file_imports.dart';
 
 class CategoryListItem extends StatelessWidget {
   final Result categoryModel;
@@ -17,13 +15,17 @@ class CategoryListItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.network(categoryModel.image!, width: 50),
+          CachedNetworkImage(
+            imageUrl: categoryModel.image!,
+            placeholder: (context, url) => loadingItem(),
+            errorWidget: (context, url, error) => Icon(Icons.error),
+          ),
           SizedBox(
             height: 5,
           ),
           Text(
             categoryModel.name ?? "",
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: context.bodyMedium,
           ),
         ],
       ),

@@ -1,5 +1,5 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../../core/resources/colors/colors_manager.dart';
 import '../../../../../../core/resources/constants/strings_manager.dart';
@@ -53,13 +53,10 @@ class ProductWithLabel extends StatelessWidget {
                         Expanded(
                           child: Text(
                             StringsManager.loopWatch,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(
-                                  fontWeight: FontWeight.w400,
-                                  letterSpacing: .5,
-                                ),
+                            style: context.titleSmall!.copyWith(
+                              fontWeight: FontWeight.w400,
+                              letterSpacing: .5,
+                            ),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -71,21 +68,21 @@ class ProductWithLabel extends StatelessWidget {
                     ),
                     Text(
                       StringsManager.price1,
-                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: .5,
-                          ),
+                      style: context.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: .5,
+                      ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
                       StringsManager.price2,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: ColorsManager.lightGreyColor,
-                            letterSpacing: .5,
-                            decoration: TextDecoration.lineThrough,
-                          ),
+                      style: context.bodyMedium!.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: ColorsManager.lightGreyColor,
+                        letterSpacing: .5,
+                        decoration: TextDecoration.lineThrough,
+                      ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

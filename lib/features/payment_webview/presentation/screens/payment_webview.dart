@@ -35,6 +35,7 @@ class _PaymentWebViewState extends State<PaymentWebView> {
       )
       ..loadRequest(Uri.parse(
           '${dotenv.env['PAY_MOB_CHECKOUT']!}?publicKey=${dotenv.env['PUBLIC_KEY']!}&clientSecret=${widget.clientSecret}'));
+
   }
 
   @override

@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/resources/colors/colors_manager.dart';
@@ -14,11 +15,11 @@ class LabelSection extends StatelessWidget {
       children: [
         Text(
           label,
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18),
+          style: context.titleLarge!.copyWith(fontSize: 18),
         ),
         Text(
           StringsManager.seeAll,
-          style: Theme.of(context).textTheme.displaySmall!.copyWith(
+          style: context.displaySmall!.copyWith(
               color: ColorsManager.cyanColor, fontWeight: FontWeight.w700),
         )
       ],

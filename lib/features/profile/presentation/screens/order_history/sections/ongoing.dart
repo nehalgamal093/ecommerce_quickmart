@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -22,14 +23,14 @@ class Ongoing extends StatelessWidget {
         ),
         Text(
           StringsManager.noOngoingOrder,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: context.titleLarge,
         ),
         SizedBox(
           height: 15,
         ),
         Text(
           StringsManager.weDontHaveActiveOrders,
-          style: Theme.of(context).textTheme.bodySmall,
+          style: context.bodySmall,
           textAlign: TextAlign.center,
         ),
         SizedBox(

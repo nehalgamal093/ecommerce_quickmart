@@ -82,6 +82,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     var response = await apiManager.postRequest(
         EndPoints.paymentRequest, request!.toJson(),
         headers: {"Authorization": AppConstants.payMobToken});
+    print('Status ${response.data}');
     try {
       if (response.statusCode == 200 || response.statusCode == 201) {
         return PaymentResponse.fromJson(response.data);
@@ -90,6 +91,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
         if (response.data is Map<String, dynamic>) {
           errorMessage = response.data['errors'][0]['msg'] ?? errorMessage;
         }
+
         throw ServerException(errorMessage);
       }
     } on DioException catch (e) {

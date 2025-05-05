@@ -18,6 +18,7 @@ import 'features/main/presentation/provider/order_tracking_state.dart';
 import 'features/product_info/presentation/provider/hide_show_bottom_nav.dart';
 import 'features/products/presentation/bloc/products_bloc.dart';
 import 'features/profile/presentation/bloc/profile_bloc/profile_bloc.dart';
+import 'features/profile/presentation/bloc/address_bloc/address_bloc.dart';
 import 'features/profile/presentation/provider/old_new_screen.dart';
 import 'features/profile/presentation/screens/shipping_address/providers/cities_province_provider.dart';
 import 'features/wish_list/presentation/bloc/wishlist_bloc/wishlist_bloc.dart';
@@ -36,6 +37,9 @@ void main() async {
         ),
         BlocProvider(
           create: (context) => getIt<ProfileBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AddressBloc>(),
         ),
         BlocProvider(
           create: (context) => getIt<MyCartBloc>()

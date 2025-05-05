@@ -1,12 +1,4 @@
-import 'package:ecommerce_shop/core/di/di.dart';
-import 'package:ecommerce_shop/core/widgets/error_widget.dart';
-import 'package:ecommerce_shop/core/widgets/loading_grid.dart';
-import 'package:ecommerce_shop/features/products/presentation/bloc/products_bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../core/resources/constants/strings_manager.dart';
-import '../sections/products_list.dart';
+import '../file_imports/file_imports.dart';
 
 class ProductsScreen extends StatelessWidget {
   final String id;
@@ -32,7 +24,9 @@ class ProductsScreen extends StatelessWidget {
             if (requestState == ProductsRequestState.loading) {
               return LoadingGrid(height: 200);
             } else if (requestState == ProductsRequestState.error) {
-              return SomethingWentWrongWidget();
+              return SomethingWentWrongWidget(
+                  title: StringsManager.somethingWentWrong,
+                  img: ImagesManager.somethingWrong);
             } else if (requestState == ProductsRequestState.success) {
               return ProductsList(products: state.products!);
             } else {

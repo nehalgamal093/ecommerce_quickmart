@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/features/categories/data/models/categories.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/resources/colors/colors_manager.dart';
@@ -33,7 +34,7 @@ class CategoryItem extends StatelessWidget {
           ),
           Text(
             categoryModel.name!,
-            style: Theme.of(context).textTheme.displaySmall!.copyWith(
+            style: context.displaySmall!.copyWith(
                 color: ColorsManager.blackColor,
                 overflow: TextOverflow.ellipsis),
           ),

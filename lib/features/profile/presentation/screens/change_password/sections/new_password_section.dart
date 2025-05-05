@@ -1,4 +1,5 @@
 import 'package:ecommerce_shop/core/di/di.dart';
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/core/widgets/logout_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,7 @@ import '../../../../../../core/widgets/custom_btn_widget.dart';
 import '../../../../../../core/widgets/custom_textfield_widget.dart';
 import '../../../../../../core/widgets/label_text.dart';
 import '../../../../../auth/presentation/provider/obscure_password_provider.dart';
-import '../../../bloc/profile_bloc/profile_bloc.dart';
+import '../../../bloc/change_password_bloc/change_password_bloc.dart';
 
 class NewPasswordSection extends StatefulWidget {
   const NewPasswordSection({super.key});
@@ -31,10 +32,10 @@ class _NewPasswordSectionState extends State<NewPasswordSection> {
 
     return SafeArea(
       child: BlocProvider(
-        create: (context) => getIt<ProfileBloc>(),
-        child: BlocConsumer<ProfileBloc, ProfileState>(
+        create: (context) => getIt<ChangePasswordBloc>(),
+        child: BlocConsumer<ChangePasswordBloc, ChangePasswordState>(
           listener: (context, state) {
-            if (state.changePasswordState == ChangePasswordState.success) {
+            if (state.changePasswordState == RequestState.success) {
               showDialog(
                   context: context,
                   builder: (context) {
@@ -54,14 +55,14 @@ class _NewPasswordSectionState extends State<NewPasswordSection> {
                     ),
                     Text(
                       'New Password',
-                      style: Theme.of(context).textTheme.titleLarge,
+                      style:context.titleLarge,
                     ),
                     SizedBox(
                       height: 5,
                     ),
                     Text(
                       'Enter your new password and remember it',
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: context.bodySmall,
                     ),
                     SizedBox(
                       height: 20,
@@ -119,8 +120,10 @@ class _NewPasswordSectionState extends State<NewPasswordSection> {
                     CustomBtnWidget(
                         title: StringsManager.continueProcess,
                         onPressed: () {
-                          context.read<ProfileBloc>().add(ChangePasswordEvent(
-                              confirmPasswordController.text));
+                          context.read<ChangePasswordBloc>().add(
+                                PasswordChangeEvent(
+                                    confirmPasswordController.text),
+                              );
                           // provider.changeScreen(0);
                         })
                   ],

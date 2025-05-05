@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/colors/colors_manager.dart';
@@ -18,7 +19,7 @@ class PriceInfo extends StatelessWidget {
         ),
         Text(
           'Order Info',
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 16),
+          style: context.titleLarge!.copyWith(fontSize: 16),
         ),
         SizedBox(
           height: 8,
@@ -28,11 +29,11 @@ class PriceInfo extends StatelessWidget {
           children: [
             Text(
               'Sub Total',
-              style: Theme.of(context).textTheme.bodySmall,
+              style: context.bodySmall,
             ),
             Text(
               '\$$totalPrice',
-              style: Theme.of(context).textTheme.bodySmall,
+              style: context.bodySmall,
             )
           ],
         ),
@@ -44,11 +45,11 @@ class PriceInfo extends StatelessWidget {
           children: [
             Text(
               'Shipping Cost',
-              style: Theme.of(context).textTheme.bodySmall,
+              style: context.bodySmall,
             ),
             Text(
               '\$0.00',
-              style: Theme.of(context).textTheme.bodySmall,
+              style: context.bodySmall,
             )
           ],
         ),
@@ -61,16 +62,12 @@ class PriceInfo extends StatelessWidget {
                 children: [
                   Text(
                     'Discount',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall!
+                    style: context.bodySmall!
                         .copyWith(color: ColorsManager.subGreen),
                   ),
                   Text(
                     '- ${discount.toString()}',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall!
+                    style: context.bodySmall!
                         .copyWith(color: ColorsManager.subGreen),
                   )
                 ],
@@ -84,17 +81,11 @@ class PriceInfo extends StatelessWidget {
           children: [
             Text(
               'Total',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontSize: 16),
+              style: context.titleLarge!.copyWith(fontSize: 16),
             ),
             Text(
               '\$$totalPrice',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontSize: 16),
+              style: context.titleLarge!.copyWith(fontSize: 16),
             )
           ],
         ),

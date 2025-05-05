@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../../../../../core/resources/colors/colors_manager.dart';
@@ -23,10 +24,7 @@ class ProductReviewsSection extends StatelessWidget {
                       children: [
                         Text(
                           result.myReviews![index].user!.name!,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(fontSize: 20),
+                          style: context.titleLarge!.copyWith(fontSize: 20),
                         ),
                         SizedBox(
                           height: 5,
@@ -51,7 +49,7 @@ class ProductReviewsSection extends StatelessWidget {
                         ),
                         Text(
                           result.myReviews![index].comment!,
-                          style: Theme.of(context).textTheme.bodySmall,
+                          style: context.bodySmall,
                         ),
                         SizedBox(
                           height: 10,

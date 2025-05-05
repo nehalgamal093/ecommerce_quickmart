@@ -1,12 +1,4 @@
-import 'package:ecommerce_shop/core/di/di.dart';
-import 'package:ecommerce_shop/core/logic/Animation/route_animation.dart';
-import 'package:ecommerce_shop/core/widgets/loading_grid.dart';
-import 'package:ecommerce_shop/features/categories/presentation/bloc/categories_bloc.dart';
-import 'package:ecommerce_shop/features/categories/presentation/screens/categories/widgets/category_list_item.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../sub_categories/presentation/screens/sub_categories/sub_categories_screen.dart';
+import '../file_imports/file_imports.dart';
 
 class CategoriesScreen extends StatelessWidget {
   static const String routeName = '/categories';

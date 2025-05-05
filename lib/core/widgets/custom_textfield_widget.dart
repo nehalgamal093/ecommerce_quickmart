@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import '../resources/colors/colors_manager.dart';
 
@@ -24,7 +25,7 @@ class CustomTextFieldWidget extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+        hintStyle: context.bodySmall!.copyWith(
             color: ColorsManager.lightGreyColor, fontWeight: FontWeight.w200),
         suffixIcon: icon,
         border: OutlineInputBorder(

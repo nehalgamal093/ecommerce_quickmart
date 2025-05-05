@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/colors/colors_manager.dart';
@@ -26,7 +27,7 @@ class TrackerItem extends StatelessWidget {
               ),
         Text(
           title,
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(color: color),
+          style: context.titleSmall?.copyWith(color: color),
         )
       ],
     );

@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/resources/assets_manager/images_manager.dart';
@@ -28,7 +29,7 @@ class HeaderSection extends StatelessWidget {
                 ),
                 child: Text(
                   '30% OFF',
-                  style: Theme.of(context).textTheme.displaySmall,
+                  style: context.displaySmall,
                 ),
               ),
               SizedBox(height: 10),
@@ -36,9 +37,7 @@ class HeaderSection extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
                   'On Headphones',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displaySmall!
+                  style: context.displaySmall!
                       .copyWith(fontSize: 12, fontWeight: FontWeight.w300),
                 ),
               ),
@@ -47,9 +46,7 @@ class HeaderSection extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
                   'Exclusive Sales',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge!
+                  style: context.titleLarge!
                       .copyWith(color: ColorsManager.whiteColor),
                 ),
               ),

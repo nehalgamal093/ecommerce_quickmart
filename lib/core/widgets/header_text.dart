@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import '../resources/colors/colors_manager.dart';
 
@@ -15,20 +16,18 @@ class HeaderText extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: context.titleLarge,
         ),
         SizedBox(
           height: 5,
         ),
         RichText(
           text: TextSpan(children: [
-            TextSpan(text: text, style: Theme.of(context).textTheme.bodySmall),
+            TextSpan(text: text, style: context.bodySmall),
             TextSpan(
               text: span,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall!
-                  .copyWith(color: ColorsManager.cyanColor),
+              style:
+                  context.bodySmall!.copyWith(color: ColorsManager.cyanColor),
             )
           ]),
         ),

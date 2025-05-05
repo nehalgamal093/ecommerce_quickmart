@@ -1,11 +1,12 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/core/resources/colors/colors_manager.dart';
-import '../../../../core/resources/constants/strings_manager.dart';
 import 'package:flutter/material.dart';
 
-import '../resources/assets_manager/images_manager.dart';
-
 class SomethingWentWrongWidget extends StatelessWidget {
-  const SomethingWentWrongWidget({super.key});
+  final String title;
+  final String img;
+  const SomethingWentWrongWidget(
+      {super.key, required this.title, required this.img});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +18,14 @@ class SomethingWentWrongWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              ImagesManager.somethingWrong,
+              img,
               width: size.width * .7,
             ),
+            SizedBox(height: 20),
             Text(
-              StringsManager.somethingWentWrong,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
+              title,
+              style: context
+                  .titleMedium!
                   .copyWith(color: ColorsManager.redColor),
             ),
           ],

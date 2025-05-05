@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import '../../features/auth/presentation/screen/login/login.dart';
 import '../caching/cache_helper.dart';
@@ -23,7 +24,7 @@ logoutDialog(
               ),
               Text(
                 "Do you want to logout?",
-                style: Theme.of(context).textTheme.bodySmall,
+                style: context.bodySmall,
               ),
               SizedBox(
                 height: 20,
@@ -33,21 +34,24 @@ logoutDialog(
           actions: [
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorsManager.redColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12))),
+                backgroundColor: ColorsManager.redColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
               onPressed: () {
                 CacheHelper.clearToken();
                 CacheHelper.clearUserId();
                 Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => LoginScreen(),
+                    ),
                     (route) => false);
               },
               child: Text(
                 'Logout',
-                style: Theme.of(context)
-                    .textTheme
+                style: context
                     .bodySmall!
                     .copyWith(color: ColorsManager.whiteColor),
               ),

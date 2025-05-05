@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import '../../../core/resources/colors/colors_manager.dart';
 
@@ -36,9 +37,7 @@ class CustomButton extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
+            style: context.bodySmall!
                 .copyWith(color: textColor, fontWeight: FontWeight.w600),
           ),
           SizedBox(

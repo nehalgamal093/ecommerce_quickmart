@@ -160,4 +160,5 @@ class StringsManager {
   static const String price2 = '\$20.00';
   static const String reviewsCount = '4.5 (2,495 reviews) ';
   static const String rate = '4.0';
+  static const String noInternet = 'No Internet Connection';
 }

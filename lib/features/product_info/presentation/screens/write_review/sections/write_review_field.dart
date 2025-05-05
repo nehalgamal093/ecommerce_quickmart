@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/constants/strings_manager.dart';
@@ -15,7 +16,7 @@ class WriteReviewField extends StatelessWidget {
       children: [
         Text(
           StringsManager.writeYourReview,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: context.titleLarge,
         ),
         SizedBox(
           height: 10,

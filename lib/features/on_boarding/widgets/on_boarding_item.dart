@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import '../../../core/models/onboarding_item.dart';
 import '../../../core/resources/colors/colors_manager.dart';
@@ -41,7 +42,7 @@ class OnBoardingItem extends StatelessWidget {
           ),
           Text(
             item.title,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: context.titleLarge,
             textAlign: TextAlign.center,
           ),
           SizedBox(
@@ -49,7 +50,7 @@ class OnBoardingItem extends StatelessWidget {
           ),
           Text(
             item.description,
-            style: Theme.of(context).textTheme.bodySmall,
+            style: context.bodySmall,
             textAlign: TextAlign.center,
           ),
           SizedBox(

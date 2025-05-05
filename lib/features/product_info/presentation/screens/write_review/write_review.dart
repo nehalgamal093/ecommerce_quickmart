@@ -1,7 +1,6 @@
 import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
 import 'package:ecommerce_shop/core/widgets/loading_dialog.dart';
 import 'package:ecommerce_shop/core/widgets/response_dialog.dart';
-import 'package:ecommerce_shop/features/cart/data/models/cart_model.dart';
 import 'package:ecommerce_shop/features/product_info/data/model/review_request_model.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/bloc/product_info_bloc.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/screens/product_details/product_details.dart';
@@ -11,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/resources/constants/strings_manager.dart';
+import '../../../data/model/product_details_model.dart';
 
 class WriteReview extends StatefulWidget {
   static const String routeName = '/write_review';
@@ -25,8 +25,8 @@ class _WriteReviewState extends State<WriteReview> {
 
   @override
   Widget build(BuildContext context) {
-    Product productDetails =
-        ModalRoute.of(context)!.settings.arguments as Product;
+    ProductDetailsModel productDetails =
+        ModalRoute.of(context)!.settings.arguments as ProductDetailsModel;
     return Scaffold(
       appBar: AppBar(
         title: Text(StringsManager.writeReview),
@@ -43,7 +43,7 @@ class _WriteReviewState extends State<WriteReview> {
                   height: 10,
                 ),
                 ProductSection(
-                  product: productDetails,
+                  product: productDetails.result!,
                 ),
                 SizedBox(
                   height: 100,
@@ -60,7 +60,7 @@ class _WriteReviewState extends State<WriteReview> {
                       ReviewRequestModel review = ReviewRequestModel(
                           ratings: 3,
                           comment: reviewController.text,
-                          product: productDetails.id);
+                          product: productDetails.result?.id);
                       BlocProvider.of<ProductInfoBloc>(context).add(
                         WriteReviewEvent(review),
                       );
@@ -80,7 +80,7 @@ class _WriteReviewState extends State<WriteReview> {
                 ProductsInfoRequestState.success) {
               Navigator.pop(context);
               Navigator.pushReplacementNamed(context, ProductDetails.routeName,
-                  arguments: productDetails.id);
+                  arguments: productDetails.result?.id);
             }
           }),
         ),

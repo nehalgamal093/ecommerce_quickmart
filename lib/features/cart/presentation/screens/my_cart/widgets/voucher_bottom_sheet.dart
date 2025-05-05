@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
 import 'package:ecommerce_shop/core/widgets/custom_textfield_widget.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ Future<dynamic> showVoucherBottomSheet(
                   ),
                   Text(
                     'Voucher Code',
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    style: context.bodySmall!.copyWith(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: ColorsManager.blackColor),

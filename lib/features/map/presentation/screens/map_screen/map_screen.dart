@@ -87,21 +87,6 @@ class _MapScreenState extends State<MapScreen> {
                               .changeProvince(mapProvider.place!.name!);
                           widget.cityProvince
                               .changeStreet(mapProvider.place!.street!);
-                          print(
-                              '>>>> locality ---> ${mapProvider.place!.locality!}');
-                          print(
-                              '>>>> street ---> ${mapProvider.place!.street!}');
-                          print('>>>> Name ---> ${mapProvider.place!.name!}');
-                          print(
-                              '>>>> adminstrative area ---> ${mapProvider.place!.administrativeArea!}');
-                          print(
-                              '>>>> country ---> ${mapProvider.place!.country!}');
-                          print(
-                              '>>>> subadministrative area ---> ${mapProvider.place!.subAdministrativeArea!}');
-                          print(
-                              '>>>> sub throughfare ---> ${mapProvider.place!.subThoroughfare!}');
-                          print(
-                              '>>>> throughfare ---> ${mapProvider.place!.thoroughfare!}');
                           Navigator.pop(context);
                           // Navigator.pop(context, {
                           //   'position': mapProvider.selectedPosition,

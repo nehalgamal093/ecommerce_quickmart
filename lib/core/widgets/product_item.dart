@@ -1,8 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/features/products/data/models/products.dart';
 import 'package:ecommerce_shop/features/products/presentation/widgets/like_btn.dart';
 import 'package:flutter/material.dart';
 
 import '../resources/colors/colors_manager.dart';
+import 'loading_grid.dart';
 
 class ProductItem extends StatelessWidget {
   final Result productModel;
@@ -33,9 +36,11 @@ class ProductItem extends StatelessWidget {
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
-              child: Image.network(
-                productModel.images![0].attachmentFile!,
+              child: CachedNetworkImage(
                 fit: BoxFit.cover,
+                imageUrl: productModel.images![0].attachmentFile!,
+                placeholder: (context, url) => loadingItem(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
             SizedBox(
@@ -45,7 +50,7 @@ class ProductItem extends StatelessWidget {
               productModel.title!,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+              style: context.bodySmall!.copyWith(
                   color: ColorsManager.blackColor, fontWeight: FontWeight.w700),
             ),
             SizedBox(
@@ -55,14 +60,14 @@ class ProductItem extends StatelessWidget {
               children: [
                 Text(
                   productModel.priceAfterDiscount.toString(),
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  style: context.bodySmall!.copyWith(
                       color: ColorsManager.blackColor,
                       fontWeight: FontWeight.w700),
                 ),
                 Spacer(),
                 Text(
                   productModel.price.toString(),
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  style: context.bodySmall!.copyWith(
                       color: ColorsManager.lightGreyColor,
                       fontWeight: FontWeight.w700,
                       decoration: TextDecoration.lineThrough,

@@ -1,8 +1,10 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/features/cart/data/models/cart_model.dart';
+import 'package:ecommerce_shop/features/product_info/data/model/product_details_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductSection extends StatelessWidget {
-  final Product product;
+  final Result product;
   const ProductSection({super.key, required this.product});
 
   @override
@@ -25,14 +27,14 @@ class ProductSection extends StatelessWidget {
                 width: size.width * .6,
                 child: Text(
                   product.title!,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                )),
+                  style:context.bodyMedium,
+                ),),
             SizedBox(
               width: size.width * .6,
               child: Wrap(
                 children: [
                   Text(product.description!,
-                      style: Theme.of(context).textTheme.bodySmall),
+                      style: context.bodySmall),
                 ],
               ),
             )

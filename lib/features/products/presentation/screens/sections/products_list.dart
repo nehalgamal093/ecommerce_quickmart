@@ -1,9 +1,4 @@
-import 'package:ecommerce_shop/features/products/data/models/products.dart';
-import 'package:flutter/material.dart';
-
-import '../../../../../core/logic/Animation/route_animation.dart';
-import '../../../../../core/widgets/product_item.dart';
-import '../../../../product_info/presentation/screens/product_details/product_details.dart';
+import '../file_imports/file_imports.dart';
 
 class ProductsList extends StatelessWidget {
   final Products products;
@@ -41,4 +36,4 @@ class ProductsList extends StatelessWidget {
     );
   }
 }
-//--
+

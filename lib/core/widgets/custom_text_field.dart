@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import '../resources/colors/colors_manager.dart';
 
@@ -29,7 +30,7 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         errorText: errorText.isEmpty ? null : errorText,
         hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.bodySmall,
+        hintStyle: context.bodySmall,
         suffixIcon: icon,
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(

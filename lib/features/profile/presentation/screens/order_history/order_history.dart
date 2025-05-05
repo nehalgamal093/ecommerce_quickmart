@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/features/profile/presentation/screens/order_history/sections/completed.dart';
 import 'package:ecommerce_shop/features/profile/presentation/screens/order_history/sections/ongoing.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +38,7 @@ class _OrderHistoryState extends State<OrderHistory>
               dividerColor: Colors.transparent,
               indicatorColor: Colors.transparent,
               labelColor: ColorsManager.whiteColor,
-              labelStyle: Theme.of(context)
-                  .textTheme
+              labelStyle: context
                   .bodySmall!
                   .copyWith(fontWeight: FontWeight.w700),
               indicatorSize: TabBarIndicatorSize.tab,

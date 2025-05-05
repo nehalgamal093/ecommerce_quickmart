@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
 import 'package:flutter/material.dart';
 import '../../../core/resources/assets_manager/images_manager.dart';
@@ -21,10 +22,7 @@ class ItemHeader extends StatelessWidget {
           },
           child: Text(
             'Skip for now',
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: ColorsManager.cyanColor),
+            style: context.bodySmall!.copyWith(color: ColorsManager.cyanColor),
           ),
         )
       ],

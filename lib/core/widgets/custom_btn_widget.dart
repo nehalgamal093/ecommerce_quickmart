@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import '../resources/colors/colors_manager.dart';
 
@@ -40,9 +41,7 @@ class CustomBtnWidget extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
+                      style: context.titleLarge!
                           .copyWith(color: textColor, fontSize: 14),
                     ),
                     SizedBox(
@@ -50,7 +49,7 @@ class CustomBtnWidget extends StatelessWidget {
                     ),
                     Text(
                       count,
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      style: context.titleLarge!.copyWith(
                           color: ColorsManager.whiteColor, fontSize: 14),
                     ),
                     SizedBox(
@@ -58,7 +57,7 @@ class CustomBtnWidget extends StatelessWidget {
                     ),
                     Text(
                       subTitle,
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      style: context.titleLarge!.copyWith(
                           color: ColorsManager.whiteColor, fontSize: 14),
                     ),
                   ],

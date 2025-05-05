@@ -24,6 +24,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
           state.copyWith(
               paymentRequestState: PaymentRequestState.error, failures: error),
         );
+
       }, (model) {
         clientSecret = model.clientSecret!;
         emit(

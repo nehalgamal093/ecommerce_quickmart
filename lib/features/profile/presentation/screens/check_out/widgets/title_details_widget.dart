@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/colors/colors_manager.dart';
@@ -17,7 +18,7 @@ class TitleDetailsWidget extends StatelessWidget {
           flex: 2,
           child: Text(
             title,
-            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+            style: context.bodySmall!.copyWith(
                 fontWeight: FontWeight.w500, color: ColorsManager.greyColor),
           ),
         ),
@@ -27,7 +28,7 @@ class TitleDetailsWidget extends StatelessWidget {
             maxLines: 2,
             details,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+            style: context.bodySmall!.copyWith(
                 fontWeight: FontWeight.w500, color: ColorsManager.greyColor),
           ),
         )

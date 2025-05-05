@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,7 @@ class OrderSuccess extends StatelessWidget {
                 ),
                 Text(
                   StringsManager.orderPlacedSuccessfully,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: context.titleLarge,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
@@ -42,7 +43,7 @@ class OrderSuccess extends StatelessWidget {
                 ),
                 Text(
                   StringsManager.thankYouForChoosingUs,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: context.bodySmall,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(

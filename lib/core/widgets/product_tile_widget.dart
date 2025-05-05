@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../resources/assets_manager/images_manager.dart';
@@ -54,7 +55,7 @@ class ProductTileWidget extends StatelessWidget {
                     Expanded(
                       child: Text(
                         description,
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        style: context.titleSmall!.copyWith(
                               fontWeight: FontWeight.w400,
                               letterSpacing: .5,
                             ),
@@ -81,7 +82,7 @@ class ProductTileWidget extends StatelessWidget {
                 ),
                 Text(
                   priceAfterDiscount,
-                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  style: context.titleSmall!.copyWith(
                         fontWeight: FontWeight.w700,
                         letterSpacing: .5,
                       ),
@@ -90,7 +91,7 @@ class ProductTileWidget extends StatelessWidget {
                 ),
                 Text(
                   price,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  style: context.bodyMedium!.copyWith(
                         fontWeight: FontWeight.w700,
                         color: ColorsManager.lightGreyColor,
                         letterSpacing: .5,

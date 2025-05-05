@@ -143,6 +143,8 @@ class _ShippingSectionState extends State<ShippingSection> {
                 BillingData billingData = BillingData(
                     firstName: nameController.text,
                     lastName: nameController.text,
+                    email: "nehal@gmail.com",
+                    floor:StringsManager.na ,
                     street: provinceProvider.street,
                     city: provinceProvider.city,
                     phoneNumber: phoneController.text,

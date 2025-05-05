@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../resources/assets_manager/images_manager.dart';
@@ -24,24 +25,24 @@ responseDialog(
               ),
               Text(
                 content,
-                style: Theme.of(context).textTheme.bodySmall,
+                style: context.bodySmall,
               ),
               SizedBox(
                 height: 20,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorsManager.redColor,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12))),
+                  backgroundColor: ColorsManager.redColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 child: Text(
                   'Try Again',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall!
+                  style: context.bodySmall!
                       .copyWith(color: ColorsManager.whiteColor),
                 ),
               )

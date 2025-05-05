@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,14 +35,14 @@ class _OldPasswordSectionState extends State<OldPasswordSection> {
           ),
           Text(
             StringsManager.oldPassword,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: context.titleLarge,
           ),
           SizedBox(
             height: 5,
           ),
           Text(
             StringsManager.enterOldToChangePassword,
-            style: Theme.of(context).textTheme.bodySmall,
+            style: context.bodySmall,
           ),
           SizedBox(
             height: 20,

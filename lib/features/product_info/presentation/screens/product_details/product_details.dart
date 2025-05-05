@@ -9,6 +9,7 @@ import 'package:ecommerce_shop/features/product_info/presentation/screens/widget
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/logic/Animation/route_animation.dart';
 import '../../../../../core/resources/colors/colors_manager.dart';
 import '../../../../../core/resources/constants/strings_manager.dart';
 import '../write_review/write_review.dart';
@@ -85,8 +86,12 @@ class ProductDetails extends StatelessWidget {
                   child: CustomBtnWidget(
                       title: StringsManager.writeReview,
                       onPressed: () {
-                        Navigator.pushNamed(context, WriteReview.routeName,
-                            arguments: state.productDetailsModel!.result!);
+                        Navigator.of(context).push(
+                          RouteAnimation.createRoute(WriteReview(),
+                              arguments: state.productDetailsModel!),
+                        );
+                        // Navigator.pushNamed(context, WriteReview.routeName,
+                        //     arguments: state.productDetailsModel!.result!);
                       }),
                 ),
                 SliverToBoxAdapter(

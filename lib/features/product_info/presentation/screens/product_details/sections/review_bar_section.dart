@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -13,14 +14,14 @@ class ReviewBarSection extends StatelessWidget {
       children: [
         Text(
           StringsManager.reviews,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: context.titleLarge,
         ),
         SizedBox(
           height: 20,
         ),
         Text(
           StringsManager.rate,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: context.titleLarge,
         ),
         SizedBox(
           height: 10,
@@ -45,7 +46,7 @@ class ReviewBarSection extends StatelessWidget {
         ),
         Text(
           StringsManager.baseOn12Review,
-          style: Theme.of(context).textTheme.bodySmall,
+          style: context.bodySmall,
         ),
         SizedBox(
           height: 20,

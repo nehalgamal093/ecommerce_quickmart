@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../../../../../../core/resources/colors/colors_manager.dart';
-import '../../../../../../core/resources/constants/strings_manager.dart';
+import '../../import_files/import_files.dart';
 
 class PrivacyPolicySection extends StatelessWidget {
   const PrivacyPolicySection({super.key});
@@ -13,30 +10,19 @@ class PrivacyPolicySection extends StatelessWidget {
       text: TextSpan(children: [
         TextSpan(
             text: StringsManager.agreePrivacy,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: ColorsManager.blackColor)),
+            style:
+                context.bodySmall!.copyWith(color: ColorsManager.blackColor)),
         TextSpan(
           text: StringsManager.privacyPolicy,
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall!
-              .copyWith(color: ColorsManager.blueColor),
+          style: context.bodySmall!.copyWith(color: ColorsManager.blueColor),
         ),
         TextSpan(
           text: StringsManager.and,
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall!
-              .copyWith(color: ColorsManager.blackColor),
+          style: context.bodySmall!.copyWith(color: ColorsManager.blackColor),
         ),
         TextSpan(
           text: StringsManager.termsAndConditions,
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall!
-              .copyWith(color: ColorsManager.blueColor),
+          style: context.bodySmall!.copyWith(color: ColorsManager.blueColor),
         )
       ]),
     );

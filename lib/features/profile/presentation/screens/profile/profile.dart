@@ -2,6 +2,7 @@ import 'package:ecommerce_shop/features/profile/presentation/screens/profile/sec
 import 'package:ecommerce_shop/features/profile/presentation/screens/profile/widgets/title_icon_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/logic/Animation/route_animation.dart';
 import '../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../core/resources/colors/colors_manager.dart';
 import '../../../../../core/resources/constants/strings_manager.dart';
@@ -49,10 +50,11 @@ class Profile extends StatelessWidget {
                       icon: ImagesManager.box,
                       title: StringsManager.shippingAddress,
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ShippingAddress()));
+                        Navigator.of(context).push(
+                          RouteAnimation.createRoute(
+                            ShippingAddress(),
+                          ),
+                        );
                       },
                     ),
                     SizedBox(
@@ -68,7 +70,11 @@ class Profile extends StatelessWidget {
                       icon: ImagesManager.cardTick,
                       title: StringsManager.paymentMethod,
                       onPressed: () {
-                        Navigator.pushNamed(context, PaymentMethod.routeName);
+                        Navigator.of(context).push(
+                          RouteAnimation.createRoute(
+                            PaymentMethod(),
+                          ),
+                        );
                       },
                     ),
                     SizedBox(
@@ -84,10 +90,9 @@ class Profile extends StatelessWidget {
                       icon: ImagesManager.clipboardTick,
                       title: StringsManager.orderHistory,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => OrderHistory(),
+                        Navigator.of(context).push(
+                          RouteAnimation.createRoute(
+                            OrderHistory(),
                           ),
                         );
                       },
@@ -131,7 +136,11 @@ class Profile extends StatelessWidget {
                       icon: ImagesManager.faq,
                       title: StringsManager.faq,
                       onPressed: () {
-                        Navigator.pushNamed(context, FAQ.routeName);
+                        Navigator.of(context).push(
+                          RouteAnimation.createRoute(
+                            FAQ(),
+                          ),
+                        );
                       },
                     ),
                     SizedBox(
@@ -145,11 +154,11 @@ class Profile extends StatelessWidget {
                       icon: ImagesManager.changePassword,
                       title: StringsManager.changePassword,
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ChangePassword(),
-                            ));
+                        Navigator.of(context).push(
+                          RouteAnimation.createRoute(
+                            ChangePassword(),
+                          ),
+                        );
                       },
                     ),
                     SizedBox(

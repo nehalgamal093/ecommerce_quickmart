@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/colors/colors_manager.dart';
@@ -27,7 +28,7 @@ class TitleIconWidget extends StatelessWidget {
           ),
           Text(
             title,
-            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+            style: context.bodySmall!.copyWith(
                 fontWeight: FontWeight.w500, color: ColorsManager.greyColor),
           ),
           Spacer(),

@@ -6,6 +6,9 @@ import 'package:ecommerce_shop/features/home/presentation/sections/catergories.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/resources/assets_manager/images_manager.dart';
+import '../../../../core/resources/constants/strings_manager.dart';
+
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({super.key});
 
@@ -20,7 +23,9 @@ class CategoriesSection extends StatelessWidget {
         if (categoryState == CategoriesRequestState.loading) {
           return LoadingSmallHorizontalList();
         } else if (categoryState == CategoriesRequestState.error) {
-          return SomethingWentWrongWidget();
+          return SomethingWentWrongWidget(
+              title: StringsManager.somethingWentWrong,
+              img: ImagesManager.somethingWrong);
         } else if (categoryState == CategoriesRequestState.success) {
           return CategoriesList(state: state);
         }

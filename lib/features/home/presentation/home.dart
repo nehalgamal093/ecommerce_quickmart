@@ -52,7 +52,9 @@ class HomeScreen extends StatelessWidget {
           if (state.productsRequestState == ProductsRequestState.loading) {
             return LoadingHome();
           } else if (state.productsRequestState == ProductsRequestState.error) {
-            return SomethingWentWrongWidget();
+            return SomethingWentWrongWidget(
+                title: StringsManager.somethingWentWrong,
+                img: ImagesManager.somethingWrong);
           } else if (state.productsRequestState ==
               ProductsRequestState.success) {
             return CustomScrollView(

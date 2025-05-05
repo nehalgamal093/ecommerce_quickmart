@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/extensions/text_theme.dart';
 import 'package:flutter/material.dart';
 import '../resources/colors/colors_manager.dart';
 
@@ -11,7 +12,7 @@ class LabelText extends StatelessWidget {
       children: [
         Text(
           label,
-          style: Theme.of(context).textTheme.bodySmall!.copyWith(
+          style: context.bodySmall!.copyWith(
               color: ColorsManager.blackColor, fontWeight: FontWeight.w700),
         ),
         Text(
