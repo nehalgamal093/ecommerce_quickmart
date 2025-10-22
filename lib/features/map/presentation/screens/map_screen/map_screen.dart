@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../product_info/presentation/provider/hide_show_bottom_nav.dart';
 import '../../provider/map_provider.dart';
 
 class MapScreen extends StatefulWidget {
-  final CityProvinceProvider cityProvince;
-  const MapScreen({super.key, required this.cityProvince});
+  static const String routeName = '/map';
+  // final CityProvinceProvider cityProvince;
+  const MapScreen({super.key});
 
   @override
   State<MapScreen> createState() => _MapScreenState();
@@ -26,6 +28,7 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    CityProvinceProvider cityProvince = ModalRoute.of(context)?.settings.arguments as CityProvinceProvider;
     var mapProvider = Provider.of<MapProvider>(context);
     return Scaffold(
       body: mapProvider.loading
@@ -81,13 +84,15 @@ class _MapScreenState extends State<MapScreen> {
                       CustomBtnWidget(
                         title: 'Confirm Location',
                         onPressed: () {
-                          widget.cityProvince
+                          cityProvince
                               .changeCity(mapProvider.place!.locality!);
-                          widget.cityProvince
+                       cityProvince
                               .changeProvince(mapProvider.place!.name!);
-                          widget.cityProvince
+                         cityProvince
                               .changeStreet(mapProvider.place!.street!);
                           Navigator.pop(context);
+                          Provider.of<HideShowBottomNavProvider>(context, listen: false)
+                              .show();
                           // Navigator.pop(context, {
                           //   'position': mapProvider.selectedPosition,
                           //   'address': mapProvider.address,

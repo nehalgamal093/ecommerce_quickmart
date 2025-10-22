@@ -4,20 +4,20 @@ import 'package:ecommerce_shop/features/sub_categories/presentation/bloc/sub_cat
 import 'package:ecommerce_shop/features/sub_categories/presentation/screens/sub_categories/widgets/sub_cat_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/resources/constants/strings_manager.dart';
 
 class SubCategoriesScreen extends StatelessWidget {
   static const String routeName = '/sub_categories';
   final String id;
-  const SubCategoriesScreen({super.key, required this.id});
+  final String title;
+  const SubCategoriesScreen({super.key, required this.id,required this.title});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(StringsManager.electronics),
+          title: Text(title),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),

@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/widgets/loading_dialog.dart';
 import 'package:ecommerce_shop/features/profile/presentation/screens/check_out/sections/payment_section.dart';
 import 'package:ecommerce_shop/features/profile/presentation/screens/check_out/sections/review_section.dart';
 import 'package:ecommerce_shop/features/profile/presentation/screens/check_out/sections/shipping_section.dart';
@@ -8,11 +9,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../core/di/di.dart';
+import '../../../../../core/logic/Animation/route_animation.dart';
 import '../../../../../core/resources/constants/strings_manager.dart';
 import '../../../../../core/widgets/custom_btn_widget.dart';
 import '../../../../cart/data/models/cart_model.dart';
 import '../../../../main/presentation/provider/order_tracking_state.dart';
 import '../../../../payment_webview/presentation/screens/payment_webview.dart';
+import '../../../../product_info/presentation/provider/hide_show_bottom_nav.dart';
 import '../../../data/models/payment_request.dart';
 import '../../bloc/payment_bloc/payment_bloc.dart';
 import '../../provider/payment_provider.dart';
@@ -36,15 +39,21 @@ class Checkout extends StatelessWidget {
         create: (context) => getIt<PaymentBloc>(),
         child:
             BlocConsumer<PaymentBloc, PaymentState>(listener: (context, state) {
-          if (state.paymentRequestState == PaymentRequestState.success) {
+          if (state.paymentRequestState == PaymentRequestState.loading) {
+            // loadingDialog(context);
+          } else if (state.paymentRequestState == PaymentRequestState.success) {
             var bloc = BlocProvider.of<PaymentBloc>(context);
-            Navigator.of(context).pushReplacement(
-
-              MaterialPageRoute(
-                builder: (context) =>
-                    PaymentWebView(clientSecret: bloc.clientSecret),
+            Provider.of<HideShowBottomNavProvider>(context, listen: false)
+                .hide();
+            Navigator.of(context).push(
+              RouteAnimation.createRoute(
+                PaymentWebView(clientSecret: bloc.clientSecret),
               ),
             );
+
+            provider.changeTrackingState(0);
+          } else {
+            Navigator.pop(context);
           }
         }, builder: (context, state) {
           return BlocBuilder<PaymentBloc, PaymentState>(
@@ -58,31 +67,13 @@ class Checkout extends StatelessWidget {
                       currIndex: provider.index,
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 15,
                     ),
-                    ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width * 0.8,
-                        maxHeight: MediaQuery.of(context).size.height * 0.9,
-                      ),
-                      child: IndexedStack(
-                        index: provider.index,
-                        children: [
-                          ShippingSection(),
-
-                          PaymentSection(),
-                          ReviewSection(
-                            totalPrice: totalPrice,
-                          ),
-                          // Add other tabs
-                        ],
-                      ),
-                    ),
+                    currentStage(provider.index),
                     provider.index == 2
                         ? CustomBtnWidget(
                             title: StringsManager.placeOrder,
                             onPressed: () async {
-                              provider.changeTrackingState(0);
                               payRequest(paymentProvider);
                               context.read<PaymentBloc>().add(
                                   ProcessPaymentEvent(
@@ -97,6 +88,22 @@ class Checkout extends StatelessWidget {
         }),
       ),
     );
+  }
+
+  Widget currentStage(int index) {
+    switch (index) {
+      case 0:
+        return ShippingSection();
+
+      case 1:
+        return PaymentSection();
+      case 2:
+        return ReviewSection(
+          totalPrice: totalPrice,
+        );
+      default:
+        return ShippingSection();
+    }
   }
 
   void payRequest(PaymentProvider paymentProvider) {

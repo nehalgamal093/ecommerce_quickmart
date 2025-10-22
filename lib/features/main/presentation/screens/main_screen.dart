@@ -1,12 +1,10 @@
 import 'package:ecommerce_shop/core/di/di.dart';
 import 'package:ecommerce_shop/core/network/network_helper/network_bloc/network_bloc.dart';
 import 'package:ecommerce_shop/core/widgets/error_widget.dart';
-import 'package:ecommerce_shop/features/payment_webview/presentation/screens/payment_webview.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/provider/hide_show_bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../../features/cart/presentation/screens/my_cart/my_cart.dart';
 import '../../../../../features/categories/presentation/screens/categories/categories_screen.dart';
 import '../../../../../features/profile/presentation/screens/profile/profile.dart';
@@ -16,6 +14,7 @@ import '../../../../core/resources/colors/colors_manager.dart';
 import '../../../../core/resources/constants/strings_manager.dart';
 import '../../../cart/presentation/bloc/my_cart_bloc.dart';
 import '../../../home/presentation/home.dart';
+import '../../../map/presentation/screens/map_screen/map_screen.dart';
 import '../../../product_info/presentation/screens/product_details/sections/image_view.dart';
 import '../provider/main_provider.dart';
 
@@ -183,8 +182,8 @@ class MainScreen extends StatelessWidget {
           case '/image-view':
             builder = (BuildContext _) => ImageView();
             break;
-          case 'pay':
-            builder = (BuildContext _) => PaymentWebView(clientSecret: '');
+          case '/map':
+            builder = (BuildContext _) => MapScreen();
             break;
           default:
             builder = (BuildContext _) => screen;

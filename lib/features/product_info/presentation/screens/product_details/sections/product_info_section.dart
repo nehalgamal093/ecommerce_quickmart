@@ -51,6 +51,9 @@ class ProductInfoSection extends StatelessWidget {
                   price: productModel.price.toString(),
                   priceAfterDiscount:
                       productModel.priceAfterDiscount.toString()),
+              SizedBox(
+                height: 10,
+              ),
               ProductRatingBar(),
               SizedBox(
                 height: 10,

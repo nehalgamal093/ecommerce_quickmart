@@ -3,6 +3,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../../core/resources/constants/strings_manager.dart';
+import '../../../auth/presentation/screen/import_files/import_files.dart';
+import '../../../product_info/presentation/provider/hide_show_bottom_nav.dart';
 
 class PaymentWebView extends StatefulWidget {
   final String clientSecret;
@@ -15,6 +17,7 @@ class PaymentWebView extends StatefulWidget {
 
 class _PaymentWebViewState extends State<PaymentWebView> {
   late WebViewController controller;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
     super.initState();
@@ -25,6 +28,7 @@ class _PaymentWebViewState extends State<PaymentWebView> {
           onProgress: (int progress) {
             // Update loading bar.
           },
+
           onPageStarted: (String url) {},
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
@@ -40,14 +44,24 @@ class _PaymentWebViewState extends State<PaymentWebView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text(StringsManager.webPayment),
-      ),
-      body: WebViewWidget(
-        controller: controller,
+    return WillPopScope(
+      onWillPop: () async {
+        Provider.of<HideShowBottomNavProvider>(context, listen: false).show();
+        return true; // Allow pop
+      },
+      child: Scaffold(
+        key: _scaffoldKey,
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text(StringsManager.webPayment),
+        ),
+        body: WebViewWidget(
+          controller: controller,
+        ),
       ),
     );
   }
+
+
+
 }

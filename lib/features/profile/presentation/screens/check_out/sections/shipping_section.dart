@@ -15,6 +15,7 @@ import '../../../../../../core/resources/colors/colors_manager.dart';
 import '../../../../../../core/resources/constants/strings_manager.dart';
 import '../../../../../main/presentation/provider/order_tracking_state.dart';
 import '../../../../../map/presentation/screens/map_screen/map_screen.dart';
+import '../../../../../product_info/presentation/provider/hide_show_bottom_nav.dart';
 import '../../../bloc/profile_bloc/profile_bloc.dart';
 import '../../shipping_address/providers/cities_province_provider.dart';
 
@@ -100,15 +101,23 @@ class _ShippingSectionState extends State<ShippingSection> {
                 groupValue: 'Map',
                 onChanged: (val) {
                   manualProvider.changeManual('Map');
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => MapScreen(
-                        cityProvince: Provider.of<CityProvinceProvider>(context,
-                            listen: false),
-                      ),
-                    ),
+                    MapScreen.routeName,
+                    arguments: Provider.of<CityProvinceProvider>(context,
+                        listen: false),
                   );
+                  Provider.of<HideShowBottomNavProvider>(context, listen: false)
+                      .hide();
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => MapScreen(
+                  //       cityProvince: Provider.of<CityProvinceProvider>(context,
+                  //           listen: false),
+                  //     ),
+                  //   ),
+                  // );
                 }),
             Text('Pick From Map'),
             Icon(Icons.location_on_rounded, color: ColorsManager.redColor)
@@ -144,7 +153,7 @@ class _ShippingSectionState extends State<ShippingSection> {
                     firstName: nameController.text,
                     lastName: nameController.text,
                     email: "nehal@gmail.com",
-                    floor:StringsManager.na ,
+                    floor: StringsManager.na,
                     street: provinceProvider.street,
                     city: provinceProvider.city,
                     phoneNumber: phoneController.text,

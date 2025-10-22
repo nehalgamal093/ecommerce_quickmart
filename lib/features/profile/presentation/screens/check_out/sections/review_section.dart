@@ -17,7 +17,7 @@ class ReviewSection extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width * .8,
-      height: size.height * .7,
+      height: size.height * .65,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -122,7 +122,7 @@ class ReviewSection extends StatelessWidget {
           TitleDetailsWidget(
               title: StringsManager.shippingCost, details: '\$0.00'),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           Row(
             children: [

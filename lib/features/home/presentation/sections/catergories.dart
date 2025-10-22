@@ -29,7 +29,8 @@ class CategoriesList extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            SubCategoriesScreen(id: results[index].id!),
+                            SubCategoriesScreen(id: results[index].id!,title: results[index].name!
+                              ,),
                       ),
                     );
                   },

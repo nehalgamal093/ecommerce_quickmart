@@ -24,4 +24,8 @@ class ObscurePasswordProvider extends ChangeNotifier {
     isConfirmSecured = !isConfirmSecured;
     notifyListeners();
   }
+  void reset() {
+    isSecured = true;
+    notifyListeners();
+  }
 }

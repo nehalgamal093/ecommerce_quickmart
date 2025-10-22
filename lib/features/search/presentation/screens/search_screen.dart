@@ -1,4 +1,6 @@
+import 'package:ecommerce_shop/core/resources/assets_manager/images_manager.dart';
 import 'package:ecommerce_shop/core/widgets/custom_text_field.dart';
+import 'package:ecommerce_shop/core/widgets/error_widget.dart';
 import 'package:ecommerce_shop/core/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +33,7 @@ class _SearchScreenState extends State<SearchScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                   BlocBuilder<SearchBloc, SearchState>(
                       builder: (context, state) {
                     return CustomTextField(
@@ -56,7 +58,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         SearchRequestState.success) {
                       var searchedProducts = state.products ?? [];
                       return Expanded(
-                        child: GridView.builder(
+                        child:searchedProducts.isEmpty? SomethingWentWrongWidget(title: '', img: ImagesManager.searchList): GridView.builder(
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisSpacing: 10,
@@ -71,7 +73,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                       );
                     } else {
-                      return SizedBox();
+                     return  Expanded(child: SomethingWentWrongWidget(title: '', img: ImagesManager.searchList));
                     }
                   })
                 ],

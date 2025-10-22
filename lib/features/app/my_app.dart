@@ -1,6 +1,7 @@
 import 'package:ecommerce_shop/core/caching/cache_helper.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/sign_up/signup.dart';
+import 'package:ecommerce_shop/features/map/presentation/screens/map_screen/map_screen.dart';
 import 'package:ecommerce_shop/features/products/presentation/screens/products_screen/products_screen.dart';
 import 'package:ecommerce_shop/features/sub_categories/presentation/screens/sub_categories/sub_categories_screen.dart';
 import 'package:flutter/material.dart';
@@ -48,10 +49,11 @@ class MyApp extends StatelessWidget {
             ),
         ProductsScreen.routeName: (context) => ProductsScreen(
               id: '',
+          title: '',
             ),
         CategoriesScreen.routeName: (context) => CategoriesScreen(),
-        SubCategoriesScreen.routeName: (context) => SubCategoriesScreen(id: ''),
-        //
+        SubCategoriesScreen.routeName: (context) => SubCategoriesScreen(id: '',title: '',),
+        MapScreen.routeName:(context)=>MapScreen()
         // ImageView.routeName: (context) => ImageView()
       },
     );

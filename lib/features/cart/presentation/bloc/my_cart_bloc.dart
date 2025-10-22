@@ -18,7 +18,7 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
   DeleteCartUseCase deleteCartUseCase;
   ApplyCouponUseCase applyCouponUseCase;
   AddCartUseCase addCartUseCase;
-
+  int discount = 0;
   MyCartBloc(this.getCartUseCase, this.deleteCartUseCase,
       this.applyCouponUseCase, this.addCartUseCase)
       : super(MyCartInitial()) {
@@ -76,13 +76,13 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
       ApplyCoupon event, Emitter<MyCartState> emit) async {
     if (state is ItemsLoaded) {
       final currentState = state as ItemsLoaded;
-
       var result = await applyCouponUseCase.call(event.code);
       result.fold((error) {
         emit(ItemsError(failures: error));
       }, (model) {
         num priceAfterDiscount =
             currentState.totalPrice - model.cart!.discount!;
+        discount = model.cart!.discount!.toInt();
         emit(ItemsLoaded(
             items: currentState.items,
             totalPrice: priceAfterDiscount,
@@ -92,7 +92,7 @@ class MyCartBloc extends Bloc<MyCartEvent, MyCartState> {
   }
 
   num _totalPriceAfterDelete(num totalPrice, CartItem item) {
-    num totalPriceAfterDelete = totalPrice - item.product!.priceAfterDiscount!;
+    num totalPriceAfterDelete = totalPrice - item.product!.price!+discount;
     return totalPriceAfterDelete;
   }
 

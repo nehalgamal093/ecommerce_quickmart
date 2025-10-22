@@ -37,6 +37,8 @@ class ProductItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: CachedNetworkImage(
+
+                height: 150,
                 fit: BoxFit.cover,
                 imageUrl: productModel.images![0].attachmentFile!,
                 placeholder: (context, url) => loadingItem(),

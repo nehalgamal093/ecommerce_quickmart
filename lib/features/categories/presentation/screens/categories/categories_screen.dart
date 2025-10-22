@@ -44,6 +44,8 @@ class CategoriesScreen extends StatelessWidget {
                             Navigator.of(context).push(
                               RouteAnimation.createRoute(
                                 SubCategoriesScreen(
+                                    title:
+                                        state.categories!.result![index].name!,
                                     id: state.categories!.result![index].id!),
                               ),
                             );

@@ -22,10 +22,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       });
     });
     on<SearchProductsEvent>((event, emit) async {
+
+      var result = await searchUseCase.call(keyword);
       emit(
         state.copyWith(searchRequestState: SearchRequestState.loading),
       );
-      var result = await searchUseCase.call(keyword);
       result.fold((error) {
         emit(
           state.copyWith(

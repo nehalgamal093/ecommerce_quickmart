@@ -1,6 +1,5 @@
 import 'package:ecommerce_shop/features/sub_categories/presentation/screens/sub_categories/widgets/sub_categories_item.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../../core/logic/Animation/route_animation.dart';
 import '../../../../../categories/data/models/categories.dart';
 import '../../../../../products/presentation/screens/products_screen/products_screen.dart';
@@ -25,7 +24,10 @@ class SubCatList extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 RouteAnimation.createRoute(
-                  ProductsScreen(id: categories.result![index].id!),
+                  ProductsScreen(
+                    id: categories.result![index].id!,
+                    title: categories.result![index].name!,
+                  ),
                 ),
               );
             },
@@ -34,4 +36,3 @@ class SubCatList extends StatelessWidget {
         });
   }
 }
-//--

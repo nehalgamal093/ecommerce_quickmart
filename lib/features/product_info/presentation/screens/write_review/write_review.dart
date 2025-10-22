@@ -9,6 +9,7 @@ import 'package:ecommerce_shop/features/product_info/presentation/screens/write_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/logic/Animation/route_animation.dart';
 import '../../../../../core/resources/constants/strings_manager.dart';
 import '../../../data/model/product_details_model.dart';
 
@@ -70,7 +71,7 @@ class _WriteReviewState extends State<WriteReview> {
           }, listener: (context, state) {
             if (state.writingReviewRequestState ==
                 ProductsInfoRequestState.loading) {
-              loadingDialog(context);
+              // loadingDialog(context);
             } else if (state.writingReviewRequestState ==
                 ProductsInfoRequestState.error) {
               Navigator.pop(context);
@@ -79,8 +80,11 @@ class _WriteReviewState extends State<WriteReview> {
             } else if (state.writingReviewRequestState ==
                 ProductsInfoRequestState.success) {
               Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, ProductDetails.routeName,
-                  arguments: productDetails.result?.id);
+              Navigator.of(context).push(
+                RouteAnimation.createRoute(
+                  ProductDetails(id: productDetails.result!.id!),
+                ),
+              );
             }
           }),
         ),

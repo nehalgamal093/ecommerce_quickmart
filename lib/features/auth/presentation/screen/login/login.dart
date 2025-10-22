@@ -16,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     var validationProvider = Provider.of<ValidateProvider>(context);
+    var isObscure = Provider.of<ObscurePasswordProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
@@ -39,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     InkWell(
                       onTap: () {
+                        isObscure.reset();
                         Navigator.pushNamed(context, Signup.routeName);
                       },
                       child: HeaderText(

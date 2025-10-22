@@ -2,14 +2,15 @@ import '../file_imports/file_imports.dart';
 
 class ProductsScreen extends StatelessWidget {
   final String id;
+  final String title;
   static const String routeName = '/products_screen';
-  const ProductsScreen({super.key, required this.id});
+  const ProductsScreen({super.key, required this.id,required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(StringsManager.smartWatches),
+        title: Text(title),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),

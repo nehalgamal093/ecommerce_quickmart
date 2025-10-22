@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../features/products/presentation/bloc/products_bloc.dart';
+import '../../../core/logic/Animation/route_animation.dart';
 import '../../../core/resources/assets_manager/images_manager.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -29,8 +30,11 @@ class HomeScreen extends StatelessWidget {
         actions: [
           InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SearchScreen()));
+                Navigator.of(context).push(
+                  RouteAnimation.createRoute(
+                      SearchScreen()
+                  ),
+                );
               },
               child: ImageIcon(AssetImage(ImagesManager.searchIcon))),
           SizedBox(

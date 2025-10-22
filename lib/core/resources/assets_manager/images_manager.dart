@@ -37,4 +37,5 @@ class ImagesManager {
   static const String product1 = 'assets/images/product1.png';
   static const String somethingWrong = 'assets/images/something_wrong.png';
   static const String routerDevice = 'assets/images/router-device.png';
+  static const String searchList = 'assets/images/search_list.png';
 }

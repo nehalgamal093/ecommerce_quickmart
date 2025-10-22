@@ -16,18 +16,20 @@ class ProductPriceTitle extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          name,
-          style: context.titleLarge!.copyWith(fontSize: 18),
+        Flexible(
+          child: Text(
+            name,
+            style: context.titleLarge!.copyWith(fontSize: 18),
+          ),
         ),
         Column(
           children: [
             Text(
-              price,
+              priceAfterDiscount,
               style: context.titleLarge!.copyWith(fontSize: 18),
             ),
             Text(
-              priceAfterDiscount,
+              price,
               style: context.bodySmall!
                   .copyWith(decoration: TextDecoration.lineThrough),
             ),

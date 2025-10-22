@@ -6,6 +6,7 @@ import 'package:ecommerce_shop/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../core/resources/assets_manager/images_manager.dart';
 import '../../../../../core/resources/colors/colors_manager.dart';
@@ -14,6 +15,7 @@ import '../../../../../core/widgets/header_text.dart';
 import '../../../../../core/widgets/loading_dialog.dart';
 import '../../../../../core/widgets/response_dialog.dart';
 import '../../../../on_boarding/widgets/custom_button.dart';
+import '../../provider/obscure_password_provider.dart';
 
 class Signup extends StatefulWidget {
   static const String routeName = '/signup';
@@ -33,6 +35,7 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
+    var isObscure = Provider.of<ObscurePasswordProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
@@ -93,9 +96,24 @@ class _SignupState extends State<Signup> {
                       height: 5,
                     ),
                     CustomTextField(
-                        onChanged: (val) {},
-                        controller: passwordController,
-                        hintText: StringsManager.enterPassword),
+                      isObscure: isObscure.isSecured,
+                      onChanged: (val) {},
+                      controller: passwordController,
+                      hintText: StringsManager.enterPassword,
+                      icon: InkWell(
+                        onTap: () {
+                          isObscure.changeSecurePassword();
+                        },
+                        child: isObscure.isSecured
+                            ? Icon(Icons.visibility_off)
+                            : ImageIcon(
+                                AssetImage(
+                                  ImagesManager.eyeIcon,
+                                ),
+                                color: ColorsManager.blackColor,
+                              ),
+                      ),
+                    ),
                     SizedBox(
                       height: 16,
                     ),
