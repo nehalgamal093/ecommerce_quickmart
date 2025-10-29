@@ -11,29 +11,6 @@ import 'package:mocktail/mocktail.dart';
 class MockProductsRemoteDs extends Mock
     implements ProductsRemoteDataSourceImpl {}
 
-final List<Result> results = [
-  Result(
-    id: "1",
-    title: "Test Product",
-    price: 100,
-    priceAfterDiscount: 90,
-    ratingAvg: 4.5,
-    ratingCount: 10,
-    description: "A test product",
-    quantity: 50,
-    sold: 5,
-    images: [
-      Images(attachmentFile: "image_url_1"),
-    ],
-    category: "Electronics",
-    subCategory: "Phones",
-    brand: "TestBrand",
-    createdAt: "2025-01-01T00:00:00Z",
-    updatedAt: "2025-01-02T00:00:00Z",
-    v: 1,
-    myReviews: ["Nice", "Good"],
-  )
-];
 Products products =
     Products(pages: 1, message: "Success", page: 1, pagePerCategory: 1);
 
