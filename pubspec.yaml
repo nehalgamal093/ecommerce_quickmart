@@ -59,9 +59,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
   injectable_generator: ^2.6.2
   build_runner: ^2.4.11
-
   flutter_lints: ^5.0.0
   geolocator_android: 4.6.1
 

@@ -3,7 +3,6 @@ import 'package:ecommerce_shop/core/widgets/custom_text_field.dart';
 import 'package:ecommerce_shop/core/widgets/label_text.dart';
 import 'package:ecommerce_shop/features/auth/data/models/register_request_model.dart';
 import 'package:ecommerce_shop/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +15,7 @@ import '../../../../../core/widgets/loading_dialog.dart';
 import '../../../../../core/widgets/response_dialog.dart';
 import '../../../../on_boarding/widgets/custom_button.dart';
 import '../../provider/obscure_password_provider.dart';
+import '../login/login.dart';
 
 class Signup extends StatefulWidget {
   static const String routeName = '/signup';

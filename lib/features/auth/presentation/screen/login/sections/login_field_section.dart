@@ -30,8 +30,10 @@ class _LoginFieldSectionState extends State<LoginFieldSection> {
           height: 5,
         ),
         CustomTextField(
+          key: ValueKey('email_field'),
           errorText: validationProvider.errorEmailText,
           onChanged: (val) {
+            print("Email pressed==============");
             validationProvider.validateEmail(val);
           },
           controller: widget.emailController,
@@ -45,6 +47,7 @@ class _LoginFieldSectionState extends State<LoginFieldSection> {
           height: 5,
         ),
         CustomTextField(
+          key: ValueKey('password_field'),
           isObscure: isObscure.isSecured,
           errorText: validationProvider.errorPasswordText,
           onChanged: (val) {

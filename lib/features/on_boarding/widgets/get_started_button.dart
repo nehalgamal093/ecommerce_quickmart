@@ -1,8 +1,8 @@
-import 'package:ecommerce_shop/features/auth/presentation/screen/login/login.dart';
 import 'package:ecommerce_shop/features/auth/presentation/screen/sign_up/signup.dart';
 import 'package:flutter/material.dart';
 import '../../../core/resources/assets_manager/images_manager.dart';
 import '../../../core/resources/colors/colors_manager.dart';
+import '../../auth/presentation/screen/login/login.dart';
 import 'custom_button.dart';
 
 class GetStartedButton extends StatelessWidget {
@@ -14,6 +14,7 @@ class GetStartedButton extends StatelessWidget {
       children: [
         Expanded(
           child: CustomButton(
+            key: ValueKey('login_key_onboarding'),
             onPressed: () {
               Navigator.pushReplacementNamed(context, LoginScreen.routeName);
             },

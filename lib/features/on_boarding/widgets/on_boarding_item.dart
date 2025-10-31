@@ -59,6 +59,7 @@ class OnBoardingItem extends StatelessWidget {
           index == OnBoardingItemModel.getLength - 1
               ? GetStartedButton()
               : NextButton(
+            key: ValueKey('next_button'),
                   onPressed: onPressed,
                 )
         ],
