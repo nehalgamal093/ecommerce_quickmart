@@ -82,7 +82,6 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     var response = await apiManager.postRequest(
         EndPoints.paymentRequest, request!.toJson(),
         headers: {"Authorization": AppConstants.payMobToken});
-    print('Status ${response.data}');
     try {
       if (response.statusCode == 200 || response.statusCode == 201) {
         return PaymentResponse.fromJson(response.data);

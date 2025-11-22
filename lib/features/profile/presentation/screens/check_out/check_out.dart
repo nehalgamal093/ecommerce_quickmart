@@ -51,7 +51,7 @@ class Checkout extends StatelessWidget {
               ),
             );
 
-            provider.changeTrackingState(0);
+            provider.changeTrackingState();
           } else {
             Navigator.pop(context);
           }

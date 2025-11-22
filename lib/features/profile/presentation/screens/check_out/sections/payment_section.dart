@@ -1,5 +1,4 @@
 import 'package:ecommerce_shop/core/widgets/button_logo.dart';
-import 'package:ecommerce_shop/core/widgets/custom_btn_widget.dart';
 import 'package:ecommerce_shop/core/widgets/custom_textfield_widget.dart';
 import 'package:ecommerce_shop/core/widgets/label_text.dart';
 import 'package:flutter/material.dart';
@@ -95,14 +94,7 @@ class _PaymentSectionState extends State<PaymentSection> {
             )
           ],
         ),
-        SizedBox(
-          height: 100,
-        ),
-        CustomBtnWidget(
-            title: StringsManager.continueProcess,
-            onPressed: () {
-              provider.changeTrackingState(2);
-            })
+
       ],
     );
   }

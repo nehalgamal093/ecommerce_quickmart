@@ -5,10 +5,10 @@ import 'package:ecommerce_shop/features/cart/presentation/bloc/my_cart_bloc.dart
 import 'package:ecommerce_shop/features/cart/presentation/screens/my_cart/widgets/cart_list.dart';
 import 'package:ecommerce_shop/features/cart/presentation/screens/my_cart/widgets/price_info.dart';
 import 'package:ecommerce_shop/features/cart/presentation/screens/my_cart/widgets/voucher_bottom_sheet.dart';
+import 'package:ecommerce_shop/features/profile/presentation/screens/payment_process/screen/payment_process.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/resources/colors/colors_manager.dart';
-import '../../../../profile/presentation/screens/check_out/check_out.dart';
 import '../../../data/models/cart_model.dart';
 
 class MyCart extends StatefulWidget {
@@ -69,14 +69,22 @@ class _MyCartState extends State<MyCart> {
                         title: "Checkout",
                         count: '(${state.items.length.toString()})',
                         onPressed: () {
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => Checkout(
+                          //       cartItems: state.items,
+                          //       totalPrice: state.totalPrice,
+                          //     ),
+                          //   ),
+                          // );
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Checkout(
-                                cartItems: state.items,
-                                totalPrice: state.totalPrice,
-                              ),
-                            ),
+                                builder: (context) => PaymentProcess(
+                                      cartItems: state.items,
+                                      totalPrice: state.totalPrice,
+                                    )),
                           );
                         },
                       ),

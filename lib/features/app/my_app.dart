@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         MainScreen.routeName: (context) => MainScreen(),
         OrderSuccess.routeName: (context) => OrderSuccess(),
         ShippingAddress.routeName: (context) => ShippingAddress(),
-        PaymentMethod.routeName: (context) => PaymentMethod(),
+        // PaymentMethod.routeName: (context) => PaymentMethod(),
         ChangePassword.routeName: (context) => ChangePassword(),
         FAQ.routeName: (context) => FAQ(),
         OrderHistory.routeName: (context) => OrderHistory(),

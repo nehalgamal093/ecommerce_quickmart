@@ -169,7 +169,7 @@ class _ShippingSectionState extends State<ShippingSection> {
                 //     city: provinceProvider.city,
                 //     phone: provinceProvider.phone);
                 // context.read<ProfileBloc>().add(AddAddressEvent(request));
-                provider.changeTrackingState(1);
+                // provider.changeTrackingState();
               });
         })
       ],

@@ -70,11 +70,11 @@ class Profile extends StatelessWidget {
                       icon: ImagesManager.cardTick,
                       title: StringsManager.paymentMethod,
                       onPressed: () {
-                        Navigator.of(context).push(
-                          RouteAnimation.createRoute(
-                            PaymentMethod(),
-                          ),
-                        );
+                        // Navigator.of(context).push(
+                        //   RouteAnimation.createRoute(
+                        //     PaymentMethod(),
+                        //   ),
+                        // );
                       },
                     ),
                     SizedBox(
