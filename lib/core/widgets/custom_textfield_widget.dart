@@ -7,12 +7,14 @@ class CustomTextFieldWidget extends StatelessWidget {
   final int maxLines;
   final Widget icon;
   final TextEditingController? controller;
+  final void Function(String)? onChanged;
   final bool isObscure;
   const CustomTextFieldWidget({
     super.key,
     required this.hintText,
     this.maxLines = 1,
     this.controller,
+    this.onChanged,
     this.isObscure = false,
     this.icon = const SizedBox(),
   });
@@ -23,7 +25,7 @@ class CustomTextFieldWidget extends StatelessWidget {
       obscureText: isObscure,
       maxLines: maxLines,
       controller: controller,
-
+  onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: context.bodySmall!.copyWith(

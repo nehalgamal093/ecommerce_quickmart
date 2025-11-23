@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/features/profile/data/models/payment_request.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/data/cities.dart';
@@ -8,15 +9,12 @@ import '../../../../../../core/widgets/label_text.dart';
 import '../../shipping_address/providers/cities_province_provider.dart';
 
 class WriteLocationManual extends StatelessWidget {
-  final CityProvinceProvider provinceProvider;
-  final TextEditingController streetController;
-  final TextEditingController postalController;
-
+   final CityProvinceProvider provinceProvider;
+  final BillingData billingData;
   const WriteLocationManual(
       {super.key,
       required this.provinceProvider,
-      required this.streetController,
-      required this.postalController});
+      required this.billingData});
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +31,14 @@ class WriteLocationManual extends StatelessWidget {
               );
             }).toList(),
             onChanged: (val) {
-              provinceProvider.changeProvince(val!);
+               provinceProvider.changeProvince(val!);
+              billingData.setState(val);
             }),
         SizedBox(
           height: 15,
         ),
         CustomDropDown(
-            value: provinceProvider.province.isEmpty
+            value:provinceProvider.province.isEmpty
                 ? null
                 : getCities(provinceProvider.province)[0],
             hintText: StringsManager.selectCity,
@@ -52,6 +51,7 @@ class WriteLocationManual extends StatelessWidget {
             }).toList(),
             onChanged: (val) {
               provinceProvider.changeCity(val!);
+              billingData.setCity(val);
             }),
         SizedBox(
           height: 15,
@@ -62,7 +62,9 @@ class WriteLocationManual extends StatelessWidget {
         ),
         CustomTextFieldWidget(
           hintText: StringsManager.enterStreetAddress,
-          controller: streetController,
+          onChanged: (val){
+            billingData.setStreet(val);
+          },
         ),
         SizedBox(
           height: 15,
@@ -73,7 +75,9 @@ class WriteLocationManual extends StatelessWidget {
         ),
         CustomTextFieldWidget(
           hintText: StringsManager.enterPostalCode,
-          controller: postalController,
+          onChanged: (val){
+
+          },
         ),
       ],
     );
