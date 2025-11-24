@@ -1,19 +1,18 @@
 import 'package:ecommerce_shop/core/extensions/text_theme.dart';
+import 'package:ecommerce_shop/features/profile/data/models/payment_request.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import '../../../../../../core/resources/colors/colors_manager.dart';
 import '../../../../../../core/resources/constants/strings_manager.dart';
-import '../../../provider/payment_provider.dart';
 import '../widgets/title_details_widget.dart';
 
 class ReviewSection extends StatelessWidget {
   final num totalPrice;
-  const ReviewSection({super.key, required this.totalPrice});
+  final BillingData billingData;
+  const ReviewSection({super.key, required this.totalPrice,required this.billingData});
 
   @override
   Widget build(BuildContext context) {
-    var paymentProvider = Provider.of<PaymentProvider>(context);
+    // var paymentProvider = Provider.of<PaymentProvider>(context);
     Size size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width * .8,
@@ -67,31 +66,31 @@ class ReviewSection extends StatelessWidget {
           ),
           TitleDetailsWidget(
               title: StringsManager.fullName,
-              details: paymentProvider.billingData.firstName ?? ""),
+              details: billingData.firstName ?? ""),
           SizedBox(
             height: 15,
           ),
           TitleDetailsWidget(
               title: StringsManager.mobilePhone,
-              details: paymentProvider.billingData.phoneNumber ?? ""),
+              details: billingData.phoneNumber ?? ""),
           SizedBox(
             height: 15,
           ),
           TitleDetailsWidget(
               title: StringsManager.province,
-              details: paymentProvider.billingData.state ?? ""),
+              details: billingData.state ?? ""),
           SizedBox(
             height: 15,
           ),
           TitleDetailsWidget(
               title: StringsManager.city,
-              details: paymentProvider.billingData.city ?? ""),
+              details: billingData.city ?? ""),
           SizedBox(
             height: 15,
           ),
           TitleDetailsWidget(
               title: StringsManager.streetAddress,
-              details: paymentProvider.billingData.street ?? ""),
+              details: billingData.street ?? ""),
           SizedBox(
             height: 15,
           ),

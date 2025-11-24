@@ -1,3 +1,6 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import '../../../auth/presentation/screen/import_files/import_files.dart';
+
 class Items {
   String? name;
   num? amount;
@@ -69,16 +72,16 @@ class BillingData {
     this.firstName = firstName;
   }
 
-  void setLastName(String lastName) {
-    this.lastName = lastName;
+  void setLastName() {
+    lastName = "Negal";
   }
 
   void setStreet(String street) {
     this.street = street;
   }
 
-  void setCountry(String country) {
-    this.country = country;
+  void setCountry() {
+    country = "Canada";
   }
 
   void setState(String state) {
@@ -93,20 +96,29 @@ class BillingData {
     this.city = city;
   }
 
-  void setApartment(String apartment) {
-    this.apartment = apartment;
+  void setApartment() {
+    apartment = StringsManager.na;
   }
 
-  void setEmail(String email) {
-    this.email = email;
+  void setEmail() {
+    email = "nehal@gmail.com";
   }
 
-  void setBuilding(String building) {
-    this.building = building;
+  void setBuilding() {
+    building = StringsManager.na;
   }
 
-  void setFloor(String floor) {
-    this.floor = floor;
+  void setFloor() {
+    floor = StringsManager.na;
+  }
+
+  void typeOtherValues() {
+    setEmail();
+    setCountry();
+    setLastName();
+    setFloor();
+    setBuilding();
+    setApartment();
   }
 
   BillingData.fromJson(dynamic json) {
@@ -205,5 +217,58 @@ class PaymentRequest {
     expiration = json["expiration"];
     notificationUrl = json["notification_url"];
     redirectionUrl = json["redirection_url"];
+  }
+
+  void setAmount(num amount) {
+    this.amount = amount;
+  }
+
+  void setItems(List<Items>? itemsList) {
+    this.itemsList = itemsList;
+  }
+
+  void setBillingData(BillingData billingData) {
+    this.billingData = billingData;
+  }
+
+  void setCurrency() {
+    currency = StringsManager.egp;
+  }
+
+  void setPaymentMethodsList() {
+    paymentMethodsList = [5048616];
+  }
+
+  void setExtras() {
+    extras = Extras(ee: 100);
+  }
+
+  void setSpecialReference() {
+    specialReference = UniqueKey().hashCode.toString();
+  }
+
+  void setExpiration() {
+    expiration = 3600;
+  }
+
+  void setNotificationUr() {
+    notificationUrl = dotenv.env['NOTIFICATION_URL']!;
+  }
+
+  void setRedirectionUrl() {
+    redirectionUrl = dotenv.env['REDIRECTION_URL']!;
+  }
+
+  void setValues(BillingData billingData, List<Items>? itemsList, num amount) {
+    setAmount(amount);
+    setItems(itemsList);
+    setBillingData(billingData);
+    setCurrency();
+    setPaymentMethodsList();
+    setExtras();
+    setSpecialReference();
+    setExpiration();
+    setNotificationUr();
+    setRedirectionUrl();
   }
 }

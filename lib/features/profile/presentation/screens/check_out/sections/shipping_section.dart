@@ -3,7 +3,6 @@ import 'package:ecommerce_shop/core/widgets/label_text.dart';
 import 'package:ecommerce_shop/features/profile/data/models/payment_request.dart';
 import 'package:ecommerce_shop/features/profile/presentation/bloc/address_bloc/address_bloc.dart';
 import 'package:ecommerce_shop/features/profile/presentation/provider/address_radio_provider.dart';
-import 'package:ecommerce_shop/features/profile/presentation/provider/payment_provider.dart';
 import 'package:ecommerce_shop/features/profile/presentation/screens/check_out/sections/write_location_manual.dart';
 import 'package:ecommerce_shop/features/profile/presentation/screens/check_out/widgets/inputs/phone_number_input.dart';
 import 'package:ecommerce_shop/features/profile/presentation/screens/check_out/widgets/inputs/username_input.dart';
@@ -18,17 +17,17 @@ import '../../../bloc/profile_bloc/profile_bloc.dart';
 import '../../shipping_address/providers/cities_province_provider.dart';
 
 class ShippingSection extends StatefulWidget {
-  const ShippingSection({super.key});
+  final BillingData billingData;
+  const ShippingSection({super.key,required this.billingData});
 
   @override
   State<ShippingSection> createState() => _ShippingSectionState();
 }
 
 class _ShippingSectionState extends State<ShippingSection> {
-  BillingData billingData = BillingData();
+
   @override
   Widget build(BuildContext context) {
-    var paymentProvider = Provider.of<PaymentProvider>(context);
     var provinceProvider =
         Provider.of<CityProvinceProvider>(context, listen: false);
     var manualProvider = Provider.of<AddressRadioProvider>(context);
@@ -39,7 +38,7 @@ class _ShippingSectionState extends State<ShippingSection> {
         SizedBox(
           height: 10,
         ),
-        UsernameInput(billingData: billingData),
+        UsernameInput(billingData: widget.billingData),
         SizedBox(
           height: 15,
         ),
@@ -47,7 +46,7 @@ class _ShippingSectionState extends State<ShippingSection> {
         SizedBox(
           height: 10,
         ),
-        PhoneNumberInput(billingData: billingData),
+        PhoneNumberInput(billingData: widget.billingData),
         SizedBox(
           height: 10,
         ),
@@ -64,7 +63,7 @@ class _ShippingSectionState extends State<ShippingSection> {
         ),
         manualProvider.status == 'Manual'
             ? WriteLocationManual(
-                billingData: billingData, provinceProvider: provinceProvider,)
+                billingData: widget.billingData, provinceProvider: provinceProvider,)
             : SizedBox(),
         SizedBox(
           height: 15,
@@ -84,15 +83,6 @@ class _ShippingSectionState extends State<ShippingSection> {
                   );
                   Provider.of<HideShowBottomNavProvider>(context, listen: false)
                       .hide();
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => MapScreen(
-                  //       cityProvince: Provider.of<CityProvinceProvider>(context,
-                  //           listen: false),
-                  //     ),
-                  //   ),
-                  // );
                 }),
             Text('Pick From Map'),
             Icon(Icons.location_on_rounded, color: ColorsManager.redColor)
@@ -124,14 +114,7 @@ class _ShippingSectionState extends State<ShippingSection> {
           return CustomBtnWidget(
               title: StringsManager.save,
               onPressed: () {
-                billingData.setApartment(StringsManager.na);
-                billingData.setBuilding(StringsManager.na);
-                billingData.setFloor(StringsManager.na);
-                billingData.setEmail("nehal@gmail.com");
-                billingData.setLastName("Negal");
-                billingData.setCountry("Canada");
-                 paymentProvider.setBillingData(billingData);
-
+                widget.billingData.typeOtherValues();
                 // AddressRequest request = AddressRequest(
                 //     street:
                 //         '${provinceProvider.province} ${streetAddressController.text}',
@@ -143,5 +126,4 @@ class _ShippingSectionState extends State<ShippingSection> {
       ],
     );
   }
-}
-//213
+}//129

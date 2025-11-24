@@ -2,7 +2,6 @@ import 'package:ecommerce_shop/features/cart/presentation/bloc/my_cart_bloc.dart
 import 'package:ecommerce_shop/features/map/presentation/provider/map_provider.dart';
 import 'package:ecommerce_shop/features/product_info/presentation/bloc/product_info_bloc.dart';
 import 'package:ecommerce_shop/features/profile/presentation/provider/address_radio_provider.dart';
-import 'package:ecommerce_shop/features/profile/presentation/provider/payment_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -79,9 +78,6 @@ void main() async {
           ),
           ChangeNotifierProvider(
             create: (_) => CityProvinceProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => PaymentProvider(),
           ),
           ChangeNotifierProvider(
             create: (_) => HideShowBottomNavProvider(),
