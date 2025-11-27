@@ -74,7 +74,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         key: ValueKey('login_button'),
                         onPressed: validationProvider.isValid
                             ? () {
-                          print("=== Button is pressed");
                                 BlocProvider.of<AuthBloc>(context).add(
                                     OnLoginEvent(emailController.text,
                                         passwordController.text));
@@ -115,9 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pop(context);
             responseDialog(
                 context, 'Login', state.failures!.message ?? "", false);
-            print('❌ Login Failed ');
           } else if (state.loginRequestState == RequestState.success) {
-            print('✅ Login succeeded — navigating to MainScreen');
             Navigator.pop(context);
             Navigator.pushNamed(context, MainScreen.routeName);
           }

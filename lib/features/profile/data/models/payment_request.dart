@@ -121,6 +121,20 @@ class BillingData {
     setApartment();
   }
 
+  bool valueIsNull() {
+    return (apartment == null ||
+        firstName == null ||
+        lastName == null ||
+        street == null ||
+        building == null ||
+        phoneNumber == null ||
+        city == null ||
+        country == null ||
+        email == null ||
+        floor == null ||
+        state == null);
+  }
+
   BillingData.fromJson(dynamic json) {
     apartment = json["apartment"];
     firstName = json["first_name"];

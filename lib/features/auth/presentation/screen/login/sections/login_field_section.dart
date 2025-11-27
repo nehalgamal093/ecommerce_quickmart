@@ -33,7 +33,6 @@ class _LoginFieldSectionState extends State<LoginFieldSection> {
           key: ValueKey('email_field'),
           errorText: validationProvider.errorEmailText,
           onChanged: (val) {
-            print("Email pressed==============");
             validationProvider.validateEmail(val);
           },
           controller: widget.emailController,

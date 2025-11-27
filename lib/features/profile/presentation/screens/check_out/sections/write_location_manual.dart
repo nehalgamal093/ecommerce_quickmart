@@ -1,26 +1,25 @@
 import 'package:ecommerce_shop/features/profile/data/models/payment_request.dart';
-import 'package:flutter/material.dart';
-
 import '../../../../../../core/data/cities.dart';
-import '../../../../../../core/resources/constants/strings_manager.dart';
 import '../../../../../../core/widgets/custom_drop_down.dart';
 import '../../../../../../core/widgets/custom_textfield_widget.dart';
-import '../../../../../../core/widgets/label_text.dart';
+import '../../../../../auth/presentation/screen/import_files/import_files.dart';
+import '../../../provider/input_validation_provider.dart';
 import '../../shipping_address/providers/cities_province_provider.dart';
 
 class WriteLocationManual extends StatelessWidget {
-   final CityProvinceProvider provinceProvider;
+  final CityProvinceProvider provinceProvider;
   final BillingData billingData;
   const WriteLocationManual(
-      {super.key,
-      required this.provinceProvider,
-      required this.billingData});
+      {super.key, required this.provinceProvider, required this.billingData});
 
   @override
   Widget build(BuildContext context) {
+    var validatorProvider = Provider.of<InputValidationProvider>(context);
+
     return Column(
       children: [
         CustomDropDown(
+            errorText: validatorProvider.errorState,
             hintText: StringsManager.selectProvince,
             items: Cities()
                 .getProvinceNames()
@@ -31,14 +30,17 @@ class WriteLocationManual extends StatelessWidget {
               );
             }).toList(),
             onChanged: (val) {
-               provinceProvider.changeProvince(val!);
+              validatorProvider.state = val!;
+              validatorProvider.isStateValid();
+              provinceProvider.changeProvince(val);
               billingData.setState(val);
             }),
         SizedBox(
           height: 15,
         ),
         CustomDropDown(
-            value:provinceProvider.province.isEmpty
+            errorText: validatorProvider.errorCity,
+            value: provinceProvider.province.isEmpty
                 ? null
                 : getCities(provinceProvider.province)[0],
             hintText: StringsManager.selectCity,
@@ -50,7 +52,9 @@ class WriteLocationManual extends StatelessWidget {
               );
             }).toList(),
             onChanged: (val) {
-              provinceProvider.changeCity(val!);
+              validatorProvider.city = val!;
+              validatorProvider.isCityValid();
+              provinceProvider.changeCity(val);
               billingData.setCity(val);
             }),
         SizedBox(
@@ -61,8 +65,11 @@ class WriteLocationManual extends StatelessWidget {
           height: 10,
         ),
         CustomTextFieldWidget(
+          errorText: validatorProvider.errorStreetAddress,
           hintText: StringsManager.enterStreetAddress,
-          onChanged: (val){
+          onChanged: (val) {
+            validatorProvider.streetAddress = val;
+            validatorProvider.isStreetAddressValid();
             billingData.setStreet(val);
           },
         ),
@@ -74,9 +81,11 @@ class WriteLocationManual extends StatelessWidget {
           height: 15,
         ),
         CustomTextFieldWidget(
+          errorText: validatorProvider.errorPostalCode,
           hintText: StringsManager.enterPostalCode,
-          onChanged: (val){
-
+          onChanged: (val) {
+            validatorProvider.postalCode = val;
+            validatorProvider.isPostalCodeValid();
           },
         ),
       ],

@@ -63,11 +63,20 @@ class _PaymentProcessState extends State<PaymentProcess> {
                       child: CustomBtnWidget(
                           title: StringsManager.placeOrder,
                           onPressed: () async {
-                            context.read<PaymentBloc>().add(
-                                  ProcessPaymentEvent(
-                                    payRequest(billingData),
-                                  ),
-                                );
+
+                            if (billingData.valueIsNull()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('🛑 Something went wrong'),
+                                ),
+                              );
+                            } else {
+                              context.read<PaymentBloc>().add(
+                                    ProcessPaymentEvent(
+                                      payRequest(billingData),
+                                    ),
+                                  );
+                            }
                           }),
                     )
                   : SizedBox()

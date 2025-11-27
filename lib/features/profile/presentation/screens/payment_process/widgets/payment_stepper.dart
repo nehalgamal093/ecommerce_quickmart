@@ -1,6 +1,6 @@
 import 'package:ecommerce_shop/features/profile/data/models/payment_request.dart';
+import 'package:ecommerce_shop/features/profile/presentation/provider/input_validation_provider.dart';
 import 'package:ecommerce_shop/features/profile/presentation/screens/payment_process/widgets/stepper_buttons.dart';
-
 import '../../../../../auth/presentation/screen/import_files/import_files.dart';
 import '../../../../../main/presentation/provider/order_tracking_state.dart';
 import '../../check_out/sections/payment_section.dart';
@@ -14,6 +14,7 @@ class PaymentStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<OrderTrackingState>(context);
+    var validatorProvider = Provider.of<InputValidationProvider>(context);
     return Stepper(
         controlsBuilder: (context, details) {
           return Padding(
@@ -21,10 +22,16 @@ class PaymentStepper extends StatelessWidget {
             child: Row(
               children: [
                 details.currentStep < 2
-                    ? StepperButtons(
+                    ?StepperButtons(
                         title: 'Continue',
                         onTap: () {
-                          provider.changeTrackingState();
+                          billingData.typeOtherValues();
+                          if(billingData.valueIsNull()){
+                            validatorProvider.validateInputs();
+                          }else{
+                            provider.changeTrackingState();
+                          }
+
                         },
                         color: Colors.white,
                         backgroundColor: Colors.black,
