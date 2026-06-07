@@ -31,7 +31,6 @@ class MainScreen extends StatelessWidget {
   final Map<int, DateTime> _lastTabTapTimes = {};
   @override
   Widget build(BuildContext context) {
-    print('🏠 MainScreen built');
     int size = 0;
     MainProvider mainProvider = Provider.of<MainProvider>(context);
 

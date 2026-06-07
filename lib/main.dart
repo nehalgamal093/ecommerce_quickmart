@@ -56,7 +56,7 @@ void main() async {
         BlocProvider(
           create: (context) => getIt<ProductsBloc>()
             ..add(
-              GetProductsEvent(subCategoryId: "67d866f11b503c79935b0642"),
+              GetProductsEvent(subCategoryId: "6a25800f901496931518ce23"),
             ),
         )
       ],
