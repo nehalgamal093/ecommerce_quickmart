@@ -16,6 +16,7 @@ class CategoryListItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CachedNetworkImage(
+            width: 100,
             imageUrl: categoryModel.image!,
             placeholder: (context, url) => loadingItem(),
             errorWidget: (context, url, error) => Icon(Icons.error),

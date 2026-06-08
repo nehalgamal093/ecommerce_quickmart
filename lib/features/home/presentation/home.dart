@@ -1,3 +1,4 @@
+import 'package:ecommerce_shop/core/resources/colors/colors_manager.dart';
 import 'package:ecommerce_shop/core/resources/constants/strings_manager.dart';
 import 'package:ecommerce_shop/core/widgets/error_widget.dart';
 import 'package:ecommerce_shop/features/home/presentation/sections/categories_section.dart';
@@ -49,65 +50,72 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child:
-            BlocBuilder<ProductsBloc, ProductsState>(builder: (context, state) {
-          if (state.productsRequestState == ProductsRequestState.loading) {
-            return LoadingHome();
-          } else if (state.productsRequestState == ProductsRequestState.error) {
-            return SomethingWentWrongWidget(
-                title: StringsManager.somethingWentWrong,
-                img: ImagesManager.somethingWrong);
-          } else if (state.productsRequestState ==
-              ProductsRequestState.success) {
-            return CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 24,
+      body: RefreshIndicator(
+        color: ColorsManager.cyanColor,
+        onRefresh: (){
+          context.read<ProductsBloc>().add(GetProductsEvent(subCategoryId: "6a25800f901496931518ce23"));
+          return Future.delayed(Duration(milliseconds: 3000));
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child:
+              BlocBuilder<ProductsBloc, ProductsState>(builder: (context, state) {
+            if (state.productsRequestState == ProductsRequestState.loading) {
+              return LoadingHome();
+            } else if (state.productsRequestState == ProductsRequestState.error) {
+              return SomethingWentWrongWidget(
+                  title: StringsManager.somethingWentWrong,
+                  img: ImagesManager.somethingWrong);
+            } else if (state.productsRequestState ==
+                ProductsRequestState.success) {
+              return CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 24,
+                    ),
                   ),
-                ),
-                SliverToBoxAdapter(child: HeaderSection()),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 24,
+                  SliverToBoxAdapter(child: HeaderSection()),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 24,
+                    ),
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: isPortrait ? size.height * .15 : size.height * .25,
-                    width: isPortrait ? size.width * .2 : size.width * .2,
-                    child: CategoriesSection(),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: isPortrait ? size.height * .15 : size.height * .25,
+                      width: isPortrait ? size.width * .2 : size.width * .2,
+                      child: CategoriesSection(),
+                    ),
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 24,
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 24,
+                    ),
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: LabelSection(label: StringsManager.latestProducts),
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 24,
+                  SliverToBoxAdapter(
+                    child: LabelSection(label: StringsManager.latestProducts),
                   ),
-                ),
-                ProductsSection(
-                  products: state.products!,
-                ),
-                SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: 24,
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 24,
+                    ),
                   ),
-                ),
-              ],
-            );
-          } else {
-            return SizedBox();
-          }
-        }),
+                  ProductsSection(
+                    products: state.products!,
+                  ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 24,
+                    ),
+                  ),
+                ],
+              );
+            } else {
+              return SizedBox();
+            }
+          }),
+        ),
       ),
     );
   }
